@@ -4,8 +4,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Maitreya Sameer Ganu - Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Maitreya Sameer Ganu</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <style>
 * {
@@ -20,60 +20,84 @@ html {
 
 body {
   font-family: 'Lora', serif;
-  background-color: #d4e8f7;
-  color: #1a3a52;
-  line-height: 1.7;
+  background-color: #ffffff;
+  color: #2c3e50;
+  line-height: 1.8;
   font-size: 16px;
 }
 
+a {
+  color: #2c3e50;
+  text-decoration: underline;
+  transition: opacity 0.2s ease;
+}
+
+a:hover {
+  opacity: 0.7;
+}
+
 header {
-  background-color: #7eb3d6;
-  padding: 2rem;
-  text-align: center;
-  color: white;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  background-color: #ffffff;
+  padding: 2.5rem 0;
+  border-bottom: 1px solid #e8e8e8;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 header h1 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-  letter-spacing: 0.5px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #2c3e50;
 }
 
-header nav {
-  margin-top: 2rem;
+nav {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
 }
 
-header nav a {
-  color: white;
-  text-decoration: none;
-  margin: 0 1.5rem;
-  font-weight: 500;
+nav a {
+  font-weight: 400;
   font-size: 1rem;
-  transition: opacity 0.3s ease;
+  text-decoration: none;
+  color: #2c3e50;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 4px;
+  transition: border-color 0.3s ease;
 }
 
-header nav a:hover {
-  opacity: 0.8;
+nav a:hover {
+  border-bottom: 2px solid #2c3e50;
+  opacity: 1;
+}
+
+nav a.active {
+  border-bottom: 2px solid #2c3e50;
+  font-weight: 600;
 }
 
 .hamburger {
   display: none;
   flex-direction: column;
   cursor: pointer;
-  position: fixed;
-  top: 1.5rem;
-  right: 1.5rem;
-  z-index: 1000;
+  gap: 6px;
 }
 
 .hamburger span {
-  width: 28px;
-  height: 3px;
-  background-color: #1a3a52;
-  margin: 5px 0;
-  border-radius: 3px;
+  width: 25px;
+  height: 2px;
+  background-color: #2c3e50;
   transition: 0.3s;
 }
 
@@ -86,153 +110,105 @@ header nav a:hover {
 }
 
 .hamburger.active span:nth-child(3) {
-  transform: rotate(45deg) translate(-7px, -8px);
+  transform: rotate(45deg) translate(-7px, -7px);
 }
 
-.sidebar {
+.mobile-nav {
   display: none;
-  flex-direction: column;
   position: fixed;
-  top: 0;
-  right: -300px;
-  width: 280px;
-  height: 100vh;
-  background-color: #7eb3d6;
-  padding-top: 80px;
-  transition: right 0.3s ease;
-  z-index: 999;
-  box-shadow: -2px 0 8px rgba(0,0,0,0.1);
-}
-
-.sidebar.active {
+  top: 60px;
   right: 0;
+  width: 100%;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e8e8e8;
+  flex-direction: column;
+  padding: 1rem 0;
+  z-index: 99;
 }
 
-.sidebar a {
-  color: white;
-  text-decoration: none;
+.mobile-nav.active {
+  display: flex;
+}
+
+.mobile-nav a {
   padding: 1rem 2rem;
-  border-bottom: 1px solid rgba(255,255,255,0.2);
-  font-weight: 500;
-  transition: background-color 0.3s ease;
-}
-
-.sidebar a:hover {
-  background-color: rgba(255,255,255,0.1);
+  text-decoration: none;
+  border-bottom: 1px solid #f0f0f0;
+  color: #2c3e50;
 }
 
 main {
-  max-width: 1000px;
+  max-width: 800px;
   margin: 0 auto;
   padding: 3rem 2rem;
-}
-
-.landing-section {
-  text-align: center;
-  margin-bottom: 4rem;
-}
-
-.profile-photo {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin: 2rem auto;
-  display: block;
-  border: 4px solid #7eb3d6;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-.landing-section h2 {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #1a3a52;
-  margin: 1.5rem 0;
-}
-
-.landing-section p {
-  font-size: 1.1rem;
-  color: #333;
-  margin: 1rem auto;
-  max-width: 700px;
-  line-height: 1.8;
-}
-
-.social-links {
-  margin: 2rem 0;
-}
-
-.social-links a {
-  display: inline-block;
-  width: 50px;
-  height: 50px;
-  background-color: #7eb3d6;
-  color: white;
-  border-radius: 50%;
-  text-align: center;
-  line-height: 50px;
-  margin: 0 10px;
-  text-decoration: none;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.social-links a:hover {
-  background-color: #5a8fb8;
-  transform: scale(1.1);
+  min-height: calc(100vh - 300px);
 }
 
 section {
-  margin-bottom: 4rem;
+  display: none;
+}
+
+section.active {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 section h2 {
   font-size: 2rem;
   font-weight: 700;
-  color: #1a3a52;
+  color: #2c3e50;
   margin-bottom: 2rem;
-  padding-bottom: 1rem;
-  border-bottom: 3px solid #7eb3d6;
+  margin-top: 0;
 }
 
-.content-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
+section h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+section p {
+  margin-bottom: 1.2rem;
+  line-height: 1.8;
+  color: #444;
 }
 
 .card {
-  background-color: white;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-}
-
-.card:hover {
-  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-  transform: translateY(-3px);
+  background-color: #f8f8f8;
+  padding: 1.5rem;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+  border-left: 3px solid #2c3e50;
 }
 
 .card h3 {
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: #1a3a52;
-  margin-bottom: 0.5rem;
+  margin-top: 0;
+  color: #2c3e50;
 }
 
 .card-subtitle {
   font-size: 0.95rem;
-  color: #7eb3d6;
+  color: #666;
   font-style: italic;
   margin-bottom: 1rem;
 }
 
-.card p {
-  font-size: 0.95rem;
-  color: #333;
-  line-height: 1.7;
-  margin-bottom: 1rem;
+.card-details {
+  color: #444;
+  line-height: 1.8;
 }
 
 .card ul {
@@ -242,85 +218,140 @@ section h2 {
 
 .card ul li {
   margin-bottom: 0.5rem;
-  color: #333;
+  color: #444;
+}
+
+.profile-section {
+  text-align: left;
+  margin-bottom: 3rem;
+}
+
+.profile-section img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 2rem;
+  border: 2px solid #e8e8e8;
+}
+
+.profile-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.bio-section p:first-child {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+}
+
+.social-links {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  background-color: #f0f0f0;
+  border-radius: 50%;
+  text-decoration: none;
+  color: #2c3e50;
+  transition: background-color 0.3s ease;
+  font-size: 1.2rem;
+}
+
+.social-links a:hover {
+  background-color: #e0e0e0;
+  opacity: 1;
 }
 
 .download-btn {
   display: inline-block;
-  background-color: #7eb3d6;
+  background-color: #2c3e50;
   color: white !important;
-  padding: 0.75rem 1.5rem;
-  border-radius: 5px;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 500;
+  font-size: 0.95rem;
   margin-top: 1rem;
-  transition: background-color 0.3s ease;
+  margin-right: 0.5rem;
+  transition: background-color 0.3s ease, opacity 0.2s ease;
 }
 
 .download-btn:hover {
-  background-color: #5a8fb8;
+  background-color: #1a252f;
+  opacity: 1;
 }
 
-.skills-list {
-  list-style: none;
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
   margin: 2rem 0;
 }
 
-.skills-list li {
-  padding: 1rem 0;
-  color: #333;
-  border-bottom: 1px solid #e0e0e0;
-}
-
-.skills-list li:last-child {
-  border-bottom: none;
-}
-
-.skills-list strong {
-  color: #1a3a52;
-  font-weight: 700;
+.grid-2 .card {
+  margin-bottom: 0;
 }
 
 footer {
-  text-align: center;
+  background-color: #f8f8f8;
   padding: 2rem;
-  color: #1a3a52;
-  border-top: 2px solid #7eb3d6;
+  text-align: center;
+  color: #666;
+  border-top: 1px solid #e8e8e8;
   margin-top: 4rem;
-  background-color: white;
 }
 
-footer p {
-  margin: 0.5rem 0;
+footer a {
+  color: #2c3e50;
 }
 
 @media (max-width: 768px) {
-  header h1 {
-    font-size: 2rem;
-  }
-
-  header nav {
-    display: none;
-  }
-
   .hamburger {
     display: flex;
   }
 
-  .sidebar {
-    display: flex;
+  nav {
+    display: none;
+  }
+
+  .header-content {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  header h1 {
+    font-size: 1.2rem;
   }
 
   main {
-    padding: 2rem 1rem;
-  }
-
-  .content-grid {
-    grid-template-columns: 1fr;
+    padding: 2rem 1.5rem;
   }
 
   section h2 {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+  }
+
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-section img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .profile-section h2 {
+    font-size: 2rem;
   }
 }
 </style>
@@ -328,310 +359,358 @@ footer p {
 <body>
 
 <header>
-  <h1>Maitreya Sameer Ganu</h1>
-  <p style="margin-top: 0.5rem; font-size: 1.1rem; font-weight: 400;">Data Science Enthusiast | Machine Learning | Research</p>
-  <nav id="desktop-nav">
-    <a href="#home">Home</a>
-    <a href="#education">Education</a>
-    <a href="#experience">Experience</a>
-    <a href="#internships">Internships</a>
-    <a href="#certifications">Certifications</a>
-    <a href="#projects">Projects</a>
-    <a href="#skills">Skills</a>
-    <a href="#achievements">Achievements</a>
-    <a href="#contact">Contact</a>
+  <div class="header-content">
+    <h1>Maitreya Sameer Ganu</h1>
+    <nav id="desktop-nav">
+      <a href="#home" data-section="home">Home</a>
+      <a href="#education" data-section="education">Education</a>
+      <a href="#experience" data-section="experience">Experience</a>
+      <a href="#internships" data-section="internships">Internships</a>
+      <a href="#certifications" data-section="certifications">Certifications</a>
+      <a href="#projects" data-section="projects">Projects</a>
+      <a href="#achievements" data-section="achievements">Achievements</a>
+      <a href="#contact" data-section="contact">Contact</a>
+    </nav>
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobile-nav">
+    <a href="#home" data-section="home">Home</a>
+    <a href="#education" data-section="education">Education</a>
+    <a href="#experience" data-section="experience">Experience</a>
+    <a href="#internships" data-section="internships">Internships</a>
+    <a href="#certifications" data-section="certifications">Certifications</a>
+    <a href="#projects" data-section="projects">Projects</a>
+    <a href="#achievements" data-section="achievements">Achievements</a>
+    <a href="#contact" data-section="contact">Contact</a>
   </nav>
 </header>
 
-<div class="hamburger" id="hamburger">
-  <span></span>
-  <span></span>
-  <span></span>
-</div>
-
-<nav class="sidebar" id="sidebar">
-  <a href="#home">Home</a>
-  <a href="#education">Education</a>
-  <a href="#experience">Experience</a>
-  <a href="#internships">Internships</a>
-  <a href="#certifications">Certifications</a>
-  <a href="#projects">Projects</a>
-  <a href="#skills">Skills</a>
-  <a href="#achievements">Achievements</a>
-  <a href="#contact">Contact</a>
-</nav>
-
 <main>
 
-<section id="home" class="landing-section">
-  <img src="maitreya (1).png" class="profile-photo" alt="Maitreya Sameer Ganu" onerror="this.src='https://placehold.co/200x200/7eb3d6/ffffff?text=M.G.'">
-  <h2>Welcome to My Portfolio</h2>
-  <p>Hello! I'm Maitreya, a Data Science enthusiast with an insatiable curiosity for uncovering stories hidden within data. My passion lies in leveraging Machine Learning, Analytical Research, and Mathematical Statistics to solve complex, real-world puzzles.</p>
-  <p>I believe data is a powerful tool for innovation, and I thrive on transforming raw numbers into meaningful insights that can drive decisions and spark change. I'm currently pursuing a BS-MS Dual Degree in Data Science at IISER Thiruvananthapuram.</p>
-  <p style="margin-top: 1.5rem; font-style: italic; color: #7eb3d6; font-weight: 600;">Work Hard in Silence, Let Success Make The Noise!</p>
-  <div class="social-links">
-    <a href="https://www.linkedin.com/in/maitreya-ganu-673995286" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-    <a href="https://github.com/MaitreyaGanu" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+<section id="home" class="active">
+  <div class="profile-section">
+    <img src="maitreya (1).png" alt="Maitreya Sameer Ganu" onerror="this.src='https://placehold.co/150x150/e8e8e8/2c3e50?text=M.G.'">
+    <h2>Maitreya Sameer Ganu</h2>
+  </div>
+
+  <div class="bio-section">
+    <p>Data Science Enthusiast | Machine Learning | Research</p>
+    
+    <p>Hello! I'm Maitreya, a Data Science enthusiast with an insatiable curiosity for uncovering stories hidden within data. I am deeply passionate about Statistics, Statistical Data Science, and Mathematics—three pillars that form the foundation of my analytical approach.</p>
+
+    <p>Currently pursuing a BS-MS Dual Degree in Data Science at IISER Thiruvananthapuram, I'm immersed in the fascinating worlds of machine learning, data analysis, and cutting-edge research. My core passion is to tackle challenging real-world problems and discover how intricate data patterns and intelligent algorithms can illuminate complex scenarios and drive meaningful innovation.</p>
+
+    <p>My approach is grounded in rigorous statistical thinking and mathematical foundations. I believe that understanding the underlying mathematics and statistical principles is crucial to building robust models and deriving actionable insights from complex datasets. Whether it's designing experiments, building predictive models, or interpreting results with statistical rigor, I find immense satisfaction in applying quantitative methods to solve real-world challenges.</p>
+
+    <p>My academic journey has been a vibrant tapestry woven with threads of curiosity, creative problem-solving, and an unwavering commitment to continuous learning. I thrive on exploring novel methodologies, experimenting with different algorithms, and rigorously validating my approaches through both theory and practice. I'm particularly captivated by projects that reside at the dynamic intersection of statistical inference, algorithmic innovation, and practical impact.</p>
+
+    <p>Beyond the realm of data and algorithms, I am an avid Tabla performer, finding rhythm and expression in classical Indian music. I actively contribute to various student communities on campus, including the Placement Cell and Math Club, where collaboration and fostering intellectual growth are paramount.</p>
+
+    <p>This portfolio is a curated reflection of my journey: a dedicated learner, a passionate analyst, and an individual constantly seeking growth and new horizons. Feel free to explore my work, connect with me, or simply immerse yourself in the narrative of my endeavors.</p>
+
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/maitreya-ganu-673995286" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/MaitreyaGanu" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+    </div>
   </div>
 </section>
 
 <section id="education">
   <h2>Education</h2>
-  <div class="content-grid">
-    <div class="card">
-      <h3>BS-MS (Dual Degree), Data Science Major</h3>
-      <p class="card-subtitle">IISER Thiruvananthapuram (Sept 2023 – Present)</p>
-      <p>Currently pursuing an integrated Master's program focusing on Data Science, building a strong foundation in statistical modeling, machine learning algorithms, and computational techniques.</p>
-    </div>
-    <div class="card">
-      <h3>FYBSc Statistics</h3>
-      <p class="card-subtitle">Fergusson College, Pune (July 2023 – August 2023)</p>
-      <p>Briefly attended, gaining initial exposure to university-level statistics before transitioning to the integrated BS-MS program at IISER.</p>
-    </div>
-    <div class="card">
-      <h3>High School Graduate (Science Stream)</h3>
-      <p class="card-subtitle">Sir Parshurambhau College, Pune (2021 – May 2023)</p>
-      <p>Completed higher secondary education with a focus on Physics, Chemistry, Mathematics, and Electronics. Secured 2nd rank in college.</p>
-    </div>
-    <div class="card">
-      <h3>Matriculation (SSC)</h3>
-      <p class="card-subtitle">Sevasadan English Medium School, Pune (2008 – March 2021)</p>
-      <p>Completed secondary education, laying the groundwork for analytical and scientific pursuits.</p>
-    </div>
+
+  <div class="card">
+    <h3>BS-MS (Dual Degree), Data Science Major</h3>
+    <p class="card-subtitle">IISER Thiruvananthapuram (Sept 2023 – Present)</p>
+    <p class="card-details">Currently pursuing an integrated Master's program focusing on Data Science, building a strong foundation in statistical modeling, machine learning algorithms, and computational techniques.</p>
+  </div>
+
+  <div class="card">
+    <h3>FYBSc Statistics</h3>
+    <p class="card-subtitle">Fergusson College, Pune (July 2023 – August 2023)</p>
+    <p class="card-details">Briefly attended, gaining initial exposure to university-level statistics before transitioning to the integrated BS-MS program at IISER.</p>
+  </div>
+
+  <div class="card">
+    <h3>High School Graduate (Science Stream)</h3>
+    <p class="card-subtitle">Sir Parshurambhau College, Pune (2021 – May 2023)</p>
+    <p class="card-details">Completed higher secondary education with a focus on Physics, Chemistry, Mathematics, and Electronics. Secured 2nd rank in college.</p>
+  </div>
+
+  <div class="card">
+    <h3>Matriculation (SSC)</h3>
+    <p class="card-subtitle">Sevasadan English Medium School, Pune (2008 – March 2021)</p>
+    <p class="card-details">Completed secondary education, laying the groundwork for analytical and scientific pursuits.</p>
   </div>
 </section>
 
 <section id="experience">
   <h2>Experience</h2>
-  <div class="content-grid">
-    <div class="card">
-      <h3>Finance Coordinator, Club of Mathematics</h3>
-      <p class="card-subtitle">IISER Thiruvananthapuram (2023 – 2024)</p>
-      <p>Managed merchandise financing and provided key administrative support during the prestigious Frontier Symposium in Mathematics, 2023, ensuring smooth financial operations.</p>
-    </div>
-    <div class="card">
-      <h3>Music Club Representative & Finance Coordinator</h3>
-      <p class="card-subtitle">IISER Thiruvananthapuram (2023 – 2025)</p>
-      <p>Actively performed Tabla at various campus events and managed the Music Club's merchandise and financial activities, fostering cultural engagement.</p>
-    </div>
-    <div class="card">
-      <h3>Member, Placement and Career Promotion Cell</h3>
-      <p class="card-subtitle">IISER Thiruvananthapuram (2025 – Ongoing)</p>
-      <p>Proactively reaching out to startups and established companies to facilitate campus placement opportunities and career development for students.</p>
-    </div>
+
+  <div class="card">
+    <h3>Finance Coordinator, Club of Mathematics</h3>
+    <p class="card-subtitle">IISER Thiruvananthapuram (2023 – 2024)</p>
+    <p class="card-details">Managed merchandise financing and provided key administrative support during the prestigious Frontier Symposium in Mathematics, 2023, ensuring smooth financial operations and successful event execution.</p>
+  </div>
+
+  <div class="card">
+    <h3>Music Club Representative & Finance Coordinator</h3>
+    <p class="card-subtitle">IISER Thiruvananthapuram (2023 – 2025)</p>
+    <p class="card-details">Actively performed Tabla at various campus events and managed the Music Club's merchandise and financial activities, fostering cultural engagement and community participation.</p>
+  </div>
+
+  <div class="card">
+    <h3>Member, Placement and Career Promotion Cell</h3>
+    <p class="card-subtitle">IISER Thiruvananthapuram (2025 – Ongoing)</p>
+    <p class="card-details">Proactively reaching out to startups and established companies to facilitate campus placement opportunities and career development for students, bridging the gap between industry and academia.</p>
   </div>
 </section>
 
 <section id="internships">
   <h2>Internships</h2>
-  <div class="content-grid">
-    <div class="card">
-      <h3>Cryptography Internship</h3>
-      <p class="card-subtitle">IISER Pune (Under Prof. Soumen Maity)</p>
-      <ul>
-        <li>Completed an intensive reading project focusing on public key cryptography.</li>
-        <li>Delved into advanced cryptographic techniques, security models, and their practical implications.</li>
-      </ul>
-      <a href="https://github.com/msgwebsite/portfolio/releases/download/internship-certificates/iiserpunesummer2024.pdf" target="_blank" class="download-btn"><i class="fas fa-download"></i> Download Certificate</a>
-    </div>
-    <div class="card">
-      <h3>Community Detection & Network Analysis</h3>
-      <p class="card-subtitle">IISER Thiruvananthapuram (Under Prof. Saptarshi Bej)</p>
-      <ul>
-        <li>Executed a winter research project on community and network detection using modularity optimization on diverse graph structures.</li>
-        <li>Applied these techniques to real-world datasets including neural, protein, and road networks.</li>
-      </ul>
-      <a href="https://github.com/msgwebsite/portfolio/releases/download/internship-certificates/iisertvmwinter2024.pdf" target="_blank" class="download-btn"><i class="fas fa-download"></i> Download Certificate</a>
-    </div>
-    <div class="card">
-      <h3>Hierarchical Bayesian Poisson Mixture Models</h3>
-      <p class="card-subtitle">IISER Pune (Under Dr. Leelavati Narlikar)</p>
-      <ul>
-        <li>Worked on clustering models for scRNA-seq and scATAC-seq data.</li>
-        <li>Implemented and benchmarked Hierarchical Bayesian Poisson Mixture Models.</li>
-      </ul>
-      <a href="https://github.com/msgwebsite/portfolio/releases/download/internship-certificates/iiserpunesummer2025.pdf" target="_blank" class="download-btn"><i class="fas fa-download"></i> Download Certificate</a>
-    </div>
+
+  <div class="card">
+    <h3>Cryptography Internship</h3>
+    <p class="card-subtitle">IISER Pune (Under Prof. Soumen Maity)</p>
+    <p class="card-details">Completed an intensive reading project focusing on public key cryptography. Delved into advanced cryptographic techniques, security models, and their practical implications.</p>
+    <a href="https://github.com/msgwebsite/portfolio/releases/download/internship-certificates/iiserpunesummer2024.pdf" target="_blank" class="download-btn"><i class="fas fa-download"></i> Download Certificate</a>
+  </div>
+
+  <div class="card">
+    <h3>Community Detection & Network Analysis</h3>
+    <p class="card-subtitle">IISER Thiruvananthapuram (Under Prof. Saptarshi Bej)</p>
+    <p class="card-details">Executed a winter research project on community and network detection using modularity optimization on diverse graph structures. Applied these techniques to real-world datasets including neural, protein, and road networks.</p>
+    <a href="https://github.com/msgwebsite/portfolio/releases/download/internship-certificates/iisertvmwinter2024.pdf" target="_blank" class="download-btn"><i class="fas fa-download"></i> Download Certificate</a>
+  </div>
+
+  <div class="card">
+    <h3>Hierarchical Bayesian Poisson Mixture Models</h3>
+    <p class="card-subtitle">IISER Pune (Under Dr. Leelavati Narlikar)</p>
+    <p class="card-details">Worked on clustering models for scRNA-seq and scATAC-seq data. Implemented and benchmarked Hierarchical Bayesian Poisson Mixture Models with rigorous statistical validation.</p>
+    <a href="https://github.com/msgwebsite/portfolio/releases/download/internship-certificates/iiserpunesummer2025.pdf" target="_blank" class="download-btn"><i class="fas fa-download"></i> Download Certificate</a>
   </div>
 </section>
 
 <section id="certifications">
   <h2>Certifications</h2>
-  <div class="content-grid">
-    <div class="card">
-      <h3>Kaggle: Python</h3>
-      <p class="card-subtitle">Issued by Kaggle</p>
-      <p>Demonstrated proficiency in Python programming fundamentals for data science.</p>
-      <a href="https://github.com/msgwebsite/portfolio/releases/download/Skills-certificates/python.pdf" target="_blank" class="download-btn"><i class="fas fa-download"></i> Download</a>
-    </div>
-    <div class="card">
-      <h3>Kaggle: Introduction to Programming</h3>
-      <p class="card-subtitle">Issued by Kaggle</p>
-      <p>Covered core programming concepts essential for data manipulation and analysis.</p>
-      <a href="https://github.com/msgwebsite/portfolio/releases/download/Skills-certificates/Programming.pdf" target="_blank" class="download-btn"><i class="fas fa-download"></i> Download</a>
-    </div>
-    <div class="card">
-      <h3>Kaggle: Pandas</h3>
-      <p class="card-subtitle">Issued by Kaggle</p>
-      <p>Mastered data manipulation and analysis using the Pandas library in Python.</p>
-      <a href="https://github.com/msgwebsite/portfolio/releases/download/Skills-certificates/Pandas.pdf" target="_blank" class="download-btn"><i class="fas fa-download"></i> Download</a>
-    </div>
-    <div class="card">
-      <h3>Kaggle: Data Visualization</h3>
-      <p class="card-subtitle">Issued by Kaggle</p>
-      <p>Learned to create insightful and effective data visualizations using Python libraries.</p>
-      <a href="https://github.com/msgwebsite/portfolio/releases/download/Skills-certificates/DataVisualization.pdf" target="_blank" class="download-btn"><i class="fas fa-download"></i> Download</a>
-    </div>
-    <div class="card">
-      <h3>Kaggle: Introduction to Machine Learning</h3>
-      <p class="card-subtitle">Issued by Kaggle</p>
-      <p>Gained foundational knowledge of machine learning concepts and model building.</p>
-      <a href="https://github.com/msgwebsite/portfolio/releases/download/Skills-certificates/ML.pdf" target="_blank" class="download-btn"><i class="fas fa-download"></i> Download</a>
-    </div>
-    <div class="card">
-      <h3>Kaggle: Time Series Data Analysis</h3>
-      <p class="card-subtitle">Issued by Kaggle</p>
-      <p>Explored techniques for analyzing and forecasting time-dependent data.</p>
-      <a href="https://github.com/msgwebsite/portfolio/releases/download/Skills-certificates/TimeSeries.pdf" target="_blank" class="download-btn"><i class="fas fa-download"></i> Download</a>
-    </div>
-    <div class="card">
-      <h3>Finlatics: Data Analysis with Python</h3>
-      <p class="card-subtitle">Issued by Finlatics</p>
-      <p>Developed skills in Python-based data analysis, statistical modeling, and visualization, with a letter of recommendation.</p>
-      <a href="https://github.com/msgwebsite/portfolio/releases/download/Skills-certificates/certificate.pdf" target="_blank" class="download-btn" style="margin-right: 0.5rem;"><i class="fas fa-download"></i> Certificate</a>
-      <a href="https://github.com/msgwebsite/portfolio/releases/download/Skills-certificates/LoR.pdf" target="_blank" class="download-btn"><i class="fas fa-download"></i> Letter of Recommendation</a>
-    </div>
-    <div class="card">
-      <h3>Kaggle: Introduction to Deep Learning</h3>
-      <p class="card-subtitle">Issued by Kaggle</p>
-      <p>Acquired basic knowledge of neural networks and deep learning principles using TensorFlow.</p>
-      <a href="https://github.com/msgwebsite/portfolio/releases/download/Skills-certificates/DL.pdf" target="_blank" class="download-btn"><i class="fas fa-download"></i> Download</a>
-    </div>
-    <div class="card">
-      <h3>Kaggle: AI Ethics</h3>
-      <p class="card-subtitle">Issued by Kaggle</p>
-      <p>Explored crucial tools and frameworks for the ethical design and deployment of AI systems.</p>
-      <a href="https://github.com/msgwebsite/portfolio/releases/download/Skills-certificates/AI_Ethics.pdf" target="_blank" class="download-btn"><i class="fas fa-download"></i> Download</a>
-    </div>
+
+  <div class="card">
+    <h3>Kaggle: Python</h3>
+    <p class="card-subtitle">Issued by Kaggle</p>
+    <p class="card-details">Demonstrated proficiency in Python programming fundamentals for data science.</p>
+    <a href="https://github.com/msgwebsite/portfolio/releases/download/Skills-certificates/python.pdf" target="_blank" class="download-btn"><i class="fas fa-download"></i> Download</a>
+  </div>
+
+  <div class="card">
+    <h3>Kaggle: Introduction to Programming</h3>
+    <p class="card-subtitle">Issued by Kaggle</p>
+    <p class="card-details">Covered core programming concepts essential for data manipulation and analysis.</p>
+    <a href="https://github.com/msgwebsite/portfolio/releases/download/Skills-certificates/Programming.pdf" target="_blank" class="download-btn"><i class="fas fa-download"></i> Download</a>
+  </div>
+
+  <div class="card">
+    <h3>Kaggle: Pandas</h3>
+    <p class="card-subtitle">Issued by Kaggle</p>
+    <p class="card-details">Mastered data manipulation and analysis using the Pandas library in Python.</p>
+    <a href="https://github.com/msgwebsite/portfolio/releases/download/Skills-certificates/Pandas.pdf" target="_blank" class="download-btn"><i class="fas fa-download"></i> Download</a>
+  </div>
+
+  <div class="card">
+    <h3>Kaggle: Data Visualization</h3>
+    <p class="card-subtitle">Issued by Kaggle</p>
+    <p class="card-details">Learned to create insightful and effective data visualizations using Python libraries.</p>
+    <a href="https://github.com/msgwebsite/portfolio/releases/download/Skills-certificates/DataVisualization.pdf" target="_blank" class="download-btn"><i class="fas fa-download"></i> Download</a>
+  </div>
+
+  <div class="card">
+    <h3>Kaggle: Introduction to Machine Learning</h3>
+    <p class="card-subtitle">Issued by Kaggle</p>
+    <p class="card-details">Gained foundational knowledge of machine learning concepts and model building.</p>
+    <a href="https://github.com/msgwebsite/portfolio/releases/download/Skills-certificates/ML.pdf" target="_blank" class="download-btn"><i class="fas fa-download"></i> Download</a>
+  </div>
+
+  <div class="card">
+    <h3>Kaggle: Time Series Data Analysis</h3>
+    <p class="card-subtitle">Issued by Kaggle</p>
+    <p class="card-details">Explored techniques for analyzing and forecasting time-dependent data.</p>
+    <a href="https://github.com/msgwebsite/portfolio/releases/download/Skills-certificates/TimeSeries.pdf" target="_blank" class="download-btn"><i class="fas fa-download"></i> Download</a>
+  </div>
+
+  <div class="card">
+    <h3>Finlatics: Data Analysis with Python</h3>
+    <p class="card-subtitle">Issued by Finlatics</p>
+    <p class="card-details">Developed skills in Python-based data analysis, statistical modeling, and visualization, with a letter of recommendation from the instructor.</p>
+    <a href="https://github.com/msgwebsite/portfolio/releases/download/Skills-certificates/certificate.pdf" target="_blank" class="download-btn"><i class="fas fa-download"></i> Certificate</a>
+    <a href="https://github.com/msgwebsite/portfolio/releases/download/Skills-certificates/LoR.pdf" target="_blank" class="download-btn"><i class="fas fa-download"></i> Letter of Rec</a>
+  </div>
+
+  <div class="card">
+    <h3>Kaggle: Introduction to Deep Learning</h3>
+    <p class="card-subtitle">Issued by Kaggle</p>
+    <p class="card-details">Acquired basic knowledge of neural networks and deep learning principles using TensorFlow.</p>
+    <a href="https://github.com/msgwebsite/portfolio/releases/download/Skills-certificates/DL.pdf" target="_blank" class="download-btn"><i class="fas fa-download"></i> Download</a>
+  </div>
+
+  <div class="card">
+    <h3>Kaggle: AI Ethics</h3>
+    <p class="card-subtitle">Issued by Kaggle</p>
+    <p class="card-details">Explored crucial tools and frameworks for the ethical design and deployment of AI systems.</p>
+    <a href="https://github.com/msgwebsite/portfolio/releases/download/Skills-certificates/AI_Ethics.pdf" target="_blank" class="download-btn"><i class="fas fa-download"></i> Download</a>
   </div>
 </section>
 
 <section id="projects">
   <h2>Projects</h2>
-  <div class="content-grid">
-    <div class="card">
-      <h3>Hierarchical Bayesian Poisson Mixture Models</h3>
-      <p class="card-subtitle">Summer Internship | Single-cell Data Analysis</p>
-      <p>Developed Hierarchical Bayesian Poisson Mixture Models for clustering scRNA-seq and scATAC-seq data with rigorous statistical modeling.</p>
-      <a href="https://github.com/msgwebsite/portfolio/releases/download/projects/PMM.pdf" download class="download-btn"><i class="fas fa-file-pdf"></i> Download Report</a>
-    </div>
-    <div class="card">
-      <h3>Community Detection in Networks</h3>
-      <p class="card-subtitle">Winter Internship | Network Science</p>
-      <p>Studied community detection using modularity optimization and applied methods to biological and infrastructure networks.</p>
-      <a href="https://github.com/msgwebsite/portfolio/releases/download/projects/communitydetection.pdf" download class="download-btn"><i class="fas fa-file-pdf"></i> Download Report</a>
-    </div>
-    <div class="card">
-      <h3>Application of Modularity Analysis</h3>
-      <p class="card-subtitle">Interdisciplinary Research | Network Analysis</p>
-      <p>Applied modularity-based analysis to protein interaction networks, neural networks of C. elegans, and road systems.</p>
-      <a href="https://github.com/msgwebsite/portfolio/releases/download/projects/modularity.pdf" download class="download-btn"><i class="fas fa-file-pdf"></i> Download Report</a>
-    </div>
-    <div class="card">
-      <h3>Design of Experiments (DOE)</h3>
-      <p class="card-subtitle">Statistical Modeling | Experimental Design</p>
-      <p>Explored classical and modern Design of Experiments techniques for statistical inference and optimal experimental planning.</p>
-      <a href="https://github.com/msgwebsite/portfolio/releases/download/projects/doe.pdf" download class="download-btn"><i class="fas fa-file-pdf"></i> Download Report</a>
-    </div>
-    <div class="card">
-      <h3>Stock Price Prediction</h3>
-      <p class="card-subtitle">Machine Learning | Time Series</p>
-      <p>Implemented predictive models for stock price movements using machine learning techniques on financial time-series data.</p>
-      <a href="https://github.com/msgwebsite/portfolio/releases/download/projects/stockprice.pdf" download class="download-btn"><i class="fas fa-file-pdf"></i> Download Report</a>
-    </div>
-    <div class="card">
-      <h3>Temperature Prediction</h3>
-      <p class="card-subtitle">Deep Learning | Time Series Forecasting</p>
-      <p>Used deep learning models for forecasting maximum and minimum temperatures based on historical climate data.</p>
-      <a href="https://github.com/msgwebsite/portfolio/releases/download/projects/temp_prediction.pdf" download class="download-btn"><i class="fas fa-file-pdf"></i> Download Report</a>
-    </div>
-  </div>
-</section>
 
-<section id="skills">
-  <h2>Skills</h2>
-  <ul class="skills-list">
-    <li><strong>Programming Languages:</strong> Python (Advanced), LaTeX (Advanced), C/C++ (Intermediate), SQL (Intermediate), R (Intermediate)</li>
-    <li><strong>Data Science & ML Libraries:</strong> Pandas, NumPy, Matplotlib, Seaborn, Scikit-learn, SciPy, Statsmodels, NLTK, Spacy</li>
-    <li><strong>Deep Learning:</strong> TensorFlow (Intermediate), Keras</li>
-    <li><strong>Machine Learning Concepts:</strong> Regression, Classification, Clustering, Dimensionality Reduction, Ensemble Methods, Model Evaluation & Validation, Feature Engineering</li>
-    <li><strong>Network Analysis:</strong> Community Detection, Modularity Optimization, Graph Theory, NetworkX</li>
-    <li><strong>Developer Tools:</strong> Git/GitHub, VS Code, Jupyter Notebooks/Lab, Overleaf, Google Colab, Docker (Basic)</li>
-    <li><strong>Core Academic Skills:</strong> Research Methodology, Scientific Writing, Statistical Analysis, Critical Thinking, Problem-Solving, Quick Learner</li>
-    <li><strong>Soft Skills:</strong> Communication (Verbal & Written), Leadership, Teamwork & Collaboration, Adaptability, Presentation Skills, Time Management</li>
-    <li><strong>Miscellaneous:</strong> MS Office Suite (Word, Excel, PowerPoint)</li>
-  </ul>
+  <div class="card">
+    <h3>Hierarchical Bayesian Poisson Mixture Models</h3>
+    <p class="card-subtitle">Summer Internship | Single-cell Data Analysis</p>
+    <p class="card-details">Developed Hierarchical Bayesian Poisson Mixture Models for clustering scRNA-seq and scATAC-seq data with rigorous statistical modeling and empirical validation.</p>
+    <a href="https://github.com/msgwebsite/portfolio/releases/download/projects/PMM.pdf" download class="download-btn"><i class="fas fa-download"></i> Download Report</a>
+  </div>
+
+  <div class="card">
+    <h3>Community Detection in Networks</h3>
+    <p class="card-subtitle">Winter Internship | Network Science</p>
+    <p class="card-details">Studied community detection using modularity optimization and applied methods to biological and infrastructure networks with statistical analysis of results.</p>
+    <a href="https://github.com/msgwebsite/portfolio/releases/download/projects/communitydetection.pdf" download class="download-btn"><i class="fas fa-download"></i> Download Report</a>
+  </div>
+
+  <div class="card">
+    <h3>Application of Modularity Analysis</h3>
+    <p class="card-subtitle">Interdisciplinary Research | Network Analysis</p>
+    <p class="card-details">Applied modularity-based analysis to protein interaction networks, neural networks of C. elegans, and road systems with comprehensive statistical validation.</p>
+    <a href="https://github.com/msgwebsite/portfolio/releases/download/projects/modularity.pdf" download class="download-btn"><i class="fas fa-download"></i> Download Report</a>
+  </div>
+
+  <div class="card">
+    <h3>Design of Experiments (DOE)</h3>
+    <p class="card-subtitle">Statistical Modeling | Experimental Design</p>
+    <p class="card-details">Explored classical and modern Design of Experiments techniques for statistical inference and optimal experimental planning with practical case studies.</p>
+    <a href="https://github.com/msgwebsite/portfolio/releases/download/projects/doe.pdf" download class="download-btn"><i class="fas fa-download"></i> Download Report</a>
+  </div>
+
+  <div class="card">
+    <h3>Stock Price Prediction</h3>
+    <p class="card-subtitle">Machine Learning | Time Series</p>
+    <p class="card-details">Implemented predictive models for stock price movements using machine learning techniques on financial time-series data with statistical performance metrics.</p>
+    <a href="https://github.com/msgwebsite/portfolio/releases/download/projects/stockprice.pdf" download class="download-btn"><i class="fas fa-download"></i> Download Report</a>
+  </div>
+
+  <div class="card">
+    <h3>Temperature Prediction</h3>
+    <p class="card-subtitle">Deep Learning | Time Series Forecasting</p>
+    <p class="card-details">Used deep learning models for forecasting maximum and minimum temperatures based on historical climate data with rigorous validation metrics.</p>
+    <a href="https://github.com/msgwebsite/portfolio/releases/download/projects/temp_prediction.pdf" download class="download-btn"><i class="fas fa-download"></i> Download Report</a>
+  </div>
 </section>
 
 <section id="achievements">
   <h2>Achievements</h2>
-  <ul class="skills-list">
-    <li><strong>INSPIRE Scholar:</strong> Awarded by the Department of Science & Technology, Government of India, for being in the Top 1% in college.</li>
-    <li><strong>SP College Scholarship:</strong> Secured 2nd rank in the science stream (12th MSBSHSE examinations).</li>
-    <li><strong>Rangotsav Golden Art Merit Award:</strong> Recognized at a national level drawing competition.</li>
-    <li><strong>English Marathon Awards:</strong> Received multiple awards at state and district levels for proficiency in English.</li>
-  </ul>
+
+  <div class="card">
+    <h3>INSPIRE Scholar</h3>
+    <p class="card-subtitle">Department of Science & Technology, Government of India</p>
+    <p class="card-details">Awarded for being in the Top 1% in college, recognizing excellence in academic and scientific pursuits.</p>
+  </div>
+
+  <div class="card">
+    <h3>2nd Rank in Science Stream</h3>
+    <p class="card-subtitle">Sir Parshurambhau College, Pune (12th MSBSHSE Examinations)</p>
+    <p class="card-details">Achieved exceptional academic performance in the science stream during higher secondary education.</p>
+  </div>
+
+  <div class="card">
+    <h3>Rangotsav Golden Art Merit Award</h3>
+    <p class="card-subtitle">National Level Drawing Competition</p>
+    <p class="card-details">Recognized at a national level for artistic excellence and creative expression in visual arts.</p>
+  </div>
+
+  <div class="card">
+    <h3>English Marathon Awards</h3>
+    <p class="card-subtitle">Multiple State and District Level Awards</p>
+    <p class="card-details">Received multiple awards at state and district levels for proficiency and excellence in English language.</p>
+  </div>
 </section>
 
 <section id="contact">
   <h2>Contact</h2>
-  <div class="content-grid">
-    <div class="card">
-      <h3>Get in Touch</h3>
-      <p><strong>Email:</strong> <a href="mailto:maitreyaganu@gmail.com" style="color: #7eb3d6; text-decoration: none;">maitreyaganu@gmail.com</a></p>
-      <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/maitreya-ganu-673995286" target="_blank" style="color: #7eb3d6; text-decoration: none;">Maitreya Ganu</a></p>
-      <p><strong>GitHub:</strong> <a href="https://github.com/MaitreyaGanu" target="_blank" style="color: #7eb3d6; text-decoration: none;">MaitreyaGanu</a></p>
-      <a href="https://github.com/msgwebsite/portfolio/releases/tag/documents-v1/maitreyaCV.pdf" download class="download-btn"><i class="fas fa-download"></i> Download CV</a>
-    </div>
+
+  <p>I'd love to hear from you! Feel free to reach out through any of these channels:</p>
+
+  <div class="card">
+    <h3>Email</h3>
+    <p class="card-details"><a href="mailto:maitreyaganu@gmail.com">maitreyaganu@gmail.com</a></p>
   </div>
+
+  <div class="card">
+    <h3>Social Links</h3>
+    <p class="card-details">
+      <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/maitreya-ganu-673995286" target="_blank">Maitreya Ganu</a><br>
+      <strong>GitHub:</strong> <a href="https://github.com/MaitreyaGanu" target="_blank">MaitreyaGanu</a>
+    </p>
+  </div>
+
+  <p style="margin-top: 2rem;">
+    <a href="https://github.com/msgwebsite/portfolio/releases/tag/documents-v1/maitreyaCV.pdf" download class="download-btn"><i class="fas fa-download"></i> Download CV</a>
+  </p>
 </section>
 
 </main>
 
 <footer>
   <p>&copy; <span id="year"></span> Maitreya Sameer Ganu. All rights reserved.</p>
-  <p>Crafted with <i class="fas fa-heart" style="color: #7eb3d6;"></i> and code.</p>
+  <p>Built with thoughtful design and code.</p>
 </footer>
 
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
 
 const hamburger = document.getElementById('hamburger');
-const sidebar = document.getElementById('sidebar');
-const sidebarLinks = sidebar.querySelectorAll('a');
+const mobileNav = document.getElementById('mobile-nav');
+const desktopNav = document.getElementById('desktop-nav');
+const allNavLinks = document.querySelectorAll('nav a[data-section]');
 
+// Hamburger toggle
 hamburger.addEventListener('click', () => {
   hamburger.classList.toggle('active');
-  sidebar.classList.toggle('active');
+  mobileNav.classList.toggle('active');
 });
 
-sidebarLinks.forEach(link => {
-  link.addEventListener('click', () => {
-    hamburger.classList.remove('active');
-    sidebar.classList.remove('active');
-  });
-});
-
-// Smooth navigation
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
+// Navigation functionality
+allNavLinks.forEach(link => {
+  link.addEventListener('click', (e) => {
     e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
-    }
+    const sectionId = link.getAttribute('data-section');
+    showSection(sectionId);
+    
+    // Close mobile nav if open
+    hamburger.classList.remove('active');
+    mobileNav.classList.remove('active');
+    
+    // Update active link
+    allNavLinks.forEach(l => l.classList.remove('active'));
+    link.classList.add('active');
   });
 });
+
+function showSection(sectionId) {
+  const sections = document.querySelectorAll('section');
+  sections.forEach(section => {
+    section.classList.remove('active');
+  });
+  
+  const activeSection = document.getElementById(sectionId);
+  if (activeSection) {
+    activeSection.classList.add('active');
+  }
+}
+
+// Set initial active state
+document.querySelector('nav a[data-section="home"]').classList.add('active');
 </script>
 
 </body>
