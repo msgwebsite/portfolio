@@ -19,7 +19,7 @@
 
         body {
             font-family: 'Lora', serif;
-            background-color: #ffffff;
+            background-color: #f8f8f8;
             color: #2c3e50;
             line-height: 1.8;
             font-size: 16px;
@@ -119,6 +119,8 @@
             top: 60px;
             right: 0;
             width: 100%;
+            max-height: calc(100vh - 60px);
+            overflow-y: auto;
             background-color: #ffffff;
             border-bottom: 1px solid #e8e8e8;
             flex-direction: column;
@@ -147,10 +149,15 @@
         section {
             display: none;
         }
+        
 
         section.active {
             display: block;
             animation: fadeIn 0.3s ease;
+        }
+        main,
+         section {
+            background-color: transparent;
         }
 
         @keyframes fadeIn {
@@ -187,7 +194,7 @@
         }
 
         .card {
-            background-color: #f8f8f8;
+            background-color: #ffffff;
             padding: 1.5rem;
             border-radius: 4px;
             margin-bottom: 1.5rem;
