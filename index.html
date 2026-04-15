@@ -521,65 +521,6 @@
             transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
-        /* NEW VISUALIZATION: TECH ORBIT */
-        .orbit-wrapper {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            height: 100%;
-            min-height: 220px;
-            padding: 1rem 0;
-        }
-        
-        .orbit-container {
-            position: relative;
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            border: 1px dashed var(--border-color);
-            animation: spin 25s linear infinite;
-        }
-
-        .orbit-center {
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            width: 55px; height: 55px;
-            background-color: var(--bg-surface);
-            border: 2px solid var(--c-purple);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10;
-            box-shadow: var(--shadow-md);
-            animation: spin-reverse 25s linear infinite; /* Keeps icon upright */
-        }
-
-        .orbit-item {
-            position: absolute;
-            top: 50%; left: 50%;
-            width: 40px; height: 40px;
-            margin-top: -20px; margin-left: -20px;
-            /* Places items evenly on the circle while keeping them upright relative to the container */
-            transform: rotate(var(--angle)) translate(var(--radius)) rotate(calc(-1 * var(--angle)));
-        }
-
-        .orbit-icon {
-            width: 100%; height: 100%;
-            background-color: var(--bg-surface);
-            border: 1px solid var(--border-color);
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            box-shadow: var(--shadow-sm);
-            font-size: 1rem;
-            animation: spin-reverse 25s linear infinite; /* Keeps icons upright as the whole circle spins */
-        }
-
-        @keyframes spin { 100% { transform: rotate(360deg); } }
-        @keyframes spin-reverse { 100% { transform: rotate(-360deg); } }
-
         /* TIMELINE (EXPERIENCE & INTERNSHIPS) */
         .timeline { border-left: 2px solid var(--border-color); margin-left: 1rem; padding-left: 2.5rem; }
         .timeline-item { position: relative; margin-bottom: 3.5rem; }
@@ -887,38 +828,6 @@
                             </div>
                         </div>
 
-                        <!-- 3. Knowledge Network Orbit -->
-                        <div class="vis-card" style="grid-column: 1 / -1;">
-                            <h4 class="playfair">Knowledge Network</h4>
-                            <div class="orbit-wrapper">
-                                <div class="orbit-container">
-                                    <div class="orbit-center" title="Data Science Core">
-                                        <i class="fas fa-brain" style="color: var(--c-purple); font-size: 1.5rem;"></i>
-                                    </div>
-                                    <!-- Python -->
-                                    <div class="orbit-item" style="--angle: 0deg; --radius: 90px;" title="Python">
-                                        <div class="orbit-icon" style="color: var(--c-blue);"><i class="fab fa-python"></i></div>
-                                    </div>
-                                    <!-- ML -->
-                                    <div class="orbit-item" style="--angle: 72deg; --radius: 90px;" title="Machine Learning">
-                                        <div class="orbit-icon" style="color: var(--c-teal);"><i class="fas fa-cogs"></i></div>
-                                    </div>
-                                    <!-- Math -->
-                                    <div class="orbit-item" style="--angle: 144deg; --radius: 90px;" title="Mathematics">
-                                        <div class="orbit-icon" style="color: var(--c-red);"><i class="fas fa-square-root-alt"></i></div>
-                                    </div>
-                                    <!-- Networks -->
-                                    <div class="orbit-item" style="--angle: 216deg; --radius: 90px;" title="Network Analysis">
-                                        <div class="orbit-icon" style="color: var(--c-green);"><i class="fas fa-network-wired"></i></div>
-                                    </div>
-                                    <!-- Bioinformatics -->
-                                    <div class="orbit-item" style="--angle: 288deg; --radius: 90px;" title="Bioinformatics">
-                                        <div class="orbit-icon" style="color: var(--c-pink);"><i class="fas fa-dna"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
             </div>
@@ -933,8 +842,9 @@
                 <div class="card project-card reveal">
                     <div class="card-header">
                         <div class="timeline-tags">
-                            <span class="tag tag-blue">DWBI</span>
-                            <span class="tag tag-green">FP-Growth</span>
+                            <span class="tag tag-blue">Data Warehousing</span>
+                            <span class="tag tag-green">Data Mining</span>
+                            <span class="tag tag-red">Business Intelligence</span>
                             <span class="tag tag-purple">Network Analysis</span>
                             <span class="tag tag-orange">Benford's Law</span>
                         </div>
@@ -1131,7 +1041,7 @@
                         <span class="tag tag-lime">Bioinformatics</span>
                         <span class="tag tag-purple">Clustering</span>
                     </div>
-                    <p>Clustering models for scRNA-seq and scATAC-seq data using Hierarchical Bayesian Poisson Mixture Models with rigorous statistical validation.</p>
+                    <p>Clustering models for scRNA-seq and scATAC-seq data (from Seurat) using Hierarchical Bayesian Poisson Mixture Models with rigorous statistical validation. Compared tthe he overall results using ARI metric and benchmarked the performance with many scikit-learn algorithms and even implemented MCMC techniques (Gibb's sampling). Biomarkers identification for each cell type along with statistical inference was implemented as well. </p>
                     <a href="https://github.com/msgwebsite/portfolio/releases/download/internship-certificates/iiserpunesummer2025.pdf" target="_blank" class="action-link action-pink" style="margin-top:1rem; display:inline-flex;"><i class="fas fa-download"></i> Certificate</a>
                 </div>
 
