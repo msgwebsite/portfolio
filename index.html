@@ -1,12 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maitreya Sameer Ganu</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Maitreya Sameer Ganu | Portfolio</title>
+    <!-- Updated fonts: Playfair Display for headings, Inter for body and metadata -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
+        /* DESIGN SYSTEM & VARIABLES */
+        :root {
+            --bg-body: #f8f8fa;
+            --bg-surface: #ffffff;
+            --text-main: #2c3e50;
+            --text-muted: #6b7280;
+            --border-color: #e5e7eb;
+            --border-light: #f3f4f6;
+            
+            /* Domain Colors */
+            --c-purple: #a855f7;
+            --c-blue: #0ea5e9;
+            --c-red: #ef4444;
+            --c-green: #22c55e;
+            --c-pink: #ec4899;
+            --c-lime: #65a30d;
+            --c-orange: #f97316;
+            --c-teal: #14b8a6;
+
+            /* Light Backgrounds */
+            --bg-purple: #f3e8ff;
+            --bg-blue: #e0f2fe;
+            --bg-pink: #fce7f3;
+            --bg-orange: #ffedd5;
+            --bg-green: #dcfce7;
+            --bg-teal: #ccfbf1;
+            --bg-lime: #ecfccb;
+
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --radius-pill: 9999px;
+            --transition: all 0.3s ease;
+            
+            --nav-height: 80px;
+        }
+
+        [data-theme="dark"] {
+            --bg-body: #0f172a;
+            --bg-surface: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --border-light: #1e293b;
+
+            --bg-purple: rgba(168, 85, 247, 0.15);
+            --bg-blue: rgba(14, 165, 233, 0.15);
+            --bg-pink: rgba(236, 72, 153, 0.15);
+            --bg-orange: rgba(249, 115, 22, 0.15);
+            --bg-green: rgba(34, 197, 94, 0.15);
+            --bg-teal: rgba(20, 184, 166, 0.15);
+            --bg-lime: rgba(101, 163, 13, 0.15);
+            --c-lime: #a3e635;
+
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -17,748 +79,1350 @@
             scroll-behavior: smooth;
         }
 
+        /* TYPOGRAPHY */
         body {
-            font-family: 'Lora', serif;
-            background-color: #f8f8f8;
-            color: #2c3e50;
-            line-height: 1.8;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400; /* Body Text */
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.7;
             font-size: 16px;
+            transition: background-color var(--transition), color var(--transition);
+        }
+
+        h1, h2, .section-title, .playfair {
+            font-family: 'Playfair Display', serif;
+            color: var(--text-main);
+            font-weight: 700; /* Main Headings */
+        }
+
+        h3, h4, .card-title, .timeline-title h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--text-main);
+            font-weight: 600; /* Sub-headings */
+        }
+
+        .metric-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        .tag, .skill-tag, .timeline-date, .card-subtitle, .metric-card p, .timeline-subtitle, .progress-label, .donut-inner span, .btn-primary {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500; /* Metadata / Labels / Tags */
         }
 
         a {
-            color: #2c3e50;
-            text-decoration: underline;
-            transition: opacity 0.2s ease;
+            color: inherit;
+            text-decoration: none;
+            transition: var(--transition);
         }
 
-        a:hover {
-            opacity: 0.7;
+        .gradient-text {
+            background: linear-gradient(to right, var(--c-purple), var(--c-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
+        /* NAVIGATION & HEADER */
         header {
-            background-color: #ffffff;
-            padding: 2.5rem 0;
-            border-bottom: 1px solid #e8e8e8;
-            position: sticky;
+            background-color: var(--bg-surface);
+            border-bottom: 1px solid var(--border-color);
+            position: fixed;
             top: 0;
-            z-index: 100;
+            width: 100%;
+            height: var(--nav-height);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            transition: background-color var(--transition);
         }
 
-        .header-content {
-            max-width: 800px;
+        .nav-container {
+            max-width: 1100px;
             margin: 0 auto;
+            width: 100%;
             padding: 0 2rem;
             display: flex;
-            justify-content: flex-end;
+            justify-content: space-between;
             align-items: center;
         }
 
-        header h1 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            color: #2c3e50;
-            display: none;
+        .header-search {
+            position: relative;
+            width: 320px;
+            max-width: 60vw;
         }
 
-        nav {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        nav a {
-            font-weight: 400;
-            font-size: 1rem;
-            text-decoration: none;
-            color: #2c3e50;
-            border-bottom: 2px solid transparent;
-            padding-bottom: 4px;
-            transition: border-color 0.3s ease;
-        }
-
-        nav a:hover {
-            border-bottom: 2px solid #2c3e50;
-            opacity: 1;
-        }
-
-        nav a.active {
-            border-bottom: 2px solid #2c3e50;
-            font-weight: 600;
-        }
-
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            gap: 6px;
-        }
-
-        .hamburger span {
-            width: 25px;
-            height: 2px;
-            background-color: #2c3e50;
-            transition: 0.3s;
-        }
-
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(-45deg) translate(-8px, 8px);
-        }
-
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(45deg) translate(-7px, -7px);
-        }
-
-        .mobile-nav {
-            display: none;
-            position: fixed;
-            top: 60px;
-            right: 0;
+        .header-search input {
             width: 100%;
-            max-height: calc(100vh - 60px);
-            overflow-y: auto;
-            background-color: #ffffff;
-            border-bottom: 1px solid #e8e8e8;
-            flex-direction: column;
-            padding: 1rem 0;
-            z-index: 99;
-        }
-
-        .mobile-nav.active {
-            display: flex;
-        }
-
-        .mobile-nav a {
-            padding: 1rem 2rem;
-            text-decoration: none;
-            border-bottom: 1px solid #f0f0f0;
-            color: #2c3e50;
-        }
-
-        main {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 3rem 2rem;
-            min-height: calc(100vh - 300px);
-        }
-
-        section {
-            display: none;
-        }
-        
-
-        section.active {
-            display: block;
-            animation: fadeIn 0.3s ease;
-        }
-        main,
-         section {
-            background-color: transparent;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        section h2 {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #2c3e50;
-            margin-bottom: 2rem;
-            margin-top: 0;
-        }
-
-        section h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #2c3e50;
-            margin-top: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        section p {
-            margin-bottom: 1.2rem;
-            line-height: 1.8;
-            color: #444;
-        }
-
-        .card {
-            background-color: #ffffff;
-            padding: 1.5rem;
-            border-radius: 4px;
-            margin-bottom: 1.5rem;
-            border-left: 3px solid #2c3e50;
-        }
-
-        .card h3 {
-            margin-top: 0;
-            color: #2c3e50;
-        }
-
-        .card-subtitle {
+            padding: 0.6rem 1rem 0.6rem 2.5rem;
+            border-radius: var(--radius-pill);
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
             font-size: 0.95rem;
-            color: #666;
-            font-style: italic;
-            margin-bottom: 1rem;
+            font-weight: 400;
+            transition: var(--transition);
         }
 
-        .card-details {
-            color: #444;
-            line-height: 1.8;
+        .header-search input:focus {
+            outline: none;
+            border-color: var(--c-purple);
+            box-shadow: 0 0 0 3px var(--bg-purple);
         }
 
-        .card ul {
-            padding-left: 1.5rem;
-            margin: 1rem 0;
+        .header-search i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 0.9rem;
         }
 
-        .card ul li {
-            margin-bottom: 0.5rem;
-            color: #444;
-        }
-
-        .profile-section {
-            text-align: left;
-            margin-bottom: 3rem;
+        .controls {
             display: flex;
-            align-items: flex-start;
-            gap: 3rem;
-        }
-
-        .profile-section img {
-            width: 280px;
-            height: auto;
-            border-radius: 8px;
-            object-fit: contain;
-            flex-shrink: 0;
-            border: 2px solid #e8e8e8;
-        }
-
-        .profile-info {
-            flex: 1;
-        }
-
-        .profile-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            margin-top: 0;
-        }
-
-        .bio-section p:first-child {
-            font-size: 1.1rem;
-            font-weight: 500;
-            color: #2c3e50;
-            margin-bottom: 1.5rem;
-        }
-
-        .social-links {
-            margin-top: 2rem;
-            display: flex;
+            align-items: center;
             gap: 1.5rem;
         }
 
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            color: var(--text-main);
+        }
+
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            background: none;
+            border: none;
+        }
+
+        .hamburger span {
+            width: 26px;
+            height: 2px;
+            background-color: var(--text-main);
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .hamburger.active span:nth-child(1) { transform: rotate(-45deg) translate(-5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(45deg) translate(-5px, -5px); }
+
+        /* DROPDOWN MENU */
+        .nav-links {
+            position: absolute;
+            top: calc(var(--nav-height) + 0.5rem);
+            right: 2rem;
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-lg);
+            flex-direction: column;
+            padding: 0.5rem 0;
+            width: 220px;
+            display: none;
+            z-index: 1000;
+        }
+
+        .nav-links.active {
+            display: flex;
+            animation: fadeInMenu 0.2s ease forwards;
+        }
+
+        @keyframes fadeInMenu {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .nav-links a {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 500; /* Navigation Bar */
+            color: var(--text-muted);
+            padding: 0.8rem 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+        
+        .nav-links a:last-child {
+            border-bottom: none;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--text-main);
+            background-color: var(--bg-body);
+            font-weight: 600; /* Navigation Bar active/hover */
+        }
+
+        /* MAIN LAYOUT (SPA Behavior) */
+        main {
+            max-width: 1100px;
+            margin: calc(var(--nav-height) + 3rem) auto 0;
+            padding: 0 2rem;
+            min-height: calc(100vh - var(--nav-height) - 150px);
+        }
+
+        main > section {
+            display: none;
+            margin-bottom: 6rem;
+            animation: fadeInSection 0.4s ease forwards;
+        }
+
+        main > section.active {
+            display: block;
+        }
+
+        @keyframes fadeInSection {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 35px;
+            margin-right: 15px;
+            border-radius: 4px;
+        }
+
+        .sec-exp::before { background-color: var(--c-teal); }
+        .sec-int::before { background-color: var(--c-pink); }
+        .sec-proj::before { background-color: var(--c-green); }
+        .sec-edu::before { background-color: var(--c-purple); }
+        .sec-cert::before { background-color: var(--c-blue); }
+        .sec-write::before { background-color: var(--c-orange); }
+
+        .section-title {
+            font-size: 2.2rem;
+        }
+
+        /* HERO & ABOUT */
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 3rem;
+            align-items: start;
+            margin-bottom: 4rem;
+        }
+
+        .profile-img {
+            width: 100%;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            object-fit: cover;
+            box-shadow: var(--shadow-md);
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
         .social-links a {
-            display: inline-flex;
+            display: flex;
             align-items: center;
             justify-content: center;
-            width: 45px;
-            height: 45px;
-            background-color: #f0f0f0;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
-            text-decoration: none;
-            color: #2c3e50;
-            transition: background-color 0.3s ease;
-            font-size: 1.2rem;
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            transition: var(--transition);
         }
 
         .social-links a:hover {
-            background-color: #e0e0e0;
-            opacity: 1;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
         }
 
-        .download-btn {
-            display: inline-block;
-            background-color: #2c3e50;
-            color: white !important;
-            padding: 0.6rem 1.2rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            margin-top: 1rem;
-            margin-right: 0.5rem;
-            transition: background-color 0.3s ease, opacity 0.2s ease;
-        }
-
-        .download-btn:hover {
-            background-color: #1a252f;
-            opacity: 1;
-        }
-
-        .grid-2 {
+        /* METRICS CARDS */
+        .metrics-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin: 2rem 0;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
         }
 
-        .grid-2 .card {
-            margin-bottom: 0;
-        }
-
-        footer {
-            background-color: #f8f8f8;
+        .metric-card {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
             padding: 2rem;
             text-align: center;
-            color: #666;
-            border-top: 1px solid #e8e8e8;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .metric-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .metric-card h3 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* DOMAINS & SKILLS (VISUAL) */
+        .skills-section {
+            background-color: var(--bg-surface);
+            border-radius: var(--radius-lg);
+            padding: 3rem;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 3rem;
+        }
+
+        .skills-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .skills-tags-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 3rem;
+        }
+
+        /* TAGS UTILITIES */
+        .skill-tag, .tag {
+            padding: 0.4rem 0.9rem;
+            border-radius: var(--radius-pill);
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid transparent;
+        }
+        
+        .skill-tag.base { border-color: var(--border-color); background-color: var(--bg-body); }
+        .skill-tag i { font-size: 0.5rem; }
+
+        .tag-pink { background: var(--bg-pink); color: var(--c-pink); }
+        .tag-teal { background: var(--bg-teal); color: var(--c-teal); }
+        .tag-purple { background: var(--bg-purple); color: var(--c-purple); }
+        .tag-green { background: var(--bg-green); color: var(--c-green); }
+        .tag-orange { background: var(--bg-orange); color: var(--c-orange); }
+        .tag-blue { background: var(--bg-blue); color: var(--c-blue); }
+        .tag-lime { background: var(--bg-lime); color: var(--c-lime); }
+
+        .skills-visual-grid {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        /* PURE CSS DONUT CHART */
+        .donut-chart {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: conic-gradient(
+                var(--c-purple) 0% 30%, 
+                var(--c-teal) 30% 50%, 
+                var(--c-red) 50% 68%, 
+                var(--c-green) 68% 82%, 
+                var(--c-pink) 82% 90%, 
+                var(--c-lime) 90% 100%
+            );
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-md);
+        }
+
+        .donut-inner {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background-color: var(--bg-surface);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .donut-inner span:first-child { font-weight: 700; font-size: 0.9rem; font-family: 'Inter', sans-serif; }
+        .donut-inner span:last-child { font-size: 0.8rem; color: var(--text-muted); font-weight: 500; font-family: 'Inter', sans-serif; }
+
+        .progress-bars {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .progress-item {
+            display: grid;
+            grid-template-columns: 140px 1fr 40px;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .progress-label { display: flex; align-items: center; gap: 8px; }
+        .progress-label i { border-radius: 4px; width: 12px; height: 12px; display: inline-block; }
+
+        .bar-container {
+            height: 8px;
+            background-color: var(--border-light);
+            border-radius: 4px;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .bar-fill { height: 100%; border-radius: 4px; }
+
+        /* TIMELINE (EXPERIENCE & INTERNSHIPS) */
+        .timeline {
+            border-left: 2px solid var(--border-color);
+            margin-left: 1rem;
+            padding-left: 2.5rem;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3.5rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .timeline-item:last-child { margin-bottom: 0; }
+
+        .timeline-dot {
+            position: absolute;
+            left: -3rem; /* 2.5rem padding + 0.5rem half width */
+            top: 0.3rem;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: var(--bg-surface);
+            border: 3px solid var(--c-teal);
+        }
+        .sec-int + .timeline .timeline-dot { border-color: var(--c-pink); }
+        .sec-edu + .timeline .timeline-dot { border-color: var(--c-purple); }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .timeline-title h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-subtitle {
+            color: var(--c-pink);
+            font-size: 0.95rem;
+        }
+        #experience .timeline-subtitle { color: var(--c-teal); }
+        #education .timeline-subtitle { color: var(--c-purple); }
+
+        .timeline-date {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .timeline-tags {
+            display: flex;
+            gap: 0.8rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+
+        /* CARDS GRID (PROJECTS, CERTIFICATIONS, WRITEUPS) */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--bg-surface);
+            border-radius: var(--radius-md);
+            padding: 1.8rem;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .card.hidden-by-search {
+            display: none !important;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-header { margin-bottom: 1rem; }
+        
+        .card-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .card-body {
+            color: var(--text-main);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: auto;
+        }
+
+        .action-link {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            transition: var(--transition);
+        }
+
+        .action-pink { color: var(--c-pink); }
+        .action-pink:hover { background-color: var(--bg-pink); }
+        .action-green { color: var(--c-green); }
+        .action-green:hover { background-color: var(--bg-green); }
+        .action-blue { color: var(--c-blue); }
+        .action-blue:hover { background-color: var(--bg-blue); }
+
+        /* CONTACT SECTION */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-card {
+            text-align: center;
+            padding: 2.5rem 1.5rem;
+            background-color: var(--bg-surface);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+        }
+
+        .contact-card i {
+            font-size: 2rem;
+            color: var(--c-purple);
+            margin-bottom: 1rem;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--text-main);
+            color: var(--bg-surface);
+            padding: 0.8rem 1.5rem;
+            border-radius: var(--radius-md);
+            margin-top: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--bg-surface);
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 2rem;
+            text-align: center;
+            color: var(--text-muted);
             margin-top: 4rem;
         }
 
-        footer a {
-            color: #2c3e50;
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 992px) {
+            .skills-visual-grid {
+                grid-template-columns: 1fr;
+                justify-items: center;
+                gap: 3rem;
+            }
+            .progress-bars { width: 100%; max-width: 500px; }
         }
 
         @media (max-width: 768px) {
-            .hamburger {
-                display: flex;
-            }
-
-            nav {
-                display: none;
-            }
-
-            .header-content {
-                flex-direction: column;
-                gap: 1rem;
-                justify-content: space-between;
-            }
-
-            header h1 {
-                font-size: 1.2rem;
-            }
-
-            main {
-                padding: 2rem 1.5rem;
-            }
-
-            section h2 {
-                font-size: 1.8rem;
-            }
-
-            .grid-2 {
-                grid-template-columns: 1fr;
-            }
-
-            .profile-section {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                gap: 1.5rem;
-            }
-
-            .profile-section img {
-                width: 200px;
-                height: auto;
-                object-fit: contain;
-            }
-
-            .profile-section h2 {
-                font-size: 2rem;
-            }
-
-            .profile-info {
+            .nav-links {
                 width: 100%;
-                flex: none; 
+                right: 0;
+                top: var(--nav-height);
+                border-radius: 0;
+                border-left: none;
+                border-right: none;
             }
+            .hero-grid { grid-template-columns: 1fr; text-align: center; }
+            .profile-img { max-width: 280px; margin: 0 auto; }
+            .social-links { justify-content: center; }
+            .timeline-header { flex-direction: column; gap: 0.2rem; }
+            .timeline-date { margin-top: 0.5rem; }
+            .section-title { font-size: 1.8rem; }
+            .header-search { width: 220px; }
         }
     </style>
 </head>
-
 <body>
-    <header>
-        <div class="header-content">
-            <nav id="desktop-nav">
-                <a href="#home" data-section="home">Home</a>
-                <a href="#education" data-section="education">Education</a>
-                <a href="#experience" data-section="experience">Experience</a>
-                <a href="#internships" data-section="internships">Internships</a>
-                <a href="#certifications" data-section="certifications">Certifications</a>
-                <a href="#projects" data-section="projects">Projects</a>
-                <a href="#technical-writeups" data-section="technical-writeups">Write-ups!</a>
-                <a href="#contact" data-section="contact">Contact and CV</a>
-            </nav>
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+
+    <header id="header">
+        <div class="nav-container">
+            <div class="header-search">
+                <i class="fas fa-search"></i>
+                <input type="text" id="global-search" placeholder="Search portfolio...">
+            </div>
+            
+            <div class="controls">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="hamburger" id="hamburger" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
             </div>
         </div>
-        <nav class="mobile-nav" id="mobile-nav">
-            <a href="#home" data-section="home">Home</a>
-            <a href="#education" data-section="education">Education</a>
-            <a href="#experience" data-section="experience">Experience</a>
-            <a href="#internships" data-section="internships">Internships</a>
-            <a href="#certifications" data-section="certifications">Certifications</a>
-            <a href="#projects" data-section="projects">Projects</a>
-            <a href="#technical-writeups" data-section="technical-writeups">Write-ups!</a>
-            <a href="#contact" data-section="contact">Contact and CV</a>
+
+        <nav class="nav-links" id="nav-links">
+            <a href="#home" class="nav-item active" data-target="home">Home</a>
+            <a href="#projects" class="nav-item" data-target="projects">Projects</a>
+            <a href="#experience" class="nav-item" data-target="experience">Experience</a>
+            <a href="#internships" class="nav-item" data-target="internships">Internships</a>
+            <a href="#education" class="nav-item" data-target="education">Education</a>
+            <a href="#certifications" class="nav-item" data-target="certifications">Certifications</a>
+            <a href="#writeups" class="nav-item" data-target="writeups">Write-ups</a>
+            <a href="#contact" class="nav-item" data-target="contact">Contact</a>
         </nav>
     </header>
 
     <main>
+        <!-- HERO SECTION -->
         <section id="home" class="active">
-            <div class="profile-section">
-                <img src="me.png" alt="Maitreya Sameer Ganu" onerror="this.src='https://placehold.co/280x280/e8e8e8/2c3e50?text=M.G.'">
-                <div class="profile-info">
-                    <h2>Maitreya Sameer Ganu</h2>
-                    <div class="bio-section">
-                        <p>Reseacher | Statistical Data Science | Mathematics</p>
-                        <p>Hello! I'm Maitreya, a Data Science enthusiast with an insatiable curiosity for uncovering stories hidden within data. I am deeply passionate about Statistics, Statistical Data Science, and Mathematics---three pillars that form the foundation of my analytical approach.</p>
-                        <p>Currently pursuing a BS-MS Dual Degree in Data Science at IISER Thiruvananthapuram, I'm immersed in the fascinating worlds of machine learning, data analysis, and cutting-edge research. My core passion is to tackle challenging real-world problems and discover how intricate data patterns and intelligent algorithms can illuminate complex scenarios and drive meaningful innovation.</p>
-                        <p>My approach is grounded in rigorous statistical thinking and mathematical foundations. I believe that understanding the underlying mathematics and statistical principles is crucial to building robust models and deriving actionable insights from complex datasets. Whether it's designing experiments, building predictive models, or interpreting results with statistical rigor, I find immense satisfaction in applying quantitative methods to solve real-world challenges.</p>
-                        <p>My academic journey has been a vibrant tapestry woven with threads of curiosity, creative problem-solving, and an unwavering commitment to continuous learning. I thrive on exploring novel methodologies, experimenting with different algorithms, and rigorously validating my approaches through both theory and practice. I'm particularly captivated by projects that reside at the dynamic intersection of statistical inference, algorithmic innovation, and practical impact.</p>
-                        <p>Beyond the realm of data and algorithms, I am an avid Tabla performer, finding rhythm and expression in classical Indian music. I actively contribute to various student communities on campus, including the Placement Cell, Music Club, Coding Club and Math Club, where collaboration and fostering intellectual growth are paramount.</p>
-                        <p>This portfolio is a curated reflection of my journey: a dedicated learner, a passionate analyst, and an individual constantly seeking growth and new horizons. Feel free to explore my work, connect with me, or simply immerse yourself in the narrative of my endeavors.</p>
-                        <div class="social-links">
-                            <a href="https://www.linkedin.com/in/maitreya-ganu-673995286" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                            <a href="https://github.com/MaitreyaGanu" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <div class="hero-grid">
+                <img src="me.png" alt="Maitreya Sameer Ganu" class="profile-img" onerror="this.src='https://placehold.co/280x280/e8e8e8/2c3e50?text=M.G.'">
+                <div class="hero-content">
+                    <h1 class="playfair">Maitreya Sameer Ganu</h1>
+                    <div class="hero-subtitle">Researcher | Statistical Data Science | Mathematics</div>
+                    <p>
+                        Hello! I'm Maitreya, a Data Science enthusiast with an insatiable curiosity for uncovering stories hidden within data. 
+                        Currently pursuing a BS-MS Dual Degree in Data Science at IISER Thiruvananthapuram, I tackle challenging real-world problems 
+                        by applying rigorous statistical inference, algorithmic innovation, and mathematical foundations.
+                    </p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/maitreya-ganu-673995286" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/MaitreyaGanu" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="mailto:maitreyaganu@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exact Metrics Summary -->
+            <div class="metrics-grid">
+                <div class="metric-card" style="color: var(--c-purple);">
+                    <h3>4</h3>
+                    <p>Research Internships</p>
+                </div>
+                <div class="metric-card" style="color: var(--c-blue);">
+                    <h3>6</h3>
+                    <p>Projects</p>
+                </div>
+                <div class="metric-card" style="color: var(--c-pink);">
+                    <h3>9</h3>
+                    <p>Certifications</p>
+                </div>
+                <div class="metric-card" style="color: var(--c-orange);">
+                    <h3>4</h3>
+                    <p>Technical Write-ups</p>
+                </div>
+            </div>
+
+            <!-- Domains & Skills Visual -->
+            <div class="skills-section">
+                <div class="skills-header playfair">
+                    <i class="fas fa-brain" style="color: var(--c-purple);"></i> Domains & Skills
+                </div>
+                
+                <div class="skills-tags-wrap">
+                    <div class="skill-tag base"><i class="fas fa-circle" style="color: var(--c-purple);"></i> Statistics</div>
+                    <div class="skill-tag base"><i class="fas fa-circle" style="color: var(--c-teal);"></i> AI/ML</div>
+                    <div class="skill-tag base"><i class="fas fa-circle" style="color: var(--c-green);"></i> CS / Systems</div>
+                    <div class="skill-tag base"><i class="fas fa-circle" style="color: var(--c-lime);"></i> Bioinformatics</div>
+                    <div class="skill-tag base"><i class="fas fa-circle" style="color: var(--c-red);"></i> Mathematics</div>
+                    
+                    <div class="skill-tag tag-purple"><i class="fas fa-superscript"></i> Statistical Inference</div>
+                    <div class="skill-tag tag-teal"><i class="fas fa-cogs"></i> Machine Learning</div>
+                    <div class="skill-tag tag-purple"><i class="fas fa-chart-area"></i> Bayesian Methods</div>
+                    <div class="skill-tag tag-green"><i class="fas fa-project-diagram"></i> Network Analysis</div>
+                    <div class="skill-tag tag-orange"><i class="fab fa-python"></i> Python</div>
+                    <div class="skill-tag tag-teal"><i class="fas fa-lock"></i> Cryptography</div>
+                </div>
+
+                <div class="skills-visual-grid">
+                    <div class="donut-chart">
+                        <div class="donut-inner">
+                            <span>Research</span>
+                            <span>Domains</span>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-bars">
+                        <div class="progress-item">
+                            <div class="progress-label"><i style="background-color: var(--c-purple);"></i> Statistics</div>
+                            <div class="bar-container"><div class="bar-fill" style="width: 30%; background-color: var(--c-purple);"></div></div>
+                            <div>30%</div>
+                        </div>
+                        <div class="progress-item">
+                            <div class="progress-label"><i style="background-color: var(--c-teal);"></i> Machine Learning</div>
+                            <div class="bar-container"><div class="bar-fill" style="width: 20%; background-color: var(--c-teal);"></div></div>
+                            <div>20%</div>
+                        </div>
+                        <div class="progress-item">
+                            <div class="progress-label"><i style="background-color: var(--c-red);"></i> Mathematics</div>
+                            <div class="bar-container"><div class="bar-fill" style="width: 18%; background-color: var(--c-red);"></div></div>
+                            <div>18%</div>
+                        </div>
+                        <div class="progress-item">
+                            <div class="progress-label"><i style="background-color: var(--c-green);"></i> CS / Systems</div>
+                            <div class="bar-container"><div class="bar-fill" style="width: 14%; background-color: var(--c-green);"></div></div>
+                            <div>14%</div>
+                        </div>
+                        <div class="progress-item">
+                            <div class="progress-label"><i style="background-color: var(--c-lime);"></i> Bioinformatics</div>
+                            <div class="bar-container"><div class="bar-fill" style="width: 10%; background-color: var(--c-lime);"></div></div>
+                            <div>10%</div>
+                        </div>
+                        <div class="progress-item">
+                            <div class="progress-label"><i style="background-color: var(--c-pink);"></i> Cryptography</div>
+                            <div class="bar-container"><div class="bar-fill" style="width: 8%; background-color: var(--c-pink);"></div></div>
+                            <div>8%</div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="education">
-            <h2>Education</h2>
-            <div class="grid-2">
-                <div class="card">
-                    <h3>BS-MS (Dual Degree), Data Science Major</h3>
-                    <p class="card-subtitle">IISER Thiruvananthapuram (Sept 2023 -- Present)</p>
-                    <p class="card-details">Currently pursuing an integrated Master's program focusing on Data Science, building a strong foundation in statistical modeling, machine learning algorithms, and computational techniques.</p>
-                </div>
-                <div class="card">
-                    <h3>FYBSc Statistics</h3>
-                    <p class="card-subtitle">Fergusson College, Pune (July 2023 -- August 2023)</p>
-                    <p class="card-details">Briefly attended, gaining initial exposure to university-level statistics before transitioning to the integrated BS-MS program at IISER.</p>
-                </div>
-                <div class="card">
-                    <h3>High School Graduate (Science Stream)</h3>
-                    <p class="card-subtitle">Sir Parshurambhau College, Pune (2021 -- May 2023)</p>
-                    <p class="card-details">Completed higher secondary education with a focus on Physics, Chemistry, Mathematics, and Electronics. Secured 2nd rank in college.</p>
-                </div>
-                <div class="card">
-                    <h3>Matriculation (SSC)</h3>
-                    <p class="card-subtitle">Sevasadan English Medium School, Pune (2008 -- March 2021)</p>
-                    <p class="card-details">Completed secondary education, laying the groundwork for analytical and scientific pursuits.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="experience">
-            <h2>Experience</h2>
-            <div class="grid-2">
-                <div class="card">
-                    <h3>Finance Coordinator, Club of Mathematics</h3>
-                    <p class="card-subtitle">IISER Thiruvananthapuram (2023 -- 2024)</p>
-                    <p class="card-details">Managed merchandise financing and provided key administrative support during the prestigious Frontier Symposium in Mathematics, 2023, ensuring smooth financial operations and successful event execution.</p>
-                </div>
-                <div class="card">
-                    <h3>Music Club Representative & Finance Coordinator</h3>
-                    <p class="card-subtitle">IISER Thiruvananthapuram (2023 -- 2025)</p>
-                    <p class="card-details">Actively performed Tabla at various campus events and managed the Music Club's merchandise and financial activities, fostering cultural engagement and community participation.</p>
-                </div>
-                <div class="card">
-                    <h3>Member, Placement and Career Promotion Cell</h3>
-                    <p class="card-subtitle">IISER Thiruvananthapuram (2025 -- Ongoing)</p>
-                    <p class="card-details">Proactively reaching out to startups and established companies to facilitate campus placement opportunities and career development for students, bridging the gap between industry and academia.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="internships">
-            <h2>Internships</h2>
-            <div class="grid-2">
-                <div class="card">
-                    <h3>Cryptography Internship</h3>
-                    <p class="card-subtitle">IISER Pune (Under Prof. Soumen Maity | HOD | School of Mathematics)</p>
-                    <p class="card-details">Completed an intensive reading project focusing on public key cryptography. Delved into advanced cryptographic techniques, security models, and their practical implications.</p>
-                    <a href="https://github.com/msgwebsite/portfolio/releases/download/internship-certificates/iiserpunesummer2024.pdf" target="_blank" class="download-btn"><i class="fas fa-download"></i> Download Certificate</a>
-                </div>
-                <div class="card">
-                    <h3>Community Detection & Network Analysis</h3>
-                    <p class="card-subtitle">IISER Thiruvananthapuram (Under Prof. Saptarshi Bej | Assistant Professor | School of Data Science)</p>
-                    <p class="card-details">Executed a winter research project on community and network detection using modularity optimization on diverse graph structures. Applied these techniques to real-world datasets including neural, protein, and road networks.</p>
-                    <a href="https://github.com/msgwebsite/portfolio/releases/download/internship-certificates/iisertvmwinter2024.pdf" target="_blank" class="download-btn"><i class="fas fa-download"></i> Download Certificate</a>
-                </div>
-                <div class="card">
-                    <h3>Hierarchical Bayesian Poisson Mixture Models</h3>
-                    <p class="card-subtitle">IISER Pune (Under Dr. Leelavati Narlikar | Deputy Chair | School of Data Science )</p>
-                    <p class="card-details">Worked on clustering models for scRNA-seq and scATAC-seq data. Implemented and benchmarked Hierarchical Bayesian Poisson Mixture Models with rigorous statistical validation.</p>
-                    <a href="https://github.com/msgwebsite/portfolio/releases/download/internship-certificates/iiserpunesummer2025.pdf" target="_blank" class="download-btn"><i class="fas fa-download"></i> Download Certificate</a>
-                </div>
-                 <div class="card">
-                    <h3>Design and Analysis of Experiments</h3>
-                    <p class="card-subtitle">IISER Thiruvananthapuram (Under Dr. Priyanka Majumder | HOD | School of Data Science)</p>
-                    <p class="card-details">Completed a reading project focused on the application of mathematical statistics in clinical randomized trials (CRTs) and in Longitudinal Experimental Studies; studied RCBD, Latin Square designs, and factorial experiments.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="certifications">
-            <h2>Certifications</h2>
-            <div class="grid-2">
-                <div class="card">
-                    <h3>Kaggle: Python</h3>
-                    <p class="card-subtitle">Issued by Kaggle</p>
-                    <p class="card-details">Demonstrated proficiency in Python programming fundamentals for data science.</p>
-                    <a href="https://github.com/msgwebsite/portfolio/releases/download/Skills-certificates/python.pdf" target="_blank" class="download-btn"><i class="fas fa-download"></i> Download</a>
-                </div>
-                <div class="card">
-                    <h3>Kaggle: Introduction to Programming</h3>
-                    <p class="card-subtitle">Issued by Kaggle</p>
-                    <p class="card-details">Covered core programming concepts essential for data manipulation and analysis.</p>
-                    <a href="https://github.com/msgwebsite/portfolio/releases/download/Skills-certificates/Programming.pdf" target="_blank" class="download-btn"><i class="fas fa-download"></i> Download</a>
-                </div>
-                <div class="card">
-                    <h3>Kaggle: Pandas</h3>
-                    <p class="card-subtitle">Issued by Kaggle</p>
-                    <p class="card-details">Mastered data manipulation and analysis using the Pandas library in Python.</p>
-                    <a href="https://github.com/msgwebsite/portfolio/releases/download/Skills-certificates/Pandas.pdf" target="_blank" class="download-btn"><i class="fas fa-download"></i> Download</a>
-                </div>
-                <div class="card">
-                    <h3>Kaggle: Data Visualization</h3>
-                    <p class="card-subtitle">Issued by Kaggle</p>
-                    <p class="card-details">Learned to create insightful and effective data visualizations using Python libraries.</p>
-                    <a href="https://github.com/msgwebsite/portfolio/releases/download/Skills-certificates/DataVisualization.pdf" target="_blank" class="download-btn"><i class="fas fa-download"></i> Download</a>
-                </div>
-                <div class="card">
-                    <h3>Kaggle: Introduction to Machine Learning</h3>
-                    <p class="card-subtitle">Issued by Kaggle</p>
-                    <p class="card-details">Gained foundational knowledge of machine learning concepts and model building.</p>
-                    <a href="https://github.com/msgwebsite/portfolio/releases/download/Skills-certificates/ML.pdf" target="_blank" class="download-btn"><i class="fas fa-download"></i> Download</a>
-                </div>
-                <div class="card">
-                    <h3>Kaggle: Time Series Data Analysis</h3>
-                    <p class="card-subtitle">Issued by Kaggle</p>
-                    <p class="card-details">Explored techniques for analyzing and forecasting time-dependent data.</p>
-                    <a href="https://github.com/msgwebsite/portfolio/releases/download/Skills-certificates/TimeSeries.pdf" target="_blank" class="download-btn"><i class="fas fa-download"></i> Download</a>
-                </div>
-                <div class="card">
-                    <h3>Finlatics: Data Analysis with Python</h3>
-                    <p class="card-subtitle">Issued by Finlatics</p>
-                    <p class="card-details">Developed skills in Python-based data analysis, statistical modeling, and visualization, with a letter of recommendation from the instructor.</p>
-                    <a href="https://github.com/msgwebsite/portfolio/releases/download/Skills-certificates/certificate.pdf" target="_blank" class="download-btn"><i class="fas fa-download"></i> Certificate</a>
-                    <a href="https://github.com/msgwebsite/portfolio/releases/download/Skills-certificates/LoR.pdf" target="_blank" class="download-btn"><i class="fas fa-download"></i> LOR</a>
-                </div>
-                <div class="card">
-                    <h3>Kaggle: Introduction to Deep Learning</h3>
-                    <p class="card-subtitle">Issued by Kaggle</p>
-                    <p class="card-details">Acquired basic knowledge of neural networks and deep learning principles using TensorFlow.</p>
-                    <a href="https://github.com/msgwebsite/portfolio/releases/download/Skills-certificates/DL.pdf" target="_blank" class="download-btn"><i class="fas fa-download"></i> Download</a>
-                </div>
-                <div class="card">
-                    <h3>Kaggle: AI Ethics</h3>
-                    <p class="card-subtitle">Issued by Kaggle</p>
-                    <p class="card-details">Explored crucial tools and frameworks for the ethical design and deployment of AI systems.</p>
-                    <a href="https://github.com/msgwebsite/portfolio/releases/download/Skills-certificates/AI_Ethics.pdf" target="_blank" class="download-btn"><i class="fas fa-download"></i> Download</a>
-                </div>
-            </div>
-        </section>
-
+        <!-- PROJECTS SECTION -->
         <section id="projects">
-            <h2>Projects</h2>
-            <div class="grid-2">
-                <div class="card">
-                    <h3>Hierarchical Bayesian Poisson Mixture Models</h3>
-                    <p class="card-subtitle">Summer Internship | Single-cell Data Analysis</p>
-                    <p class="card-details">Developed Hierarchical Bayesian Poisson Mixture Models for clustering scRNA-seq and scATAC-seq data with rigorous statistical modeling and empirical validation.</p>
-                    <a href="https://github.com/msgwebsite/portfolio/releases/download/projects/PMM.pdf" download class="download-btn"><i class="fas fa-download"></i> Download Report</a>
-                </div>
-                            <div class="card">
-    <h3>Optimizing Institutional Food Systems via Transactional Data</h3>
-    
-    <p class="card-subtitle">
-        Data Warehousing | Business Intelligence | Network Analysis | FP-Growth
-    </p>
-    
-    <p class="card-details">
-        Built a full DWBI pipeline to analyze institutional mess expenditure data (~1.8K transactions). 
-        Performed temporal analysis, Benford’s Law validation, network-based vendor dependency modeling, 
-        and association rule mining (FP-Growth) to uncover procurement inefficiencies and operational patterns.
-    </p>
-    
-    <a href="https://github.com/msgwebsite/portfolio/releases/download/projects/DWBI.pdf" 
-       download 
-       class="download-btn">
-        <i class="fas fa-download"></i> Download Report
-    </a>
+            <h2 class="section-title section-header sec-proj">Selected Projects</h2>
 
-    <a href="https://maitreyaganu.github.io/shodh/" 
-       class="visit-btn" target="_blank">
-        <i class="fas fa-external-link-alt"></i> Try Interactive UI
-    </a>
+            <div class="grid-cards searchable-grid">
+                <!-- Project 1 -->
+                <div class="card project-card">
+                    <div class="card-header">
+                        <div class="timeline-tags">
+                            <span class="tag tag-blue">DWBI</span>
+                            <span class="tag tag-green">FP-Growth</span>
+                            <span class="tag tag-purple">Network Analysis</span>
+                            <span class="tag tag-orange">Benford's Law</span>
+                        </div>
+                        <h3 class="card-title">Optimizing Institutional Food Systems via Transactional Data</h3>
+                    </div>
+                    <div class="card-body">
+                        Full DWBI pipeline analyzing ~1.8K transactions: temporal analysis, Benford's Law validation, vendor dependency networks, association rule mining to uncover procurement inefficiencies.
+                    </div>
+                    <div class="card-actions">
+                        <a href="https://github.com/msgwebsite/portfolio/releases/download/projects/DWBI.pdf" download class="action-link action-green"><i class="fas fa-download"></i> Report</a>
+                        <a href="https://maitreyaganu.github.io/shodh/" target="_blank" class="action-link action-green"><i class="fas fa-external-link-alt"></i> UI</a>
+                        <a href="https://github.com/MaitreyaGanu/shodh" target="_blank" class="action-link action-green"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
 
-    <a href="https://github.com/MaitreyaGanu/shodh" 
-       class="github-btn" target="_blank">
-        <i class="fab fa-github"></i> View Code & Datasets
-    </a>
-</div>
-                <div class="card">
-                    <h3>Community Detection in Networks</h3>
-                    <p class="card-subtitle">Winter Internship | Network Science</p>
-                    <p class="card-details">Studied community detection using modularity optimization and applied methods to biological and infrastructure networks with statistical analysis of results.</p>
-                    <a href="https://github.com/msgwebsite/portfolio/releases/download/projects/communitydetection.pdf" download class="download-btn"><i class="fas fa-download"></i> Download Report</a>
+                <!-- Project 2 -->
+                <div class="card project-card">
+                    <div class="card-header">
+                        <div class="timeline-tags">
+                            <span class="tag tag-pink">Bayesian</span>
+                            <span class="tag tag-lime">scRNA-seq</span>
+                            <span class="tag tag-purple">Clustering</span>
+                        </div>
+                        <h3 class="card-title">Hierarchical Bayesian Poisson Mixture Models</h3>
+                    </div>
+                    <div class="card-body">
+                        PMM clustering for single-cell data with rigorous statistical modeling and empirical validation. Developed during Summer Internship.
+                    </div>
+                    <div class="card-actions">
+                        <a href="https://github.com/msgwebsite/portfolio/releases/download/projects/PMM.pdf" download class="action-link action-green"><i class="fas fa-download"></i> Report</a>
+                    </div>
                 </div>
-                <div class="card">
-                    <h3>Application of Modularity Analysis</h3>
-                    <p class="card-subtitle">Interdisciplinary Research | Network Analysis</p>
-                    <p class="card-details">Applied modularity-based analysis to protein interaction networks, neural networks of C. elegans, and road systems with comprehensive statistical validation.</p>
-                    <a href="https://github.com/msgwebsite/portfolio/releases/download/projects/modularity.pdf" download class="download-btn"><i class="fas fa-download"></i> Download Report</a>
+
+                <!-- Project 3 -->
+                <div class="card project-card">
+                    <div class="card-header">
+                        <div class="timeline-tags">
+                            <span class="tag tag-green">Network Science</span>
+                            <span class="tag tag-purple">Modularity</span>
+                        </div>
+                        <h3 class="card-title">Community Detection in Networks</h3>
+                    </div>
+                    <div class="card-body">
+                        Studied community detection using modularity optimization and applied methods to biological and infrastructure networks with statistical analysis of results.
+                    </div>
+                    <div class="card-actions">
+                        <a href="https://github.com/msgwebsite/portfolio/releases/download/projects/communitydetection.pdf" download class="action-link action-green"><i class="fas fa-download"></i> Report</a>
+                    </div>
                 </div>
-                <div class="card">
-                    <h3>Design of Experiments (DOE)</h3>
-                    <p class="card-subtitle">Statistical Modeling | Experimental Design</p>
-                    <p class="card-details">Explored classical and modern Design of Experiments techniques for statistical inference and optimal experimental planning with practical case studies.</p>
-                    <a href="https://github.com/msgwebsite/portfolio/releases/download/projects/doe.pdf" download class="download-btn"><i class="fas fa-download"></i> Download Report</a>
+
+                <!-- Project 4 -->
+                <div class="card project-card">
+                    <div class="card-header">
+                        <div class="timeline-tags">
+                            <span class="tag tag-purple">Network Analysis</span>
+                            <span class="tag tag-lime">Bioinformatics</span>
+                        </div>
+                        <h3 class="card-title">Application of Modularity Analysis</h3>
+                    </div>
+                    <div class="card-body">
+                        Applied modularity-based analysis to protein interaction networks, neural networks of C. elegans, and road systems with comprehensive statistical validation.
+                    </div>
+                    <div class="card-actions">
+                        <a href="https://github.com/msgwebsite/portfolio/releases/download/projects/modularity.pdf" download class="action-link action-green"><i class="fas fa-download"></i> Report</a>
+                    </div>
                 </div>
-                <div class="card">
-                    <h3>Stock Price Prediction</h3>
-                    <p class="card-subtitle">Machine Learning | Time Series</p>
-                    <p class="card-details">Implemented predictive models for stock price movements using machine learning techniques on financial time-series data with statistical performance metrics.</p>
-                    <a href="https://github.com/msgwebsite/portfolio/releases/download/projects/stockprice.pdf" download class="download-btn"><i class="fas fa-download"></i> Download Report</a>
+
+                <!-- Project 5 -->
+                <div class="card project-card">
+                    <div class="card-header">
+                        <div class="timeline-tags">
+                            <span class="tag tag-orange">Experimental Design</span>
+                            <span class="tag tag-purple">Statistics</span>
+                        </div>
+                        <h3 class="card-title">Design of Experiments (DOE)</h3>
+                    </div>
+                    <div class="card-body">
+                        Explored classical and modern Design of Experiments techniques for statistical inference and optimal experimental planning with practical case studies.
+                    </div>
+                    <div class="card-actions">
+                        <a href="https://github.com/msgwebsite/portfolio/releases/download/projects/doe.pdf" download class="action-link action-green"><i class="fas fa-download"></i> Report</a>
+                    </div>
                 </div>
-    
+
+                <!-- Project 6 -->
+                <div class="card project-card">
+                    <div class="card-header">
+                        <div class="timeline-tags">
+                            <span class="tag tag-teal">Machine Learning</span>
+                            <span class="tag tag-blue">Time Series</span>
+                        </div>
+                        <h3 class="card-title">Stock Price Prediction</h3>
+                    </div>
+                    <div class="card-body">
+                        Implemented predictive models for stock price movements using machine learning techniques on financial time-series data with statistical performance metrics.
+                    </div>
+                    <div class="card-actions">
+                        <a href="https://github.com/msgwebsite/portfolio/releases/download/projects/stockprice.pdf" download class="action-link action-green"><i class="fas fa-download"></i> Report</a>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section id="technical-writeups">
-    <h2>Technical Write-ups</h2>
-
-    <p>
-        Technical write-ups on topics that I believe I understand well enough to explain clearly
-        from first principles. Feel free to download them and do check them out. Make sure to reach out for any questions/suggestions/corrections! Feedbacks are always appreciated :)
-    </p>
-
-    <div class="grid-2">
-
-        <div class="card">
-            <h3>An Interesting Property of 6 </h3>
-            <p class="card-subtitle">PDF</p>
-            <p class="card-details">
-               Me and my Friend, Hrishikesh Patwardhan proved that 6 is the only number which follows the following property (Which we like to call 6's Property): Sum of factors of a number (excluding the number itself) is equal to the product of factors of the number (excluding the number itself).
-            </p>
-            <a href="https://github.com/msgwebsite/portfolio/releases/download/Write-ups/6s-property.pdf" class="download-btn"><i class="fas fa-download"></i> Download PDF</a>
-        </div>
-
-        <div class="card">
-            <h3>Operating Systems</h3>
-            <p class="card-subtitle">PDF</p>
-            <p class="card-details">
-                Conceptual explanations of operating system fundamentals, focusing on internal
-                mechanisms and system-level reasoning.
-            </p>
-            <a href="https://github.com/msgwebsite/portfolio/releases/download/Write-ups/OS.pdf" class="download-btn"><i class="fas fa-download"></i> Download PDF</a>
-        </div>
-
-        <div class="card">
-            <h3>Computer Architecture and Datapath</h3>
-            <p class="card-subtitle">PDF</p>
-            <p class="card-details">
-                A structured explanation of computer architecture and datapath concepts, bridging the gap
-                between hardware design and instruction-level execution.
-            </p>
-           <a href="https://github.com/msgwebsite/portfolio/releases/download/Write-ups/datapath.pdf" class="download-btn"><i class="fas fa-download"></i> Download PDF</a>
-        </div>
-        <div class="card">
-            <h3>P vs NP</h3>
-            <p class="card-subtitle">PDF</p>
-            <p class="card-details">
-                Below is a detailed overview of the P vs NP problem, explained in simple terms, highlighting its deep connections to other areas of mathematics and its profound real-world implications if P = NP.
-            </p>
-           <a href="https://github.com/msgwebsite/portfolio/releases/download/Write-ups/pvsnp.pdf" class="download-btn"><i class="fas fa-download"></i> Download PDF</a>
-        </div>
-       </section>
-
-        
-        <section id="contact">
-            <h2>Let's Connect!</h2>
-            <p>I'd love to hear from you! Feel free to reach out through any of these channels:</p>
-            <div class="grid-2">
-                <div class="card">
-                    <h3>Email</h3>
-                    <p class="card-details"><a href="mailto:maitreyaganu@gmail.com">maitreyaganu@gmail.com</a></p>
+        <!-- EXPERIENCE SECTION -->
+        <section id="experience">
+            <h2 class="section-title section-header sec-exp">Experience</h2>
+            <div class="timeline">
+                
+                <div class="timeline-item searchable-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-header">
+                        <div class="timeline-title">
+                            <h3>Student Placement Coordinator</h3>
+                            <div class="timeline-subtitle">IISER Thiruvananthapuram</div>
+                        </div>
+                        <div class="timeline-date">2025 — 2026</div>
+                    </div>
+                    <div class="timeline-tags">
+                        <span class="tag tag-blue">Industry</span>
+                        <span class="tag tag-teal">Placement</span>
+                    </div>
+                    <p>Proactively reaching out to startups and established companies to facilitate campus placement opportunities and career development for students, bridging the gap between industry and academia.</p>
                 </div>
-                <div class="card">
-                    <h3>Social Links</h3>
-                    <p class="card-details">
-                        <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/maitreya-ganu-673995286" target="_blank">Maitreya Ganu</a><br>
-                        <strong>GitHub:</strong> <a href="https://github.com/MaitreyaGanu" target="_blank">MaitreyaGanu</a>
+
+                <div class="timeline-item searchable-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-header">
+                        <div class="timeline-title">
+                            <h3>Member of Student Affairs Council</h3>
+                            <div class="timeline-subtitle">IISER Thiruvananthapuram</div>
+                        </div>
+                        <div class="timeline-date">2025 — 2026</div>
+                    </div>
+                    <div class="timeline-tags">
+                        <span class="tag tag-purple">Council</span>
+                        <span class="tag tag-orange">Administration</span>
+                    </div>
+                    <p>Representing student interests and coordinating with the administration to improve campus life, resolve grievances, and foster a vibrant student community.</p>
+                </div>
+
+                <div class="timeline-item searchable-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-header">
+                        <div class="timeline-title">
+                            <h3>Spokesperson & Decision Making Committee Member, Music Club</h3>
+                            <div class="timeline-subtitle">IISER Thiruvananthapuram</div>
+                        </div>
+                        <div class="timeline-date">2025 — 2026</div>
+                    </div>
+                    <div class="timeline-tags">
+                        <span class="tag tag-pink">Tabla</span>
+                        <span class="tag tag-orange">Music</span>
+                        <span class="tag tag-green">Leadership</span>
+                    </div>
+                    <p>Serving as the primary spokesperson for the Music Club. Actively involved in the decision-making committee for organizing events, managing resources, and representing the club in official capacities.</p>
+                </div>
+
+                <div class="timeline-item searchable-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-header">
+                        <div class="timeline-title">
+                            <h3>Finance Coordinator, Club of Mathematics</h3>
+                            <div class="timeline-subtitle">IISER Thiruvananthapuram</div>
+                        </div>
+                        <div class="timeline-date">2023 — 2024</div>
+                    </div>
+                    <div class="timeline-tags">
+                        <span class="tag tag-purple">Mathematics</span>
+                    </div>
+                    <p>Managed merchandise financing and provided key administrative support during the prestigious Frontier Symposium in Mathematics, 2023, ensuring smooth financial operations and successful event execution.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- INTERNSHIPS SECTION -->
+        <section id="internships">
+            <h2 class="section-title section-header sec-int">Internships & Research</h2>
+            <div class="timeline">
+                
+                <div class="timeline-item searchable-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-header">
+                        <div class="timeline-title">
+                            <h3>Hierarchical Bayesian Poisson Mixture Models</h3>
+                            <div class="timeline-subtitle">IISER Pune | Under Dr. Leelavati Narlikar (Deputy Chair, School of Data Science)</div>
+                        </div>
+                        <div class="timeline-date">Summer 2025</div>
+                    </div>
+                    <div class="timeline-tags">
+                        <span class="tag tag-pink">Bayesian</span>
+                        <span class="tag tag-lime">Bioinformatics</span>
+                        <span class="tag tag-purple">Clustering</span>
+                    </div>
+                    <p>Clustering models for scRNA-seq and scATAC-seq data using Hierarchical Bayesian Poisson Mixture Models with rigorous statistical validation.</p>
+                    <a href="https://github.com/msgwebsite/portfolio/releases/download/internship-certificates/iiserpunesummer2025.pdf" target="_blank" class="action-link action-pink" style="margin-top:1rem; display:inline-flex;"><i class="fas fa-download"></i> Certificate</a>
+                </div>
+
+                <div class="timeline-item searchable-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-header">
+                        <div class="timeline-title">
+                            <h3>Cryptography Internship</h3>
+                            <div class="timeline-subtitle">IISER Pune | Under Prof. Soumen Maity (HOD, School of Mathematics)</div>
+                        </div>
+                        <div class="timeline-date">Summer 2024</div>
+                    </div>
+                    <div class="timeline-tags">
+                        <span class="tag tag-teal">Cryptography</span>
+                        <span class="tag tag-blue">Security</span>
+                    </div>
+                    <p>Completed an intensive reading project focusing on public key cryptography. Delved into advanced cryptographic techniques, security models, and their practical implications.</p>
+                    <a href="https://github.com/msgwebsite/portfolio/releases/download/internship-certificates/iiserpunesummer2024.pdf" target="_blank" class="action-link action-pink" style="margin-top:1rem; display:inline-flex;"><i class="fas fa-download"></i> Certificate</a>
+                </div>
+
+                <div class="timeline-item searchable-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-header">
+                        <div class="timeline-title">
+                            <h3>Community Detection & Network Analysis</h3>
+                            <div class="timeline-subtitle">IISER Thiruvananthapuram | Under Prof. Saptarshi Bej</div>
+                        </div>
+                        <div class="timeline-date">Winter 2024</div>
+                    </div>
+                    <div class="timeline-tags">
+                        <span class="tag tag-green">Network Science</span>
+                        <span class="tag tag-purple">Modularity</span>
+                    </div>
+                    <p>Executed a winter research project on community and network detection using modularity optimization on diverse graph structures. Applied techniques to real-world datasets including neural, protein, and road networks.</p>
+                    <a href="https://github.com/msgwebsite/portfolio/releases/download/internship-certificates/iisertvmwinter2024.pdf" target="_blank" class="action-link action-pink" style="margin-top:1rem; display:inline-flex;"><i class="fas fa-download"></i> Certificate</a>
+                </div>
+
+                <div class="timeline-item searchable-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-header">
+                        <div class="timeline-title">
+                            <h3>Design and Analysis of Experiments</h3>
+                            <div class="timeline-subtitle">IISER Thiruvananthapuram | Under Dr. Priyanka Majumder (HOD, School of Data Science)</div>
+                        </div>
+                        <div class="timeline-date">Academic Term</div>
+                    </div>
+                    <div class="timeline-tags">
+                        <span class="tag tag-blue">Clinical Trials</span>
+                        <span class="tag tag-orange">Experimental Design</span>
+                    </div>
+                    <p>Completed a reading project focused on the application of mathematical statistics in clinical randomized trials (CRTs) and in Longitudinal Experimental Studies; studied RCBD, Latin Square designs, and factorial experiments.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- EDUCATION SECTION -->
+        <section id="education">
+            <h2 class="section-title section-header sec-edu">Education</h2>
+            <div class="timeline">
+                <div class="timeline-item searchable-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-header">
+                        <div class="timeline-title">
+                            <h3>BS-MS (Dual Degree), Data Science Major</h3>
+                            <div class="timeline-subtitle">IISER Thiruvananthapuram</div>
+                        </div>
+                        <div class="timeline-date">Sept 2023 — Present</div>
+                    </div>
+                    <p>Currently pursuing an integrated Master's program focusing on Data Science, building a strong foundation in statistical modeling, machine learning algorithms, and computational techniques.</p>
+                </div>
+
+                <div class="timeline-item searchable-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-header">
+                        <div class="timeline-title">
+                            <h3>FYBSc Statistics</h3>
+                            <div class="timeline-subtitle">Fergusson College, Pune</div>
+                        </div>
+                        <div class="timeline-date">July 2023 — August 2023</div>
+                    </div>
+                    <p>Briefly attended, gaining initial exposure to university-level statistics before transitioning to the integrated BS-MS program at IISER.</p>
+                </div>
+                
+                <div class="timeline-item searchable-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-header">
+                        <div class="timeline-title">
+                            <h3>High School Graduate (Science Stream)</h3>
+                            <div class="timeline-subtitle">Sir Parshurambhau College, Pune</div>
+                        </div>
+                        <div class="timeline-date">2021 — May 2023</div>
+                    </div>
+                    <p>Completed higher secondary education with a focus on Physics, Chemistry, Mathematics, and Electronics. Secured 2nd rank in college.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CERTIFICATIONS SECTION -->
+        <section id="certifications">
+            <h2 class="section-title section-header sec-cert">Certifications</h2>
+            <div class="grid-cards searchable-grid">
+                <!-- Finlatics -->
+                <div class="card project-card">
+                    <div class="card-header">
+                        <h3 class="card-title">Data Analysis with Python</h3>
+                        <p class="card-subtitle">Issued by Finlatics</p>
+                    </div>
+                    <p class="card-body">Developed skills in Python-based data analysis, statistical modeling, and visualization, with a letter of recommendation from the instructor.</p>
+                    <div class="card-actions">
+                        <a href="https://github.com/msgwebsite/portfolio/releases/download/Skills-certificates/certificate.pdf" target="_blank" class="action-link action-blue"><i class="fas fa-certificate"></i> Certificate</a>
+                        <a href="https://github.com/msgwebsite/portfolio/releases/download/Skills-certificates/LoR.pdf" target="_blank" class="action-link action-blue"><i class="fas fa-file-alt"></i> LOR</a>
+                    </div>
+                </div>
+                <!-- Kaggle Certs -->
+                <div class="card project-card">
+                    <div class="card-header">
+                        <h3 class="card-title">Intro to Machine Learning</h3>
+                        <p class="card-subtitle">Issued by Kaggle</p>
+                    </div>
+                    <p class="card-body">Gained foundational knowledge of machine learning concepts and model building.</p>
+                    <div class="card-actions">
+                        <a href="https://github.com/msgwebsite/portfolio/releases/download/Skills-certificates/ML.pdf" target="_blank" class="action-link action-blue"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </div>
+                <div class="card project-card">
+                    <div class="card-header">
+                        <h3 class="card-title">Time Series Data Analysis</h3>
+                        <p class="card-subtitle">Issued by Kaggle</p>
+                    </div>
+                    <p class="card-body">Explored techniques for analyzing and forecasting time-dependent data.</p>
+                    <div class="card-actions">
+                        <a href="https://github.com/msgwebsite/portfolio/releases/download/Skills-certificates/TimeSeries.pdf" target="_blank" class="action-link action-blue"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </div>
+                <div class="card project-card">
+                    <div class="card-header">
+                        <h3 class="card-title">Intro to Deep Learning</h3>
+                        <p class="card-subtitle">Issued by Kaggle</p>
+                    </div>
+                    <p class="card-body">Acquired basic knowledge of neural networks and deep learning principles using TensorFlow.</p>
+                    <div class="card-actions">
+                        <a href="https://github.com/msgwebsite/portfolio/releases/download/Skills-certificates/DL.pdf" target="_blank" class="action-link action-blue"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </div>
+                <div class="card project-card">
+                    <div class="card-header">
+                        <h3 class="card-title">AI Ethics</h3>
+                        <p class="card-subtitle">Issued by Kaggle</p>
+                    </div>
+                    <p class="card-body">Explored crucial tools and frameworks for the ethical design and deployment of AI systems.</p>
+                    <div class="card-actions">
+                        <a href="https://github.com/msgwebsite/portfolio/releases/download/Skills-certificates/AI_Ethics.pdf" target="_blank" class="action-link action-blue"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </div>
+                <div class="card project-card">
+                    <div class="card-header">
+                        <h3 class="card-title">Pandas & Data Visualization</h3>
+                        <p class="card-subtitle">Issued by Kaggle</p>
+                    </div>
+                    <p class="card-body">Mastered data manipulation and learned to create insightful and effective data visualizations.</p>
+                    <div class="card-actions">
+                        <a href="https://github.com/msgwebsite/portfolio/releases/download/Skills-certificates/Pandas.pdf" target="_blank" class="action-link action-blue"><i class="fas fa-download"></i> Pandas</a>
+                        <a href="https://github.com/msgwebsite/portfolio/releases/download/Skills-certificates/DataVisualization.pdf" target="_blank" class="action-link action-blue"><i class="fas fa-download"></i> Viz</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WRITEUPS SECTION -->
+        <section id="writeups">
+            <h2 class="section-title section-header sec-write">Technical Write-ups</h2>
+            <p style="margin-bottom: 2rem; color: var(--text-muted);">
+                Technical write-ups on topics that I believe I understand well enough to explain clearly from first principles. Feel free to download them and do check them out!
+            </p>
+            <div class="grid-cards searchable-grid">
+                <div class="card project-card">
+                    <div class="card-header">
+                        <h3 class="card-title">An Interesting Property of 6</h3>
+                        <p class="card-subtitle">Mathematics</p>
+                    </div>
+                    <p class="card-body">Proved that 6 is the only number where the sum of its factors equals the product of its factors (excluding the number itself).</p>
+                    <div class="card-actions">
+                        <a href="https://github.com/msgwebsite/portfolio/releases/download/Write-ups/6s-property.pdf" target="_blank" class="action-link" style="color: var(--c-orange);"><i class="fas fa-file-pdf"></i> Read PDF</a>
+                    </div>
+                </div>
+                <div class="card project-card">
+                    <div class="card-header">
+                        <h3 class="card-title">Operating Systems</h3>
+                        <p class="card-subtitle">Computer Science</p>
+                    </div>
+                    <p class="card-body">Conceptual explanations of operating system fundamentals, focusing on internal mechanisms and system-level reasoning.</p>
+                    <div class="card-actions">
+                        <a href="https://github.com/msgwebsite/portfolio/releases/download/Write-ups/OS.pdf" target="_blank" class="action-link" style="color: var(--c-orange);"><i class="fas fa-file-pdf"></i> Read PDF</a>
+                    </div>
+                </div>
+                <div class="card project-card">
+                    <div class="card-header">
+                        <h3 class="card-title">Computer Architecture & Datapath</h3>
+                        <p class="card-subtitle">Systems Design</p>
+                    </div>
+                    <p class="card-body">A structured explanation bridging the gap between hardware design and instruction-level execution.</p>
+                    <div class="card-actions">
+                        <a href="https://github.com/msgwebsite/portfolio/releases/download/Write-ups/datapath.pdf" target="_blank" class="action-link" style="color: var(--c-orange);"><i class="fas fa-file-pdf"></i> Read PDF</a>
+                    </div>
+                </div>
+                <div class="card project-card">
+                    <div class="card-header">
+                        <h3 class="card-title">P vs NP</h3>
+                        <p class="card-subtitle">Theoretical CS</p>
+                    </div>
+                    <p class="card-body">A detailed overview of the P vs NP problem, explained in simple terms, highlighting its real-world implications.</p>
+                    <div class="card-actions">
+                        <a href="https://github.com/msgwebsite/portfolio/releases/download/Write-ups/pvsnp.pdf" target="_blank" class="action-link" style="color: var(--c-orange);"><i class="fas fa-file-pdf"></i> Read PDF</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact">
+            <h2 class="section-title section-header" style="justify-content: center; text-align: center;">
+                Let's Connect!
+            </h2>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email Me</h3>
+                    <p style="margin-top: 1rem;"><a href="mailto:maitreyaganu@gmail.com" style="color: var(--c-blue); font-weight: 500;">maitreyaganu@gmail.com</a></p>
+                </div>
+                <div class="contact-card">
+                    <i class="fab fa-linkedin"></i>
+                    <h3>Network</h3>
+                    <p style="margin-top: 1rem;"><a href="https://www.linkedin.com/in/maitreya-ganu-673995286" target="_blank" style="color: var(--c-blue); font-weight: 500;">Connect on LinkedIn</a></p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-file-alt"></i>
+                    <h3>Resume</h3>
+                    <p style="margin-top: 1rem;">
+                        <a href="https://github.com/msgwebsite/portfolio/releases/download/documents-v1/maitreyaCV.pdf" download class="btn-primary">
+                            <i class="fas fa-download"></i> Download CV
+                        </a>
                     </p>
                 </div>
             </div>
-            <p style="margin-top: 2rem;">
-                <a href="https://github.com/msgwebsite/portfolio/releases/download/documents-v1/maitreyaCV.pdf" download class="download-btn"><i class="fas fa-download"></i> Download CV</a>
-            </p>
         </section>
+
     </main>
 
     <footer>
         <p>&copy; <span id="year"></span> Maitreya Sameer Ganu. All rights reserved.</p>
-        <p>Built with thoughtful design and code.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Built with thoughtful design and code.</p>
     </footer>
 
     <script>
+        // Set Current Year
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        const hamburger = document.getElementById('hamburger');
-        const mobileNav = document.getElementById('mobile-nav');
-        const desktopNav = document.getElementById('desktop-nav');
-        const allNavLinks = document.querySelectorAll('nav a[data-section]');
+        // Dark Mode Logic (LocalStorage persistence)
+        const themeToggle = document.getElementById('theme-toggle');
+        const root = document.documentElement;
+        
+        const savedTheme = localStorage.getItem('theme');
+        const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const currentTheme = savedTheme ? savedTheme : (systemDark ? 'dark' : 'light');
+        
+        root.setAttribute('data-theme', currentTheme);
+        updateThemeIcon(currentTheme);
 
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            mobileNav.classList.toggle('active');
+        themeToggle.addEventListener('click', () => {
+            const newTheme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            root.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
         });
 
-        allNavLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const sectionId = link.getAttribute('data-section');
-                showSection(sectionId);
-
-                hamburger.classList.remove('active');
-                mobileNav.classList.remove('active');
-
-                allNavLinks.forEach(l => l.classList.remove('active'));
-                link.classList.add('active');
-            });
-        });
-
-        function showSection(sectionId) {
-            const sections = document.querySelectorAll('section');
-            sections.forEach(section => {
-                section.classList.remove('active');
-            });
-
-            const activeSection = document.getElementById(sectionId);
-            if (activeSection) {
-                activeSection.classList.add('active');
+        function updateThemeIcon(theme) {
+            const icon = themeToggle.querySelector('i');
+            if (theme === 'dark') {
+                icon.className = 'fas fa-sun';
+            } else {
+                icon.className = 'fas fa-moon';
             }
         }
 
-        document.querySelector('nav a[data-section="home"]').classList.add('active');
+        // SPA Navigation Logic (Only show active section)
+        const navItems = document.querySelectorAll('.nav-item');
+        const sections = document.querySelectorAll('main > section');
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active'); 
+        });
+
+        navItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault(); 
+                const targetId = item.getAttribute('data-target');
+                
+                // Hide all sections and show target
+                sections.forEach(sec => sec.classList.remove('active'));
+                document.getElementById(targetId).classList.add('active');
+                
+                // Update active state in nav
+                navItems.forEach(n => n.classList.remove('active'));
+                item.classList.add('active');
+                
+                // Close menu
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+                
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                
+                // Clear search if changing sections
+                document.getElementById('global-search').value = '';
+                filterItems('');
+            });
+        });
+
+        // Global Search Logic 
+        const searchInput = document.getElementById('global-search');
+        
+        searchInput.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            filterItems(term);
+        });
+
+        function filterItems(term) {
+            // Find all cards and timeline items in the currently active section
+            const activeSection = document.querySelector('main > section.active');
+            if (!activeSection) return;
+
+            const searchableItems = activeSection.querySelectorAll('.project-card, .searchable-item');
+            
+            searchableItems.forEach(item => {
+                const content = item.textContent.toLowerCase();
+                if (content.includes(term)) {
+                    item.classList.remove('hidden-by-search');
+                } else {
+                    item.classList.add('hidden-by-search');
+                }
+            });
+        }
     </script>
 </body>
 </html>
