@@ -642,20 +642,6 @@
             margin-top: 4rem;
         }
 
-        .visitor-counter {
-            margin-top: 1.5rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 0.5rem 1rem;
-            background-color: var(--bg-body);
-            border-radius: var(--radius-pill);
-            border: 1px solid var(--border-color);
-            font-size: 0.85rem;
-            color: var(--text-main);
-            font-weight: 500;
-        }
-
         /* RESPONSIVE DESIGN */
         @media (max-width: 992px) {
             .skills-visual-grid { grid-template-columns: 1fr; justify-items: center; gap: 3rem; }
@@ -706,6 +692,7 @@
     </header>
 
     <main>
+        <!-- HERO SECTION -->
         <section id="home" class="active">
             <div class="hero-grid">
                 <img src="me.png" alt="Maitreya Sameer Ganu" class="profile-img" onerror="this.src='https://placehold.co/280x280/e8e8e8/2c3e50?text=M.G.'">
@@ -744,6 +731,7 @@
                 </div>
             </div>
 
+            <!-- Domains & Skills Visual -->
             <div class="skills-section reveal">
                 <div class="skills-header playfair">
                     <i class="fas fa-brain" style="color: var(--c-purple);"></i> Domains & Skills
@@ -808,10 +796,12 @@
             </div>
         </section>
 
+        <!-- PROJECTS SECTION -->
         <section id="projects">
             <h2 class="section-title section-header sec-proj">Selected Projects</h2>
 
             <div class="grid-cards searchable-grid">
+                <!-- Project 1 -->
                 <div class="card project-card reveal">
                     <div class="card-header">
                         <div class="timeline-tags">
@@ -832,6 +822,7 @@
                     </div>
                 </div>
 
+                <!-- Project 2 -->
                 <div class="card project-card reveal">
                     <div class="card-header">
                         <div class="timeline-tags">
@@ -849,6 +840,7 @@
                     </div>
                 </div>
 
+                <!-- Project 3 -->
                 <div class="card project-card reveal">
                     <div class="card-header">
                         <div class="timeline-tags">
@@ -865,6 +857,7 @@
                     </div>
                 </div>
 
+                <!-- Project 4 -->
                 <div class="card project-card reveal">
                     <div class="card-header">
                         <div class="timeline-tags">
@@ -881,6 +874,7 @@
                     </div>
                 </div>
 
+                <!-- Project 5 -->
                 <div class="card project-card reveal">
                     <div class="card-header">
                         <div class="timeline-tags">
@@ -897,6 +891,7 @@
                     </div>
                 </div>
 
+                <!-- Project 6 -->
                 <div class="card project-card reveal">
                     <div class="card-header">
                         <div class="timeline-tags">
@@ -915,6 +910,7 @@
             </div>
         </section>
 
+        <!-- EXPERIENCE SECTION -->
         <section id="experience">
             <h2 class="section-title section-header sec-exp">Experience</h2>
             <div class="timeline">
@@ -986,6 +982,7 @@
             </div>
         </section>
 
+        <!-- INTERNSHIPS SECTION -->
         <section id="internships">
             <h2 class="section-title section-header sec-int">Internships & Research</h2>
             <div class="timeline">
@@ -1061,6 +1058,7 @@
             </div>
         </section>
 
+        <!-- EDUCATION SECTION -->
         <section id="education">
             <h2 class="section-title section-header sec-edu">Education</h2>
             <div class="timeline">
@@ -1102,9 +1100,11 @@
             </div>
         </section>
 
+        <!-- CERTIFICATIONS SECTION -->
         <section id="certifications">
             <h2 class="section-title section-header sec-cert">Certifications</h2>
             <div class="grid-cards searchable-grid">
+                <!-- Finlatics -->
                 <div class="card project-card reveal">
                     <div class="card-header">
                         <h3 class="card-title">Data Analysis with Python</h3>
@@ -1116,6 +1116,7 @@
                         <a href="https://github.com/msgwebsite/portfolio/releases/download/Skills-certificates/LoR.pdf" target="_blank" class="action-link action-blue"><i class="fas fa-file-alt"></i> LOR</a>
                     </div>
                 </div>
+                <!-- Kaggle Certs -->
                 <div class="card project-card reveal">
                     <div class="card-header">
                         <h3 class="card-title">Intro to Machine Learning</h3>
@@ -1170,6 +1171,7 @@
             </div>
         </section>
 
+        <!-- WRITEUPS SECTION -->
         <section id="writeups">
             <h2 class="section-title section-header sec-write">Technical Write-ups</h2>
             <p style="margin-bottom: 2rem; color: var(--text-muted);">
@@ -1219,6 +1221,7 @@
             </div>
         </section>
 
+        <!-- CONTACT SECTION -->
         <section id="contact">
             <h2 class="section-title section-header" style="justify-content: center; text-align: center;">
                 Let's Connect!
@@ -1251,13 +1254,9 @@
     <footer>
         <p>&copy; <span id="year"></span> Maitreya Sameer Ganu. All rights reserved.</p>
         <p style="margin-top: 0.5rem; font-size: 0.9rem;">Built with thoughtful design and code.</p>
-        
-        <div class="visitor-counter">
-            <i class="fas fa-chart-line" style="color: var(--c-teal);"></i> 
-            <span><strong id="visitor-count">...</strong> Unique Visitors</span>
-        </div>
     </footer>
 
+    <!-- Back to Top Button -->
     <button id="back-to-top" aria-label="Back to top">
         <i class="fas fa-arrow-up"></i>
     </button>
@@ -1413,60 +1412,6 @@
         bttButton.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
-
-        // --- GLOBAL VISITOR COUNTER LOGIC ---
-        async function updateVisitorCount() {
-            const counterDisplay = document.getElementById('visitor-count');
-            
-            // Unique identifier for your portfolio database
-            const namespace = 'maitreyaganu_portfolio';
-            const key = 'visits';
-            
-            // Check if this specific session has already been counted
-            const isNewVisit = !sessionStorage.getItem('session_visited');
-
-            try {
-                // Base URL for the free public counter API
-                let url = `https://api.counterapi.dev/v1/${namespace}/${key}`;
-                
-                if (isNewVisit) {
-                    url += '/up'; // Tells the server to increment the count
-                    sessionStorage.setItem('session_visited', 'true'); // Prevent further increments this session
-                }
-
-                // Fetch the live global data
-                const response = await fetch(url);
-                const data = await response.json();
-
-                // Add your 100 base constraint to the API's global count
-                const actualCount = data.count + 100;
-                
-                // Start a smooth count-up animation
-                animateValue(counterDisplay, 100, actualCount, 1500);
-
-            } catch (error) {
-                // Graceful fallback if the API is ever down
-                console.error("Counter API unavailable.");
-                counterDisplay.textContent = "100+"; 
-            }
-        }
-
-        // Helper function to animate the numbers counting up
-        function animateValue(obj, start, end, duration) {
-            let startTimestamp = null;
-            const step = (timestamp) => {
-                if (!startTimestamp) startTimestamp = timestamp;
-                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                obj.innerHTML = Math.floor(progress * (end - start) + start);
-                if (progress < 1) {
-                    window.requestAnimationFrame(step);
-                }
-            };
-            window.requestAnimationFrame(step);
-        }
-
-        // Run visitor counter on load
-        window.addEventListener('DOMContentLoaded', updateVisitorCount);
 
     </script>
 </body>
