@@ -101,12 +101,12 @@
             font-weight: 600;
         }
 
-        .metric-card h3 {
+        .metric-card-compact h3 {
             font-family: 'Playfair Display', serif;
             font-weight: 700;
         }
 
-        .tag, .skill-tag, .timeline-date, .card-subtitle, .metric-card p, .timeline-subtitle, .progress-label, .donut-inner span, .btn-primary {
+        .tag, .skill-tag, .timeline-date, .card-subtitle, .metric-card-compact p, .timeline-subtitle, .progress-label, .donut-inner span, .btn-primary {
             font-family: 'Inter', sans-serif;
             font-weight: 500;
         }
@@ -314,28 +314,35 @@
         /* SEARCH STATES (Global Search) */
         body.is-searching main > section {
             display: none; 
-            animation: none; /* Disable fade during fast searches */
+            animation: none;
         }
         body.is-searching main > section.has-results {
             display: block; 
         }
-        /* Hide non-searchable content from home during search */
-        body.is-searching #home .hero-grid,
-        body.is-searching #home .metrics-grid,
-        body.is-searching #home .skills-section {
-            display: none;
+        body.is-searching #home .home-layout {
+            display: none; /* Hide home content when searching */
         }
         body.is-searching #contact {
-            display: none; /* Contact isn't usually searchable */
+            display: none; 
         }
 
-        /* HERO & ABOUT */
-        .hero-grid {
+        /* ----- NEW HOME LAYOUT ----- */
+        .home-layout {
             display: grid;
             grid-template-columns: 280px 1fr;
             gap: 3rem;
             align-items: start;
-            margin-bottom: 4rem;
+        }
+
+        .home-left {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .home-right {
+            display: flex;
+            flex-direction: column;
         }
 
         .profile-img {
@@ -346,7 +353,36 @@
             box-shadow: var(--shadow-md);
         }
 
-        .hero-content h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+        /* 2x2 Metrics Grid (Left Column) */
+        .metrics-grid-compact {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .metric-card-compact {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1.2rem 0.8rem;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .metric-card-compact:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .metric-card-compact h3 { font-size: 1.8rem; margin-bottom: 0.2rem; line-height: 1; }
+        .metric-card-compact p { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.3; }
+
+        /* Intro Section (Right Column) */
+        .hero-content h1 { font-size: 2.8rem; margin-bottom: 0.5rem; line-height: 1.2; }
         .hero-subtitle { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 1.5rem; font-weight: 500; }
 
         .social-links {
@@ -360,8 +396,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
+            width: 42px;
+            height: 42px;
             border-radius: 50%;
             background-color: var(--bg-surface);
             border: 1px solid var(--border-color);
@@ -372,45 +408,10 @@
         .social-links a:hover {
             transform: translateY(-3px);
             box-shadow: var(--shadow-md);
+            border-color: var(--c-purple);
+            color: var(--c-purple);
         }
 
-        /* METRICS CARDS */
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 4rem;
-        }
-
-        .metric-card {
-            background-color: var(--bg-surface);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-md);
-            padding: 2rem;
-            text-align: center;
-            transition: var(--transition);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .metric-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .metric-card h3 { font-size: 2.5rem; margin-bottom: 0.5rem; }
-        .metric-card p { font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
-
-        /* DOMAINS & SKILLS (VISUAL) */
-        .skills-section {
-            background-color: var(--bg-surface);
-            border-radius: var(--radius-lg);
-            padding: 3rem;
-            border: 1px solid var(--border-color);
-            box-shadow: var(--shadow-sm);
-            margin-bottom: 3rem;
-        }
-
-        .skills-header { display: flex; align-items: center; gap: 10px; font-size: 1.5rem; margin-bottom: 2rem; }
         .skills-tags-wrap { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-bottom: 3rem; }
 
         /* TAGS UTILITIES */
@@ -424,7 +425,7 @@
             border: 1px solid transparent;
         }
         
-        .skill-tag.base { border-color: var(--border-color); background-color: var(--bg-body); }
+        .skill-tag.base { border-color: var(--border-color); background-color: var(--bg-surface); box-shadow: var(--shadow-sm); }
         .skill-tag i { font-size: 0.5rem; }
 
         .tag-pink { background: var(--bg-pink); color: var(--c-pink); }
@@ -435,17 +436,38 @@
         .tag-blue { background: var(--bg-blue); color: var(--c-blue); }
         .tag-lime { background: var(--bg-lime); color: var(--c-lime); }
 
-        .skills-visual-grid {
+        /* VISUALIZATION DASHBOARD */
+        .vis-dashboard {
             display: grid;
-            grid-template-columns: auto 1fr;
-            gap: 4rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .vis-card {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
             align-items: center;
+        }
+
+        .vis-card h4 {
+            width: 100%;
+            text-align: left;
+            margin-bottom: 2rem;
+            color: var(--text-main);
+            font-size: 1.2rem;
+            border-bottom: 2px solid var(--border-light);
+            padding-bottom: 0.8rem;
         }
 
         /* PURE CSS DONUT CHART */
         .donut-chart {
-            width: 220px;
-            height: 220px;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
             background: conic-gradient(
                 var(--c-purple) 0% 30%, 
@@ -460,11 +482,12 @@
             align-items: center;
             justify-content: center;
             box-shadow: var(--shadow-md);
+            margin: auto;
         }
 
         .donut-inner {
-            width: 140px;
-            height: 140px;
+            width: 130px;
+            height: 130px;
             border-radius: 50%;
             background-color: var(--bg-surface);
             display: flex;
@@ -478,8 +501,8 @@
         .donut-inner span:last-child { font-size: 0.8rem; color: var(--text-muted); font-weight: 500; font-family: 'Inter', sans-serif; }
 
         /* PROGRESS BARS WITH ANIMATION */
-        .progress-bars { display: flex; flex-direction: column; gap: 1.2rem; }
-        .progress-item { display: grid; grid-template-columns: 140px 1fr 40px; align-items: center; gap: 1rem; font-size: 0.95rem; }
+        .progress-bars { display: flex; flex-direction: column; gap: 1.2rem; width: 100%; }
+        .progress-item { display: grid; grid-template-columns: 130px 1fr 40px; align-items: center; gap: 1rem; font-size: 0.9rem; }
         .progress-label { display: flex; align-items: center; gap: 8px; }
         .progress-label i { border-radius: 4px; width: 12px; height: 12px; display: inline-block; }
 
@@ -497,6 +520,65 @@
             width: 0%; /* Animates to --target-width via JS */
             transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
         }
+
+        /* NEW VISUALIZATION: TECH ORBIT */
+        .orbit-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            min-height: 220px;
+            padding: 1rem 0;
+        }
+        
+        .orbit-container {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 1px dashed var(--border-color);
+            animation: spin 25s linear infinite;
+        }
+
+        .orbit-center {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 55px; height: 55px;
+            background-color: var(--bg-surface);
+            border: 2px solid var(--c-purple);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            box-shadow: var(--shadow-md);
+            animation: spin-reverse 25s linear infinite; /* Keeps icon upright */
+        }
+
+        .orbit-item {
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 40px; height: 40px;
+            margin-top: -20px; margin-left: -20px;
+            /* Places items evenly on the circle while keeping them upright relative to the container */
+            transform: rotate(var(--angle)) translate(var(--radius)) rotate(calc(-1 * var(--angle)));
+        }
+
+        .orbit-icon {
+            width: 100%; height: 100%;
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: var(--shadow-sm);
+            font-size: 1rem;
+            animation: spin-reverse 25s linear infinite; /* Keeps icons upright as the whole circle spins */
+        }
+
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        @keyframes spin-reverse { 100% { transform: rotate(-360deg); } }
 
         /* TIMELINE (EXPERIENCE & INTERNSHIPS) */
         .timeline { border-left: 2px solid var(--border-color); margin-left: 1rem; padding-left: 2.5rem; }
@@ -644,15 +726,18 @@
 
         /* RESPONSIVE DESIGN */
         @media (max-width: 992px) {
-            .skills-visual-grid { grid-template-columns: 1fr; justify-items: center; gap: 3rem; }
-            .progress-bars { width: 100%; max-width: 500px; }
+            .home-layout { grid-template-columns: 1fr; }
+            .home-left { flex-direction: row; align-items: center; }
+            .profile-img { width: 220px; height: 220px; }
+            .metrics-grid-compact { width: 100%; margin-top: 0; }
         }
 
         @media (max-width: 768px) {
             .nav-links { width: 100%; right: 0; top: var(--nav-height); border-radius: 0; border-left: none; border-right: none; }
-            .hero-grid { grid-template-columns: 1fr; text-align: center; }
-            .profile-img { max-width: 280px; margin: 0 auto; }
-            .social-links { justify-content: center; }
+            .home-left { flex-direction: column; }
+            .profile-img { width: 260px; height: auto; }
+            .metrics-grid-compact { width: 100%; }
+            .social-links { justify-content: flex-start; }
             .timeline-header { flex-direction: column; gap: 0.2rem; }
             .timeline-date { margin-top: 0.5rem; }
             .section-title { font-size: 1.8rem; }
@@ -692,105 +777,148 @@
     </header>
 
     <main>
-        <!-- HERO SECTION -->
+        <!-- HERO / HOME SECTION -->
         <section id="home" class="active">
-            <div class="hero-grid">
-                <img src="me.png" alt="Maitreya Sameer Ganu" class="profile-img" onerror="this.src='https://placehold.co/280x280/e8e8e8/2c3e50?text=M.G.'">
-                <div class="hero-content">
-                    <h1 class="playfair">Maitreya Sameer Ganu</h1>
-                    <div class="hero-subtitle">Researcher | Statistical Data Science | Mathematics</div>
-                    <p>
-                        Hello! I'm Maitreya, a Data Science enthusiast with an insatiable curiosity for uncovering stories hidden within data. 
-                        Currently pursuing a BS-MS Dual Degree in Data Science at IISER Thiruvananthapuram, I tackle challenging real-world problems 
-                        by applying rigorous statistical inference, algorithmic innovation, and mathematical foundations.
-                    </p>
-                    <div class="social-links">
-                        <a href="https://www.linkedin.com/in/maitreya-ganu-673995286" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://github.com/MaitreyaGanu" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                        <a href="mailto:maitreyaganu@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="metrics-grid reveal">
-                <div class="metric-card" style="color: var(--c-purple);">
-                    <h3>4</h3>
-                    <p>Research Internships</p>
-                </div>
-                <div class="metric-card" style="color: var(--c-blue);">
-                    <h3>6</h3>
-                    <p>Projects</p>
-                </div>
-                <div class="metric-card" style="color: var(--c-pink);">
-                    <h3>9</h3>
-                    <p>Certifications</p>
-                </div>
-                <div class="metric-card" style="color: var(--c-orange);">
-                    <h3>4</h3>
-                    <p>Technical Write-ups</p>
-                </div>
-            </div>
-
-            <!-- Domains & Skills Visual -->
-            <div class="skills-section reveal">
-                <div class="skills-header playfair">
-                    <i class="fas fa-brain" style="color: var(--c-purple);"></i> Domains & Skills
-                </div>
+            <div class="home-layout reveal">
                 
-                <div class="skills-tags-wrap">
-                    <div class="skill-tag base"><i class="fas fa-circle" style="color: var(--c-purple);"></i> Statistics</div>
-                    <div class="skill-tag base"><i class="fas fa-circle" style="color: var(--c-teal);"></i> AI/ML</div>
-                    <div class="skill-tag base"><i class="fas fa-circle" style="color: var(--c-green);"></i> CS / Systems</div>
-                    <div class="skill-tag base"><i class="fas fa-circle" style="color: var(--c-lime);"></i> Bioinformatics</div>
-                    <div class="skill-tag base"><i class="fas fa-circle" style="color: var(--c-red);"></i> Mathematics</div>
+                <!-- LEFT COLUMN -->
+                <div class="home-left">
+                    <img src="me.png" alt="Maitreya Sameer Ganu" class="profile-img" onerror="this.src='https://placehold.co/280x280/e8e8e8/2c3e50?text=M.G.'">
                     
-                    <div class="skill-tag tag-purple"><i class="fas fa-superscript"></i> Statistical Inference</div>
-                    <div class="skill-tag tag-teal"><i class="fas fa-cogs"></i> Machine Learning</div>
-                    <div class="skill-tag tag-purple"><i class="fas fa-chart-area"></i> Bayesian Methods</div>
-                    <div class="skill-tag tag-green"><i class="fas fa-project-diagram"></i> Network Analysis</div>
-                    <div class="skill-tag tag-orange"><i class="fab fa-python"></i> Python</div>
-                    <div class="skill-tag tag-teal"><i class="fas fa-lock"></i> Cryptography</div>
-                </div>
-
-                <div class="skills-visual-grid">
-                    <div class="donut-chart">
-                        <div class="donut-inner">
-                            <span>Research</span>
-                            <span>Domains</span>
+                    <!-- Metrics explicitly below photo -->
+                    <div class="metrics-grid-compact">
+                        <div class="metric-card-compact" style="color: var(--c-purple);">
+                            <h3>4</h3>
+                            <p>Research<br>Internships</p>
+                        </div>
+                        <div class="metric-card-compact" style="color: var(--c-blue);">
+                            <h3>6</h3>
+                            <p>Selected<br>Projects</p>
+                        </div>
+                        <div class="metric-card-compact" style="color: var(--c-pink);">
+                            <h3>9</h3>
+                            <p>Skill<br>Certifications</p>
+                        </div>
+                        <div class="metric-card-compact" style="color: var(--c-orange);">
+                            <h3>4</h3>
+                            <p>Technical<br>Write-ups</p>
                         </div>
                     </div>
-                    
-                    <div class="progress-bars">
-                        <div class="progress-item">
-                            <div class="progress-label"><i style="background-color: var(--c-purple);"></i> Statistics</div>
-                            <div class="bar-container"><div class="bar-fill" style="--target-width: 30%; background-color: var(--c-purple);"></div></div>
-                            <div>30%</div>
+                </div>
+
+                <!-- RIGHT COLUMN -->
+                <div class="home-right">
+                    <div class="hero-content">
+                        <h1 class="playfair">Maitreya Sameer Ganu</h1>
+                        <div class="hero-subtitle">Researcher | Statistical Data Science | Mathematics</div>
+                        <p>
+                            Hello! I'm Maitreya, a Data Science enthusiast with an insatiable curiosity for uncovering stories hidden within data. 
+                            Currently pursuing a BS-MS Dual Degree in Data Science at IISER Thiruvananthapuram, I tackle challenging real-world problems 
+                            by applying rigorous statistical inference, algorithmic innovation, and mathematical foundations.
+                        </p>
+                        <div class="social-links">
+                            <a href="https://www.linkedin.com/in/maitreya-ganu-673995286" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://github.com/MaitreyaGanu" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                            <a href="mailto:maitreyaganu@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
                         </div>
-                        <div class="progress-item">
-                            <div class="progress-label"><i style="background-color: var(--c-teal);"></i> Machine Learning</div>
-                            <div class="bar-container"><div class="bar-fill" style="--target-width: 20%; background-color: var(--c-teal);"></div></div>
-                            <div>20%</div>
+                    </div>
+
+                    <!-- Skills Tags Wrap -->
+                    <div class="skills-tags-wrap">
+                        <div class="skill-tag tag-purple"><i class="fas fa-superscript"></i> Statistical Inference</div>
+                        <div class="skill-tag tag-teal"><i class="fas fa-cogs"></i> Machine Learning</div>
+                        <div class="skill-tag tag-purple"><i class="fas fa-chart-area"></i> Bayesian Methods</div>
+                        <div class="skill-tag tag-green"><i class="fas fa-project-diagram"></i> Network Analysis</div>
+                        <div class="skill-tag tag-orange"><i class="fab fa-python"></i> Python</div>
+                        <div class="skill-tag tag-teal"><i class="fas fa-lock"></i> Cryptography</div>
+                    </div>
+
+                    <!-- VISUALIZATION DASHBOARD -->
+                    <div class="vis-dashboard">
+                        
+                        <!-- 1. Domain Donut Chart -->
+                        <div class="vis-card">
+                            <h4 class="playfair">Research Domains</h4>
+                            <div class="donut-chart" style="margin-top: 1rem;">
+                                <div class="donut-inner">
+                                    <span>Domain</span>
+                                    <span>Breakdown</span>
+                                </div>
+                            </div>
+                            <!-- Small legend -->
+                            <div style="display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-top:1.5rem;">
+                                <span style="font-size:0.75rem; color:var(--text-muted);"><i class="fas fa-circle" style="color:var(--c-purple);"></i> Stats</span>
+                                <span style="font-size:0.75rem; color:var(--text-muted);"><i class="fas fa-circle" style="color:var(--c-teal);"></i> ML</span>
+                                <span style="font-size:0.75rem; color:var(--text-muted);"><i class="fas fa-circle" style="color:var(--c-red);"></i> Math</span>
+                                <span style="font-size:0.75rem; color:var(--text-muted);"><i class="fas fa-circle" style="color:var(--c-green);"></i> CS</span>
+                                <span style="font-size:0.75rem; color:var(--text-muted);"><i class="fas fa-circle" style="color:var(--c-lime);"></i> Bio</span>
+                            </div>
                         </div>
-                        <div class="progress-item">
-                            <div class="progress-label"><i style="background-color: var(--c-red);"></i> Mathematics</div>
-                            <div class="bar-container"><div class="bar-fill" style="--target-width: 18%; background-color: var(--c-red);"></div></div>
-                            <div>18%</div>
+                        
+                        <!-- 2. Technical Expertise Bars -->
+                        <div class="vis-card">
+                            <h4 class="playfair">Technical Expertise</h4>
+                            <div class="progress-bars" style="margin-top: 1rem;">
+                                <div class="progress-item">
+                                    <div class="progress-label"><i style="background-color: var(--c-purple);"></i> Statistics</div>
+                                    <div class="bar-container"><div class="bar-fill" style="--target-width: 30%; background-color: var(--c-purple);"></div></div>
+                                    <div>30%</div>
+                                </div>
+                                <div class="progress-item">
+                                    <div class="progress-label"><i style="background-color: var(--c-teal);"></i> ML & AI</div>
+                                    <div class="bar-container"><div class="bar-fill" style="--target-width: 20%; background-color: var(--c-teal);"></div></div>
+                                    <div>20%</div>
+                                </div>
+                                <div class="progress-item">
+                                    <div class="progress-label"><i style="background-color: var(--c-red);"></i> Mathematics</div>
+                                    <div class="bar-container"><div class="bar-fill" style="--target-width: 18%; background-color: var(--c-red);"></div></div>
+                                    <div>18%</div>
+                                </div>
+                                <div class="progress-item">
+                                    <div class="progress-label"><i style="background-color: var(--c-green);"></i> CS/Systems</div>
+                                    <div class="bar-container"><div class="bar-fill" style="--target-width: 14%; background-color: var(--c-green);"></div></div>
+                                    <div>14%</div>
+                                </div>
+                                <div class="progress-item">
+                                    <div class="progress-label"><i style="background-color: var(--c-lime);"></i> Bioinformatics</div>
+                                    <div class="bar-container"><div class="bar-fill" style="--target-width: 10%; background-color: var(--c-lime);"></div></div>
+                                    <div>10%</div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="progress-item">
-                            <div class="progress-label"><i style="background-color: var(--c-green);"></i> CS / Systems</div>
-                            <div class="bar-container"><div class="bar-fill" style="--target-width: 14%; background-color: var(--c-green);"></div></div>
-                            <div>14%</div>
+
+                        <!-- 3. Knowledge Network Orbit -->
+                        <div class="vis-card" style="grid-column: 1 / -1;">
+                            <h4 class="playfair">Knowledge Network</h4>
+                            <div class="orbit-wrapper">
+                                <div class="orbit-container">
+                                    <div class="orbit-center" title="Data Science Core">
+                                        <i class="fas fa-brain" style="color: var(--c-purple); font-size: 1.5rem;"></i>
+                                    </div>
+                                    <!-- Python -->
+                                    <div class="orbit-item" style="--angle: 0deg; --radius: 90px;" title="Python">
+                                        <div class="orbit-icon" style="color: var(--c-blue);"><i class="fab fa-python"></i></div>
+                                    </div>
+                                    <!-- ML -->
+                                    <div class="orbit-item" style="--angle: 72deg; --radius: 90px;" title="Machine Learning">
+                                        <div class="orbit-icon" style="color: var(--c-teal);"><i class="fas fa-cogs"></i></div>
+                                    </div>
+                                    <!-- Math -->
+                                    <div class="orbit-item" style="--angle: 144deg; --radius: 90px;" title="Mathematics">
+                                        <div class="orbit-icon" style="color: var(--c-red);"><i class="fas fa-square-root-alt"></i></div>
+                                    </div>
+                                    <!-- Networks -->
+                                    <div class="orbit-item" style="--angle: 216deg; --radius: 90px;" title="Network Analysis">
+                                        <div class="orbit-icon" style="color: var(--c-green);"><i class="fas fa-network-wired"></i></div>
+                                    </div>
+                                    <!-- Bioinformatics -->
+                                    <div class="orbit-item" style="--angle: 288deg; --radius: 90px;" title="Bioinformatics">
+                                        <div class="orbit-icon" style="color: var(--c-pink);"><i class="fas fa-dna"></i></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="progress-item">
-                            <div class="progress-label"><i style="background-color: var(--c-lime);"></i> Bioinformatics</div>
-                            <div class="bar-container"><div class="bar-fill" style="--target-width: 10%; background-color: var(--c-lime);"></div></div>
-                            <div>10%</div>
-                        </div>
-                        <div class="progress-item">
-                            <div class="progress-label"><i style="background-color: var(--c-pink);"></i> Cryptography</div>
-                            <div class="bar-container"><div class="bar-fill" style="--target-width: 8%; background-color: var(--c-pink);"></div></div>
-                            <div>8%</div>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -798,7 +926,7 @@
 
         <!-- PROJECTS SECTION -->
         <section id="projects">
-            <h2 class="section-title section-header sec-proj">Selected Projects</h2>
+            <h2 class="section-title section-header sec-proj playfair">Selected Projects</h2>
 
             <div class="grid-cards searchable-grid">
                 <!-- Project 1 -->
@@ -837,6 +965,7 @@
                     </div>
                     <div class="card-actions">
                         <a href="https://github.com/msgwebsite/portfolio/releases/download/projects/PMM.pdf" download class="action-link action-green"><i class="fas fa-download"></i> Report</a>
+                        <a href="https://github.com/MaitreyaGanu/Poisson-Mixture-Models" target="_blank" class="action-link action-green"><i class="fab fa-github"></i> GitHub</a>
                     </div>
                 </div>
 
@@ -854,6 +983,7 @@
                     </div>
                     <div class="card-actions">
                         <a href="https://github.com/msgwebsite/portfolio/releases/download/projects/communitydetection.pdf" download class="action-link action-green"><i class="fas fa-download"></i> Report</a>
+                        <a href="https://github.com/MaitreyaGanu/Community-Detection-and-Network-Analysis-using-Modularity" target="_blank" class="action-link action-green"><i class="fab fa-github"></i> GitHub</a>
                     </div>
                 </div>
 
@@ -912,7 +1042,7 @@
 
         <!-- EXPERIENCE SECTION -->
         <section id="experience">
-            <h2 class="section-title section-header sec-exp">Experience</h2>
+            <h2 class="section-title section-header sec-exp playfair">Experience</h2>
             <div class="timeline">
                 
                 <div class="timeline-item searchable-item reveal">
@@ -984,7 +1114,7 @@
 
         <!-- INTERNSHIPS SECTION -->
         <section id="internships">
-            <h2 class="section-title section-header sec-int">Internships & Research</h2>
+            <h2 class="section-title section-header sec-int playfair">Internships & Research</h2>
             <div class="timeline">
                 
                 <div class="timeline-item searchable-item reveal">
@@ -1060,7 +1190,7 @@
 
         <!-- EDUCATION SECTION -->
         <section id="education">
-            <h2 class="section-title section-header sec-edu">Education</h2>
+            <h2 class="section-title section-header sec-edu playfair">Education</h2>
             <div class="timeline">
                 <div class="timeline-item searchable-item reveal">
                     <div class="timeline-dot"></div>
@@ -1102,7 +1232,7 @@
 
         <!-- CERTIFICATIONS SECTION -->
         <section id="certifications">
-            <h2 class="section-title section-header sec-cert">Certifications</h2>
+            <h2 class="section-title section-header sec-cert playfair">Certifications</h2>
             <div class="grid-cards searchable-grid">
                 <!-- Finlatics -->
                 <div class="card project-card reveal">
@@ -1173,7 +1303,7 @@
 
         <!-- WRITEUPS SECTION -->
         <section id="writeups">
-            <h2 class="section-title section-header sec-write">Technical Write-ups</h2>
+            <h2 class="section-title section-header sec-write playfair">Technical Write-ups</h2>
             <p style="margin-bottom: 2rem; color: var(--text-muted);">
                 Technical write-ups on topics that I believe I understand well enough to explain clearly from first principles. Feel free to download them and do check them out!
             </p>
@@ -1223,7 +1353,7 @@
 
         <!-- CONTACT SECTION -->
         <section id="contact">
-            <h2 class="section-title section-header" style="justify-content: center; text-align: center;">
+            <h2 class="section-title section-header playfair" style="justify-content: center; text-align: center;">
                 Let's Connect!
             </h2>
             <div class="contact-grid">
