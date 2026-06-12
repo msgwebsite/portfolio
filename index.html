@@ -1778,8 +1778,7 @@
         const root = document.documentElement;
         
         const savedTheme = localStorage.getItem('theme');
-        const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const currentTheme = savedTheme ? savedTheme : (systemDark ? 'dark' : 'light');
+        const currentTheme = savedTheme || 'light';
         
         root.setAttribute('data-theme', currentTheme);
         updateThemeIcon(currentTheme);
