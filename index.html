@@ -817,7 +817,58 @@
             margin-top: 4rem;
         }
         footer p:first-child { font-family: 'Syne', sans-serif; font-weight: 700; color: var(--text-main); }
+/* ===================== CORE COMPETENCIES ===================== */
 
+.skill-item{
+    margin-bottom:1.5rem;
+}
+
+.skill-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:0.6rem;
+}
+
+.skill-name{
+    display:flex;
+    align-items:center;
+    gap:0.7rem;
+    font-weight:700;
+    font-size:1rem;
+}
+
+.skill-dot{
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    border:2px solid var(--ink);
+    flex-shrink:0;
+}
+
+.skill-level{
+    font-size:0.75rem;
+    padding:0.25rem 0.7rem;
+    border:2px solid var(--ink);
+    border-radius:999px;
+    background:var(--bg-body);
+    box-shadow:2px 2px 0 var(--ink);
+    font-family:'Space Mono', monospace;
+}
+
+.skill-bar{
+    width:100%;
+    height:14px;
+    background:var(--bg-body);
+    border:3px solid var(--ink);
+    border-radius:999px;
+    overflow:hidden;
+}
+
+.skill-fill{
+    height:100%;
+    border-radius:999px;
+}
         /* ===================== RESPONSIVE ===================== */
         @media (max-width: 992px) {
             .home-layout { grid-template-columns: 1fr; }
@@ -1045,71 +1096,72 @@
                             </div>
                         </div>
 
-                        <div class="vis-card">
+                        <div class="vis-card competencies-card">
     <h4 class="playfair">Core Competencies</h4>
 
-    <div class="progress-bars" style="margin-top: 1rem;">
-
-        <div class="progress-item">
-            <div class="progress-label">
-                <span><i style="background-color: var(--c-purple);"></i> Statistics</span>
-                <span>Expert</span>
-            </div>
-            <div class="bar-container">
-                <div class="bar-fill"
-                     style="--target-width:100%; background-color:var(--c-purple);">
-                </div>
-            </div>
+    <div class="skill-item">
+        <div class="skill-header">
+            <span class="skill-name">
+                <i class="skill-dot" style="background:var(--c-purple)"></i>
+                Statistics
+            </span>
+            <span class="skill-level expert">Expert</span>
         </div>
-
-        <div class="progress-item">
-            <div class="progress-label">
-                <span><i style="background-color: var(--c-red);"></i> Mathematics</span>
-                <span>Advanced</span>
-            </div>
-            <div class="bar-container">
-                <div class="bar-fill"
-                     style="--target-width:90%; background-color:var(--c-red);">
-                </div>
-            </div>
+        <div class="skill-bar">
+            <div class="skill-fill" style="width:100%; background:var(--c-purple)"></div>
         </div>
+    </div>
 
-        <div class="progress-item">
-            <div class="progress-label">
-                <span><i style="background-color: var(--c-teal);"></i> ML & AI</span>
-                <span>Advanced</span>
-            </div>
-            <div class="bar-container">
-                <div class="bar-fill"
-                     style="--target-width:80%; background-color:var(--c-teal);">
-                </div>
-            </div>
+    <div class="skill-item">
+        <div class="skill-header">
+            <span class="skill-name">
+                <i class="skill-dot" style="background:var(--c-red)"></i>
+                Mathematics
+            </span>
+            <span class="skill-level advanced">Advanced</span>
         </div>
-
-        <div class="progress-item">
-            <div class="progress-label">
-                <span><i style="background-color: var(--c-green);"></i> CS / Systems</span>
-                <span>Intermediate</span>
-            </div>
-            <div class="bar-container">
-                <div class="bar-fill"
-                     style="--target-width:60%; background-color:var(--c-green);">
-                </div>
-            </div>
+        <div class="skill-bar">
+            <div class="skill-fill" style="width:90%; background:var(--c-red)"></div>
         </div>
+    </div>
 
-        <div class="progress-item">
-            <div class="progress-label">
-                <span><i style="background-color: var(--c-lime);"></i> Bioinformatics</span>
-                <span>Developing</span>
-            </div>
-            <div class="bar-container">
-                <div class="bar-fill"
-                     style="--target-width:40%; background-color:var(--c-lime);">
-                </div>
-            </div>
+    <div class="skill-item">
+        <div class="skill-header">
+            <span class="skill-name">
+                <i class="skill-dot" style="background:var(--c-teal)"></i>
+                ML & AI
+            </span>
+            <span class="skill-level advanced">Advanced</span>
         </div>
+        <div class="skill-bar">
+            <div class="skill-fill" style="width:80%; background:var(--c-teal)"></div>
+        </div>
+    </div>
 
+    <div class="skill-item">
+        <div class="skill-header">
+            <span class="skill-name">
+                <i class="skill-dot" style="background:var(--c-green)"></i>
+                CS / Systems
+            </span>
+            <span class="skill-level intermediate">Intermediate</span>
+        </div>
+        <div class="skill-bar">
+            <div class="skill-fill" style="width:65%; background:var(--c-green)"></div>
+        </div>
+    </div>
+
+    <div class="skill-item">
+        <div class="skill-header">
+            <span class="skill-name">
+                <i class="skill-dot" style="background:var(--c-lime)"></i>
+                Bioinformatics
+            </span>
+            <span class="skill-level developing">Developing</span>
+        </div>
+        <div class="skill-bar">
+            <div class="skill-fill" style="width:45%; background:var(--c-lime)"></div>
+        </div>
     </div>
 </div>
                             </div>
