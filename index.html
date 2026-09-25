@@ -388,6 +388,98 @@
             width: fit-content;
         }
 
+        /* ================= EXPERIENCE CARDS ================= */
+
+.experience-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+}
+
+.experience-card {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.experience-logo {
+    width: 35%;
+    min-height: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    border-right: 1px solid var(--border);
+    background-color: #fafaf8;
+}
+
+.experience-logo img {
+    max-width: 170px;
+    max-height: 170px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+.experience-content {
+    width: 65%;
+    padding: 1.6rem 1.7rem;
+}
+
+.experience-content h3 {
+    margin: 0 0 0.4rem;
+    font-size: 1.4rem;
+    line-height: 1.35;
+}
+
+.experience-content h4 {
+    margin: 0 0 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+.experience-content p {
+    margin: 0 0 0.8rem;
+    line-height: 1.7;
+}
+
+
+/* ---------- Experience Responsive ---------- */
+
+@media (max-width: 768px) {
+
+    .experience-card {
+        flex-direction: column;
+    }
+
+    .experience-logo {
+        width: 100%;
+        min-height: 180px;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .experience-logo img {
+        max-width: 130px;
+        max-height: 130px;
+    }
+
+    .experience-content {
+        width: 100%;
+        padding: 1.4rem 1.5rem;
+    }
+
+    .experience-content h3 {
+        font-size: 1.25rem;
+    }
+}
+
+
+
         /* ---------- Contact ---------- */
         .contact-cta {
             margin-top: 2rem;
@@ -681,6 +773,7 @@
     </style>
 
     <h2>Education</h2>
+    
     <!-- ---------- IISER TVM ---------- -->
     <div class="card education-card education-large-logo">
         <div class="education-logo">
@@ -787,27 +880,107 @@
     </div>
 </section>
 
-        <!-- ---------- EXPERIENCE ---------- -->
-        <section id="experience">
-            <h2>Experience</h2>
-            <div class="grid-2">
-                <div class="card">
-                    <h3>Student Coordinator, Placement &amp; Career Promotion Cell</h3>
-                    <p class="card-subtitle">IISER Thiruvananthapuram (2025 – Present)</p>
-                    <p class="card-details">As Student Coordinator, I reached out to and brought many startups and established companies to campus for placement opportunities, bridging the gap between industry and academia. I also conducted sessions for juniors — including CV building, interview preparation, and career guidance — to help them navigate placements and secure internships.</p>
-                </div>
-                <div class="card">
-                    <h3>Spokesperson &amp; Decision-Making Committee Member, Music Club</h3>
-                    <p class="card-subtitle">IISER Thiruvananthapuram (2025 – 2026)</p>
-                    <p class="card-details">Served as spokesperson and a member of the club's decision-making committee. Organized jamming sessions, coordinated performances like ISHYA, and managed logistics for major cultural events including IICM 2025, while actively performing Tabla at campus events.</p>
-                </div>
-                <div class="card">
-                    <h3>Finance Coordinator, Club of Mathematics</h3>
-                    <p class="card-subtitle">IISER Thiruvananthapuram (2023 – 2024)</p>
-                    <p class="card-details">Managed merchandise financing and provided key administrative support during the prestigious Frontier Symposium in Mathematics, 2023, ensuring smooth financial operations and successful event execution.</p>
-                </div>
+<!-- ================= EXPERIENCE ================= -->
+<section id="experience">
+    <h2>Experience</h2>
+
+    <div class="experience-container">
+
+
+         <!-- ---------- PCPC / PLACEMENT CELL ---------- -->
+        <div class="card experience-card">
+            <div class="experience-logo">
+                <img src="pcpc.png" alt="Placement Cell logo">
             </div>
-        </section>
+
+            <div class="experience-content">
+                <h3>Placement Cell</h3>
+                <h4>IISER Thiruvananthapuram</h4>
+
+                <p>
+                    As Student Coordinator, I reached out to and brought many startups and established companies to campus for placement opportunities, bridging the gap between industry and academia.
+                    I also conducted sessions for juniors — including CV building, interview preparation, and career guidance — to help them navigate placements and secure internships.
+                    Furthermore, I completely restructured the Placement Cell's organizational
+                    hierarchy and expanded its scale by approximately fivefold.
+                    Established connections with organizations including TCS,
+                    Deloitte, SciAstra, Tallento.ai, Skillairo, and others,
+                    resulting in an average of at least four internship or PhD
+                    opportunities being facilitated each month. Contributed to
+                    the planning and execution of placement drives and
+                    pre-placement talks. Initiated collaborations and discussions
+                    with Placement Cells at other IISERs and NISER to explore
+                    strategies for strengthening placement opportunities,
+                    particularly within research-oriented institutions.
+                </p>
+            </div>
+        </div>
+
+
+         <!-- ---------- KERNEL ---------- -->
+        <div class="card experience-card">
+            <div class="experience-logo">
+                <img src="kernel.png" alt="KerNeL logo">
+            </div>
+
+            <div class="experience-content">
+                <h3>KerNeL — Data Science Departmental Club</h3>
+                <h4>IISER Thiruvananthapuram</h4>
+
+                <p>
+                    Was selected as the primary coordinator for KerNeL, the official
+                    Data Science departmental club at IISER Thiruvananthapuram,
+                    which emphasizes the research-oriented aspects of Data Science
+                    alongside its applications. Currently serving as Core
+                    Coordinator and Head of Events Team, with responsibilities spanning
+                    the planning and execution of academic events and hands-on
+                    sessions, as well as coordination of merchandise and financial
+                    activities.
+                </p>
+
+                <p>
+                    Learn more about KerNeL:
+                    <a href="https://dsciisertvm.netlify.app/" target="_blank">
+                        dsciisertvm.netlify.app
+                    </a>
+                </p>
+            </div>
+        </div>
+
+
+
+        <!-- ---------- MUSIC ---------- -->
+        <div class="card experience-card">
+            <div class="experience-logo">
+                <img src="music.png" alt="Music Club logo">
+            </div>
+
+            <div class="experience-content">
+                <h3>Music</h3>
+                <h4>IISER Thiruvananthapuram</h4>
+
+                <p>
+Served as spokesperson and a member of the club's decision-making committee. Organized jamming sessions, coordinated performances like ISHYA, and managed logistics for major cultural events including IICM 2025, while actively performing Tabla at campus events.
+                </p>
+            </div>
+        </div>
+
+        <!-- ---------- CMIT ---------- -->
+        <div class="card experience-card">
+            <div class="experience-logo">
+                <img src="cmit.png" alt="CMIT logo">
+            </div>
+
+            <div class="experience-content">
+                <h3>CMIT</h3>
+                <h4>IISER Thiruvananthapuram</h4>
+
+                <p>
+                    Managed merchandise financing and provided key administrative support during the prestigious Frontier Symposium in Mathematics, 2023, ensuring smooth financial operations and successful event execution.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
 
        <!-- ---------- RESEARCH & PROJECTS ---------- -->
 <section id="research">
