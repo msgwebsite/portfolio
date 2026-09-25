@@ -809,110 +809,438 @@
             </div>
         </section>
 
-        <!-- ---------- RESEARCH & PROJECTS (merged) ---------- -->
-        <section id="research">
-            <h2>Research &amp; Projects</h2>
-            <p>I enjoy building statistically rigorous methods for challenging real-world problems. My research spans Bayesian inference, probabilistic modeling, computational biology, network science, and machine learning ! Explore the projects below to learn more about my work :)</p>
-            <div class="grid-2">
+       <!-- ---------- RESEARCH & PROJECTS ---------- -->
+<section id="research">
 
-                <div class="card">
-                    <h3>Unsupervised Feature Selection for scRNA-seq Data</h3>
-                    <p class="card-subtitle">IIT Goa · Under Dr. Clint P. George · May 2026 – Jul 2026</p>
-                    <p class="card-details">Proposed two novel unsupervised feature selection methods — PLit (Poisson Length Information Test) and ReThiN (Reproducibility via Thinning) — for single-cell RNA-seq data, grounded in information-theoretic and stability-driven principles and benchmarked against state-of-the-art methods across seven public scRNA-seq datasets.</p>
-                    <div class="tags">
-                        <span class="tag">Bayesian Inference</span>
-                        <span class="tag">Poisson Factor Analysis</span>
-                        <span class="tag">Information Theory</span>
-                        <span class="tag">Feature Selection</span>
-                    </div>
-                      <div class="card-actions">
-                        <a href="https://github.com/msgwebsite/portfolio/releases/download/internship-certificates/iitgoasummer2026.pdf" target="_blank" class="btn"><i class="fas fa-certificate"></i> Certificate</a>
-                        <a href="https://github.com/msgwebsite/portfolio/releases/download/projects/PLit_ReThiN.pdf" download class="btn"><i class="fas fa-file-lines"></i> Report</a>
-                    </div>                
+    <style>
+        .research-institute-card {
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+            padding: 0;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .research-institute-logo {
+            width: 25%;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            background-color: #fafaf8;
+            border-right: 1px solid var(--border);
+        }
+
+        .research-institute-logo img {
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* IISER TVM has the most projects */
+        .research-iisertvm .research-institute-logo img {
+            max-width: 150px;
+            max-height: 150px;
+        }
+
+        /* IIT Goa has one large project */
+        .research-iitgoa .research-institute-logo img {
+            max-width: 180px;
+            max-height: 180px;
+        }
+
+        /* IISER Pune has two projects */
+        .research-iiserpune .research-institute-logo img {
+            max-width: 170px;
+            max-height: 170px;
+        }
+
+        .research-institute-content {
+            flex: 1;
+            min-width: 0;
+            padding: 1.7rem 1.8rem;
+        }
+
+        .research-institute-content > h3 {
+            font-size: 1.55rem;
+            font-weight: 600;
+            margin-bottom: 1.3rem;
+            color: var(--text);
+        }
+
+        .research-project {
+            padding-bottom: 1.6rem;
+            margin-bottom: 1.6rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .research-project:last-child {
+            padding-bottom: 0;
+            margin-bottom: 0;
+            border-bottom: none;
+        }
+
+        .research-project h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.35rem;
+            line-height: 1.4;
+        }
+
+        .research-project .card-subtitle {
+            margin-bottom: 0.85rem;
+        }
+
+        .research-project .card-details {
+            margin-bottom: 0.35rem;
+        }
+
+        @media (max-width: 768px) {
+            .research-institute-card {
+                flex-direction: column;
+            }
+
+            .research-institute-logo {
+                width: 100%;
+                min-height: 180px;
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .research-iisertvm .research-institute-logo img {
+                max-width: 130px;
+                max-height: 130px;
+            }
+
+            .research-iitgoa .research-institute-logo img {
+                max-width: 150px;
+                max-height: 150px;
+            }
+
+            .research-iiserpune .research-institute-logo img {
+                max-width: 145px;
+                max-height: 145px;
+            }
+
+            .research-institute-content {
+                padding: 1.5rem;
+            }
+
+            .research-institute-content > h3 {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+
+    <h2>Research &amp; Projects</h2>
+
+    <p>
+        I enjoy building statistically rigorous methods for challenging real-world problems.
+        My research spans Bayesian inference, probabilistic modeling, computational biology,
+        network science, and machine learning ! Explore the projects below to learn more about my work :)
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- IISER THIRUVANANTHAPURAM -->
+    <!-- ========================================================= -->
+    <div class="card research-institute-card research-iisertvm">
+
+        <div class="research-institute-logo">
+            <img src="iisertvm.png" alt="IISER Thiruvananthapuram logo">
+        </div>
+
+        <div class="research-institute-content">
+
+            <h3>IISER Thiruvananthapuram</h3>
+
+            <!-- ----- Dr. Saptarshi Bej ----- -->
+            <div class="research-project">
+
+                <h4>Community Detection &amp; Network Analysis</h4>
+
+                <p class="card-subtitle">
+                    Under Dr. Saptarshi Bej · Dec 2024
+                </p>
+
+                <p class="card-details">
+                    Applied modularity-based clustering across diverse complex networks —
+                    neural pathways, protein-protein interactions, and infrastructure (road)
+                    systems — using NetworkX and graph theory. Optimized community partitioning
+                    to reveal underlying topological structure and visualized the resulting
+                    network properties.
+                </p>
+
+                <div class="tags">
+                    <span class="tag">Graph Theory</span>
+                    <span class="tag">Modularity Optimization</span>
+                    <span class="tag">NetworkX</span>
+                    <span class="tag">Community Detection</span>
                 </div>
 
-                <div class="card">
-                    <h3>Design and Analysis of Experiments</h3>
-                    <p class="card-subtitle">IISER Thiruvananthapuram · Under Prof. Priyanka Majumder · Dec 2025</p>
-                    <p class="card-details">Mastered core experimental design methodologies — RCBD, Latin Square, and factorial designs — to structure robust randomized clinical trials. Applied mathematical statistics to model trial outcomes while minimizing the impact of confounding variables, ensuring statistically rigorous and reproducible results.</p>
-                    <div class="tags">
-                        <span class="tag">RCBD</span>
-                        <span class="tag">Latin Square Designs</span>
-                        <span class="tag">Factorial Designs</span>
-                        <span class="tag">Clinical Trials</span>
-                    </div>
-                    <div class="card-actions">
-                        <a href="https://github.com/msgwebsite/portfolio/releases/download/projects/doe.pdf" download class="btn"><i class="fas fa-file-lines"></i> Report</a>
-                    </div>
+                <div class="card-actions">
+                    <a href="https://github.com/msgwebsite/portfolio/releases/download/internship-certificates/iisertvmwinter2024.pdf"
+                       target="_blank" class="btn">
+                        <i class="fas fa-certificate"></i> Certificate
+                    </a>
+
+                    <a href="https://github.com/msgwebsite/portfolio/releases/download/projects/communitydetection.pdf"
+                       download class="btn">
+                        <i class="fas fa-file-lines"></i> Report
+                    </a>
+
+                    <a href="https://github.com/msgwebsite/portfolio/releases/download/projects/modularity.pdf"
+                       download class="btn">
+                        <i class="fas fa-file-lines"></i> Modularity Study
+                    </a>
                 </div>
 
-                <div class="card">
-                    <h3>Hierarchical Bayesian Poisson Mixture Models</h3>
-                    <p class="card-subtitle">IISER Pune · Under Dr. Leelavati Narlikar · May 2025 – Jul 2025</p>
-                    <p class="card-details">Engineered a novel Bayesian clustering framework using Poisson Mixture Models for single-cell (scRNA-seq / scATAC-seq) data. Benchmarked clustering accuracy and computational efficiency, demonstrating competitive or superior performance against standard machine-learning pipelines and industry-standard tools like Seurat.</p>
-                    <div class="tags">
-                        <span class="tag">Hierarchical Bayesian</span>
-                        <span class="tag">Poisson Mixture Models</span>
-                        <span class="tag">Clustering</span>
-                        <span class="tag">Single-cell</span>
-                    </div>
-                    <div class="card-actions">
-                        <a href="https://github.com/msgwebsite/portfolio/releases/download/internship-certificates/iiserpunesummer2025.pdf" target="_blank" class="btn"><i class="fas fa-certificate"></i> Certificate</a>
-                        <a href="https://github.com/msgwebsite/portfolio/releases/download/projects/PMM.pdf" download class="btn"><i class="fas fa-file-lines"></i> Report</a>
-                        <a href="https://github.com/MaitreyaGanu/Poisson-Mixture-Models" target="_blank" class="btn"><i class="fab fa-github"></i> Code</a>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <h3>Reducing Food Wastage &amp; Procurement Loss — SHODH</h3>
-                    <p class="card-subtitle">IISER Thiruvananthapuram · Under Dr. Zakaria Laskar · Jan 2025 – Apr 2025</p>
-                    <p class="card-details">Built SHODH, an end-to-end data-warehousing and ETL pipeline that processes complex institutional procurement data (~1.8K transactions). Applied temporal analysis, Benford's Law validation, association rule mining (Apriori, FP-Growth), and network-modularity analysis to uncover hidden vendor interdependencies — delivering a data-driven strategy for bulk-purchasing optimization that significantly reduced operational losses.</p>
-                    <div class="tags">
-                        <span class="tag">Data Warehousing</span>
-                        <span class="tag">ETL</span>
-                        <span class="tag">FP-Growth</span>
-                        <span class="tag">Network Modularity</span>
-                    </div>
-                    <div class="card-actions">
-                        <a href="https://github.com/msgwebsite/portfolio/releases/download/projects/DWBI.pdf" download class="btn"><i class="fas fa-file-lines"></i> Report</a>
-                        <a href="https://maitreyaganu.github.io/shodh/" target="_blank" class="btn btn-primary"><i class="fas fa-arrow-up-right-from-square"></i> Try Interactive UI</a>
-                        <a href="https://github.com/MaitreyaGanu/shodh" target="_blank" class="btn"><i class="fab fa-github"></i> View Code &amp; Datasets</a>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <h3>Community Detection &amp; Network Analysis</h3>
-                    <p class="card-subtitle">IISER Thiruvananthapuram · Under Dr. Saptarshi Bej · Dec 2024</p>
-                    <p class="card-details">Applied modularity-based clustering across diverse complex networks — neural pathways, protein-protein interactions, and infrastructure (road) systems — using NetworkX and graph theory. Optimized community partitioning to reveal underlying topological structure and visualized the resulting network properties.</p>
-                    <div class="tags">
-                        <span class="tag">Graph Theory</span>
-                        <span class="tag">Modularity Optimization</span>
-                        <span class="tag">NetworkX</span>
-                        <span class="tag">Community Detection</span>
-                    </div>
-                    <div class="card-actions">
-                        <a href="https://github.com/msgwebsite/portfolio/releases/download/internship-certificates/iisertvmwinter2024.pdf" target="_blank" class="btn"><i class="fas fa-certificate"></i> Certificate</a>
-                        <a href="https://github.com/msgwebsite/portfolio/releases/download/projects/communitydetection.pdf" download class="btn"><i class="fas fa-file-lines"></i> Report</a>
-                        <a href="https://github.com/msgwebsite/portfolio/releases/download/projects/modularity.pdf" download class="btn"><i class="fas fa-file-lines"></i> Modularity Study</a>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <h3>Cryptography Internship</h3>
-                    <p class="card-subtitle">IISER Pune · Under Prof. Soumen Maity (HoD, Mathematics) · May 2024 – Jul 2024</p>
-                    <p class="card-details">Conducted an in-depth study of the algebraic foundations governing modern cryptosystems, covering symmetric algorithms (e.g., DES) and public-key infrastructure. Completed a comprehensive structured reading project analyzing various security models, theoretical vulnerabilities, and protocol robustness.</p>
-                    <div class="tags">
-                        <span class="tag">Public-Key Cryptography</span>
-                        <span class="tag">Symmetric-Key</span>
-                        <span class="tag">DES</span>
-                        <span class="tag">Algebraic Foundations</span>
-                    </div>
-                    <div class="card-actions">
-                        <a href="https://github.com/msgwebsite/portfolio/releases/download/internship-certificates/iiserpunesummer2024.pdf" target="_blank" class="btn"><i class="fas fa-certificate"></i> Certificate</a>
-                    </div>
-                </div>
             </div>
-        </section>
+
+
+            <!-- ----- Prof. Priyanka Majumder ----- -->
+            <div class="research-project">
+
+                <h4>Design and Analysis of Experiments</h4>
+
+                <p class="card-subtitle">
+                    Under Prof. Priyanka Majumder · Dec 2025
+                </p>
+
+                <p class="card-details">
+                    Mastered core experimental design methodologies — RCBD, Latin Square,
+                    and factorial designs — to structure robust randomized clinical trials.
+                    Applied mathematical statistics to model trial outcomes while minimizing
+                    the impact of confounding variables, ensuring statistically rigorous and
+                    reproducible results.
+                </p>
+
+                <div class="tags">
+                    <span class="tag">RCBD</span>
+                    <span class="tag">Latin Square Designs</span>
+                    <span class="tag">Factorial Designs</span>
+                    <span class="tag">Clinical Trials</span>
+                </div>
+
+                <div class="card-actions">
+                    <a href="https://github.com/msgwebsite/portfolio/releases/download/projects/doe.pdf"
+                       download class="btn">
+                        <i class="fas fa-file-lines"></i> Report
+                    </a>
+                </div>
+
+            </div>
+
+
+            <!-- ----- Dr. Masihuddin ----- -->
+            <div class="research-project">
+
+                <h4>Estimation of Selected Parameters for Inverse Gaussian</h4>
+
+                <p class="card-subtitle">
+                    Under
+                    <a href="https://sites.google.com/view/masihuddin" target="_blank">
+                        Dr. Masihuddin
+                    </a>
+                </p>
+
+                <p class="card-details">
+                    Ongoing major project focused on the estimation of selected parameters
+                    of the Inverse Gaussian distribution.
+                </p>
+
+                <p class="card-details">
+                    <strong>Ongoing Major Project</strong>
+                </p>
+
+            </div>
+
+
+            <!-- ----- Dr. Laltu Sardar ----- -->
+            <div class="research-project">
+
+                <h4>
+                    Cryptography-Based Secure Machine Learning Model Service
+                    with KEM-Based Secure Communication
+                </h4>
+
+                <p class="card-subtitle">
+                    Under Dr. Laltu Sardar · Course Project · Ongoing
+                </p>
+
+                <p class="card-details">
+                    Currently working on a course project involving a secure machine learning
+                    model service with KEM-based secure communication, combining concepts from
+                    cryptography, machine learning, and secure communication protocols.
+                </p>
+
+                <p class="card-details">
+                    <strong>Ongoing currently</strong>
+                </p>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- IIT GOA -->
+    <!-- ========================================================= -->
+    <div class="card research-institute-card research-iitgoa">
+
+        <div class="research-institute-logo">
+            <img src="iitgoa.png" alt="IIT Goa logo">
+        </div>
+
+        <div class="research-institute-content">
+
+            <h3>IIT Goa</h3>
+
+            <div class="research-project">
+
+                <h4>Unsupervised Feature Selection for scRNA-seq Data</h4>
+
+                <p class="card-subtitle">
+                    Under Dr. Clint P. George · May 2026 – Jul 2026
+                </p>
+
+                <p class="card-details">
+                    Proposed two novel unsupervised feature selection methods — PLit
+                    (Poisson Length Information Test) and ReThiN (Reproducibility via Thinning) —
+                    for single-cell RNA-seq data, grounded in information-theoretic and
+                    stability-driven principles and benchmarked against state-of-the-art
+                    methods across seven public scRNA-seq datasets.
+                </p>
+
+                <div class="tags">
+                    <span class="tag">Bayesian Inference</span>
+                    <span class="tag">Poisson Factor Analysis</span>
+                    <span class="tag">Information Theory</span>
+                    <span class="tag">Feature Selection</span>
+                </div>
+
+                <div class="card-actions">
+
+                    <a href="https://github.com/msgwebsite/portfolio/releases/download/internship-certificates/iitgoasummer2026.pdf"
+                       target="_blank" class="btn">
+                        <i class="fas fa-certificate"></i> Certificate
+                    </a>
+
+                    <a href="https://github.com/msgwebsite/portfolio/releases/download/projects/PLit_ReThiN.pdf"
+                       download class="btn">
+                        <i class="fas fa-file-lines"></i> Report
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- IISER PUNE -->
+    <!-- ========================================================= -->
+    <div class="card research-institute-card research-iiserpune">
+
+        <div class="research-institute-logo">
+            <img src="iiserpune.png" alt="IISER Pune logo">
+        </div>
+
+        <div class="research-institute-content">
+
+            <h3>IISER Pune</h3>
+
+            <!-- ----- Dr. Leelavati Narlikar ----- -->
+            <div class="research-project">
+
+                <h4>Hierarchical Bayesian Poisson Mixture Models</h4>
+
+                <p class="card-subtitle">
+                    Under Dr. Leelavati Narlikar · May 2025 – Jul 2025
+                </p>
+
+                <p class="card-details">
+                    Engineered a novel Bayesian clustering framework using Poisson Mixture
+                    Models for single-cell (scRNA-seq / scATAC-seq) data. Benchmarked clustering
+                    accuracy and computational efficiency, demonstrating competitive or superior
+                    performance against standard machine-learning pipelines and industry-standard
+                    tools like Seurat.
+                </p>
+
+                <div class="tags">
+                    <span class="tag">Hierarchical Bayesian</span>
+                    <span class="tag">Poisson Mixture Models</span>
+                    <span class="tag">Clustering</span>
+                    <span class="tag">Single-cell</span>
+                </div>
+
+                <div class="card-actions">
+
+                    <a href="https://github.com/msgwebsite/portfolio/releases/download/internship-certificates/iiserpunesummer2025.pdf"
+                       target="_blank" class="btn">
+                        <i class="fas fa-certificate"></i> Certificate
+                    </a>
+
+                    <a href="https://github.com/msgwebsite/portfolio/releases/download/projects/PMM.pdf"
+                       download class="btn">
+                        <i class="fas fa-file-lines"></i> Report
+                    </a>
+
+                    <a href="https://github.com/MaitreyaGanu/Poisson-Mixture-Models"
+                       target="_blank" class="btn">
+                        <i class="fab fa-github"></i> Code
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- ----- Prof. Soumen Maity ----- -->
+            <div class="research-project">
+
+                <h4>Cryptography Internship</h4>
+
+                <p class="card-subtitle">
+                    Under Prof. Soumen Maity (HoD, Mathematics) · May 2024 – Jul 2024
+                </p>
+
+                <p class="card-details">
+                    Conducted an in-depth study of the algebraic foundations governing modern
+                    cryptosystems, covering symmetric algorithms (e.g., DES) and public-key
+                    infrastructure. Completed a comprehensive structured reading project
+                    analyzing various security models, theoretical vulnerabilities, and
+                    protocol robustness.
+                </p>
+
+                <div class="tags">
+                    <span class="tag">Public-Key Cryptography</span>
+                    <span class="tag">Symmetric-Key</span>
+                    <span class="tag">DES</span>
+                    <span class="tag">Algebraic Foundations</span>
+                </div>
+
+                <div class="card-actions">
+
+                    <a href="https://github.com/msgwebsite/portfolio/releases/download/internship-certificates/iiserpunesummer2024.pdf"
+                       target="_blank" class="btn">
+                        <i class="fas fa-certificate"></i> Certificate
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</section>
 
         <!-- ---------- TECHNICAL WRITE-UPS (untouched) ---------- -->
         <section id="technical-writeups">
