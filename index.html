@@ -815,7 +815,7 @@
     <style>
         .research-institute-card {
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             align-items: stretch;
             padding: 0;
             overflow: hidden;
@@ -823,14 +823,13 @@
         }
 
         .research-institute-logo {
-            width: 25%;
-            flex-shrink: 0;
+            width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 2rem;
+            padding: 2rem 2rem 1.2rem;
             background-color: #fafaf8;
-            border-right: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
         }
 
         .research-institute-logo img {
@@ -839,40 +838,40 @@
             object-fit: contain;
         }
 
-        /* IISER TVM has the most projects */
+        /* IISER TVM — most projects, slightly smaller logo */
         .research-iisertvm .research-institute-logo img {
-            max-width: 150px;
-            max-height: 150px;
+            max-width: 140px;
+            max-height: 140px;
         }
 
-        /* IIT Goa has one large project */
+        /* IIT Goa */
         .research-iitgoa .research-institute-logo img {
             max-width: 180px;
             max-height: 180px;
         }
 
-        /* IISER Pune has two projects */
+        /* IISER Pune */
         .research-iiserpune .research-institute-logo img {
-            max-width: 170px;
-            max-height: 170px;
+            max-width: 175px;
+            max-height: 175px;
         }
 
         .research-institute-content {
-            flex: 1;
-            min-width: 0;
+            width: 100%;
             padding: 1.7rem 1.8rem;
         }
 
         .research-institute-content > h3 {
-            font-size: 1.55rem;
+            text-align: center;
+            font-size: 1.6rem;
             font-weight: 600;
-            margin-bottom: 1.3rem;
+            margin-bottom: 1.5rem;
             color: var(--text);
         }
 
         .research-project {
-            padding-bottom: 1.6rem;
-            margin-bottom: 1.6rem;
+            padding-bottom: 1.7rem;
+            margin-bottom: 1.7rem;
             border-bottom: 1px solid var(--border);
         }
 
@@ -883,7 +882,7 @@
         }
 
         .research-project h4 {
-            font-size: 1.2rem;
+            font-size: 1.22rem;
             font-weight: 600;
             color: var(--text);
             margin-bottom: 0.35rem;
@@ -899,34 +898,28 @@
         }
 
         @media (max-width: 768px) {
-            .research-institute-card {
-                flex-direction: column;
-            }
 
             .research-institute-logo {
-                width: 100%;
-                min-height: 180px;
-                border-right: none;
-                border-bottom: 1px solid var(--border);
+                padding: 1.5rem 1.5rem 1rem;
             }
 
             .research-iisertvm .research-institute-logo img {
-                max-width: 130px;
-                max-height: 130px;
+                max-width: 120px;
+                max-height: 120px;
             }
 
             .research-iitgoa .research-institute-logo img {
-                max-width: 150px;
-                max-height: 150px;
-            }
-
-            .research-iiserpune .research-institute-logo img {
                 max-width: 145px;
                 max-height: 145px;
             }
 
+            .research-iiserpune .research-institute-logo img {
+                max-width: 140px;
+                max-height: 140px;
+            }
+
             .research-institute-content {
-                padding: 1.5rem;
+                padding: 1.4rem 1.5rem;
             }
 
             .research-institute-content > h3 {
@@ -934,6 +927,7 @@
             }
         }
     </style>
+
 
     <h2>Research &amp; Projects</h2>
 
@@ -956,6 +950,7 @@
         <div class="research-institute-content">
 
             <h3>IISER Thiruvananthapuram</h3>
+
 
             <!-- ----- Dr. Saptarshi Bej ----- -->
             <div class="research-project">
@@ -1045,15 +1040,12 @@
                     <a href="https://sites.google.com/view/masihuddin" target="_blank">
                         Dr. Masihuddin
                     </a>
+                    · Ongoing Major Project
                 </p>
 
                 <p class="card-details">
                     Ongoing major project focused on the estimation of selected parameters
                     of the Inverse Gaussian distribution.
-                </p>
-
-                <p class="card-details">
-                    <strong>Ongoing Major Project</strong>
                 </p>
 
             </div>
@@ -1075,10 +1067,6 @@
                     Currently working on a course project involving a secure machine learning
                     model service with KEM-based secure communication, combining concepts from
                     cryptography, machine learning, and secure communication protocols.
-                </p>
-
-                <p class="card-details">
-                    <strong>Ongoing currently</strong>
                 </p>
 
             </div>
@@ -1155,6 +1143,7 @@
         <div class="research-institute-content">
 
             <h3>IISER Pune</h3>
+
 
             <!-- ----- Dr. Leelavati Narlikar ----- -->
             <div class="research-project">
@@ -1241,7 +1230,6 @@
     </div>
 
 </section>
-
         <!-- ---------- TECHNICAL WRITE-UPS (untouched) ---------- -->
         <section id="technical-writeups">
             <h2>Technical Write-ups</h2>
