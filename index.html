@@ -533,7 +533,7 @@
     </div>
 
     <!-- ---------- CURRENTLY WORKING ON ---------- -->
-    <div style="margin-top: 1.5rem;">
+    <div style="margin-top: 0.5rem;">
         <h2 style="text-align: center; margin-bottom: 1.8rem;">
             Currently working on :
         </h2>
@@ -586,27 +586,204 @@
     </div>
 </section>
 
-        <!-- ---------- EDUCATION ---------- -->
-        <section id="education">
-            <h2>Education</h2>
-            <div class="grid-2">
-                <div class="card">
-                    <h3>BS-MS (Dual Degree), Data Science Major</h3>
-                    <p class="card-subtitle">IISER Thiruvananthapuram (Aug 2023 – Present)</p>
-                    <p class="card-details">Currently pursuing an integrated Master's program focusing on Data Science, building a strong foundation in statistical modeling, machine learning algorithms, and computational techniques.</p>
-                </div>
-                <div class="card">
-                    <h3>High School Graduate (Science Stream)</h3>
-                    <p class="card-subtitle">Sir Parshurambhau College, Pune (2021 – May 2023)</p>
-                    <p class="card-details">Completed higher secondary education with a focus on Physics, Chemistry, Mathematics, and Electronics. Secured 2nd rank in college.</p>
-                </div>
-                <div class="card">
-                    <h3>Matriculation (SSC)</h3>
-                    <p class="card-subtitle">Sevasadan English Medium School, Pune (2008 – March 2021)</p>
-                    <p class="card-details">Completed secondary education, laying the groundwork for analytical and scientific pursuits.</p>
-                </div>
-            </div>
-        </section>
+     <!-- ---------- EDUCATION ---------- -->
+<section id="education">
+
+    <style>
+        .education-card {
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .education-logo {
+            width: 35%;
+            min-height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            border-right: 1px solid var(--border);
+            background-color: #fafaf8;
+        }
+
+        .education-logo img {
+            max-width: 160px;
+            max-height: 160px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .education-content {
+            width: 65%;
+            padding: 1.6rem 1.7rem;
+        }
+
+        .education-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            font-size: 0.98rem;
+        }
+
+        .education-table th,
+        .education-table td {
+            padding: 0.45rem 0.7rem;
+            border-bottom: 1px solid var(--border);
+            text-align: left;
+        }
+
+        .education-table th {
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .education-table td {
+            color: var(--text-soft);
+        }
+
+        .education-cgpa {
+            margin-top: 1rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        @media (max-width: 768px) {
+            .education-card {
+                flex-direction: column;
+            }
+
+            .education-logo {
+                width: 100%;
+                min-height: 180px;
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .education-logo img {
+                max-width: 130px;
+                max-height: 130px;
+            }
+
+            .education-content {
+                width: 100%;
+                padding: 1.4rem 1.5rem;
+            }
+        }
+    </style>
+
+    <h2>Education</h2>
+
+    <!-- ---------- CLASS 10 ---------- -->
+    <div class="card education-card" style="margin-bottom: 1.6rem;">
+        <div class="education-logo">
+            <img src="sems.png" alt="Sevasadan English Medium School logo">
+        </div>
+
+        <div class="education-content">
+            <h3>Matriculation (SSC)</h3>
+
+            <p class="card-subtitle">
+                Sevasadan English Medium School, Pune
+                <br>
+                 June 2008 – March 2021
+            </p>
+
+            <p class="card-details">
+                Secured 95% in Class X CBSE Board Exams.
+            </p>
+        </div>
+    </div>
+
+    <!-- ---------- CLASS 12 ---------- -->
+    <div class="card education-card" style="margin-bottom: 1.6rem;">
+        <div class="education-logo">
+            <img src="sp.png" alt="Sir Parshurambhau College logo">
+        </div>
+
+        <div class="education-content">
+            <h3>Higher Secondary Education (Science Stream)</h3>
+
+            <p class="card-subtitle">
+                Sir Parshurambhau College, Pune
+                <br>
+                Aug 2021 – May 2023
+            </p>
+
+            <p class="card-details">
+                Secured 92.5% in MSBSHSE Board Science-Stream Exams and completed higher secondary education with a focus on Physics, Chemistry, Mathematics,
+                and Biology, PE, German, Environmental Sciences and English literature. Secured 5th overall rank in college, 2nd rank in science stream.
+                Got awarded with SP College Merit Scholarship; along with INSPIRE-SHE Scholarship from Government of India.
+            </p>
+        </div>
+    </div>
+
+    <!-- ---------- IISER TVM ---------- -->
+    <div class="card education-card">
+        <div class="education-logo">
+            <img src="iisertvm.png" alt="IISER Thiruvananthapuram logo">
+        </div>
+
+        <div class="education-content">
+            <h3>BS-MS (Dual Degree), Data Science Major</h3>
+
+            <p class="card-subtitle">
+                IISER Thiruvananthapuram
+                <br>
+                Aug 2023 – Present
+            </p>
+
+            <p class="card-details">
+                Currently pursuing an BSMS program in Data Science, building a strong
+                foundation in statistical modeling, machine learning algorithms, mathematics,
+                and computational techniques.
+            </p>
+
+            <table class="education-table">
+                <thead>
+                    <tr>
+                        <th>Semester</th>
+                        <th>SGPA</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Semester 1</td>
+                        <td>8.81</td>
+                    </tr>
+                    <tr>
+                        <td>Semester 2</td>
+                        <td>9.00</td>
+                    </tr>
+                    <tr>
+                        <td>Semester 3</td>
+                        <td>8.87</td>
+                    </tr>
+                    <tr>
+                        <td>Semester 4</td>
+                        <td>9.57</td>
+                    </tr>
+                    <tr>
+                        <td>Semester 5</td>
+                        <td>9.32</td>
+                    </tr>
+                    <tr>
+                        <td>Semester 6</td>
+                        <td>9.71</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p class="education-cgpa">
+                CGPA till date: 9.21
+            </p>
+        </div>
+    </div>
+
+</section>
 
         <!-- ---------- EXPERIENCE ---------- -->
         <section id="experience">
