@@ -135,6 +135,93 @@
             opacity: 0.7;
         }
 
+        /* ---------- Website Search ---------- */
+
+.header-search {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.header-search-button {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: 0;
+    transition: opacity 0.2s ease;
+    font-family: inherit;
+}
+
+.header-search-button:hover {
+    opacity: 0.7;
+}
+
+.search-box {
+    position: absolute;
+    top: 2.2rem;
+    right: 0;
+    width: 280px;
+    background-color: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    padding: 0.65rem;
+    display: none;
+    z-index: 200;
+}
+
+.search-box.active {
+    display: block;
+}
+
+.search-input {
+    width: 100%;
+    padding: 0.55rem 0.7rem;
+    border: 1px solid var(--border-strong);
+    border-radius: 5px;
+    outline: none;
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: var(--text);
+    background-color: #ffffff;
+}
+
+.search-input:focus {
+    border-color: var(--accent);
+}
+
+.search-results {
+    margin-top: 0.5rem;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.search-result {
+    padding: 0.55rem 0.6rem;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    color: var(--text-soft);
+}
+
+.search-result:hover {
+    background-color: #eef3fa;
+}
+
+.search-no-results {
+    padding: 0.55rem 0.6rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+@media (max-width: 1024px) {
+    .header-search {
+        display: none;
+    }
+}
+
         .hamburger {
             display: none;
             flex-direction: column;
@@ -562,6 +649,28 @@
                 <a href="https://www.linkedin.com/in/maitreya-ganu-673995286" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                 <a href="https://github.com/MaitreyaGanu" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
                 <a href="https://mail.google.com/mail/?view=cm&fs=1&to=maitreyaganu@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+                <div class="header-search">
+
+    <button class="header-search-button"
+            id="search-button"
+            title="Search website"
+            aria-label="Search website">
+        <i class="fas fa-magnifying-glass"></i>
+    </button>
+
+    <div class="search-box" id="search-box">
+        <input
+            type="text"
+            id="search-input"
+            class="search-input"
+            placeholder="Search my website..."
+            autocomplete="off"
+        >
+
+        <div class="search-results" id="search-results"></div>
+    </div>
+
+</div>
             </div>
             <div class="hamburger" id="hamburger">
                 <span></span>
@@ -1529,6 +1638,127 @@ Served as spokesperson and a member of the club's decision-making committee. Org
         }
 
         document.querySelector('#desktop-nav a[data-section="home"]').classList.add('active');
+        /* ---------- WEBSITE SEARCH ---------- */
+
+const searchButton = document.getElementById('search-button');
+const searchBox = document.getElementById('search-box');
+const searchInput = document.getElementById('search-input');
+const searchResults = document.getElementById('search-results');
+
+searchButton.addEventListener('click', (e) => {
+    e.stopPropagation();
+
+    searchBox.classList.toggle('active');
+
+    if (searchBox.classList.contains('active')) {
+        searchInput.focus();
+    } else {
+        searchInput.value = '';
+        searchResults.innerHTML = '';
+    }
+});
+
+
+searchInput.addEventListener('input', () => {
+
+    const query = searchInput.value.trim().toLowerCase();
+
+    searchResults.innerHTML = '';
+
+    if (!query) {
+        return;
+    }
+
+    const sections = document.querySelectorAll('main section');
+
+    let matches = [];
+
+    sections.forEach(section => {
+
+        const text = section.innerText.toLowerCase();
+
+        if (text.includes(query)) {
+
+            let title = section.querySelector('h2');
+
+            matches.push({
+                id: section.id,
+                title: title ? title.innerText : section.id
+            });
+        }
+    });
+
+
+    if (matches.length === 0) {
+
+        searchResults.innerHTML = `
+            <div class="search-no-results">
+                No results found.
+            </div>
+        `;
+
+        return;
+    }
+
+
+    matches.forEach(match => {
+
+        const result = document.createElement('div');
+
+        result.className = 'search-result';
+        result.textContent = match.title;
+
+        result.addEventListener('click', () => {
+
+            showSection(match.id);
+
+            desktopLinks.forEach(link => {
+                link.classList.remove('active');
+
+                if (link.getAttribute('data-section') === match.id) {
+                    link.classList.add('active');
+                }
+            });
+
+            searchBox.classList.remove('active');
+            searchInput.value = '';
+            searchResults.innerHTML = '';
+
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        searchResults.appendChild(result);
+    });
+
+});
+
+
+/* Close search when clicking elsewhere */
+
+document.addEventListener('click', (e) => {
+
+    if (!searchBox.contains(e.target) &&
+        !searchButton.contains(e.target)) {
+
+        searchBox.classList.remove('active');
+    }
+});
+
+
+/* Press Escape to close */
+
+document.addEventListener('keydown', (e) => {
+
+    if (e.key === 'Escape') {
+        searchBox.classList.remove('active');
+        searchInput.value = '';
+        searchResults.innerHTML = '';
+    }
+
+});
     </script>
 </body>
 </html>
