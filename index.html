@@ -1637,13 +1637,18 @@ Served as spokesperson and a member of the club's decision-making committee. Org
             }
         }
 
-        document.querySelector('#desktop-nav a[data-section="home"]').classList.add('active');
         /* ---------- WEBSITE SEARCH ---------- */
 
 const searchButton = document.getElementById('search-button');
 const searchBox = document.getElementById('search-box');
 const searchInput = document.getElementById('search-input');
 const searchResults = document.getElementById('search-results');
+
+let currentMatches = [];
+let selectedMatchIndex = 0;
+
+
+/* Open / close search */
 
 searchButton.addEventListener('click', (e) => {
     e.stopPropagation();
@@ -1655,15 +1660,76 @@ searchButton.addEventListener('click', (e) => {
     } else {
         searchInput.value = '';
         searchResults.innerHTML = '';
+        currentMatches = [];
     }
 });
 
+
+/* Find the best element containing the searched text */
+
+function findExactLocation(query) {
+
+    const sections = document.querySelectorAll('main section');
+
+    for (const section of sections) {
+
+        const walker = document.createTreeWalker(
+            section,
+            NodeFilter.SHOW_TEXT,
+            {
+                acceptNode: function(node) {
+
+                    const text = node.textContent.toLowerCase();
+
+                    if (text.includes(query)) {
+                        return NodeFilter.FILTER_ACCEPT;
+                    }
+
+                    return NodeFilter.FILTER_REJECT;
+                }
+            }
+        );
+
+        const textNode = walker.nextNode();
+
+        if (textNode) {
+
+            /*
+             * Prefer the actual research/education/experience card
+             * rather than scrolling only to the section.
+             */
+
+            let element = textNode.parentElement;
+
+            const preferredParent =
+                element.closest(
+                    '.research-project, .education-card, .experience-card, .card'
+                );
+
+            if (preferredParent) {
+                element = preferredParent;
+            }
+
+            return {
+                section: section,
+                element: element
+            };
+        }
+    }
+
+    return null;
+}
+
+
+/* Show search results */
 
 searchInput.addEventListener('input', () => {
 
     const query = searchInput.value.trim().toLowerCase();
 
     searchResults.innerHTML = '';
+    currentMatches = [];
+    selectedMatchIndex = 0;
 
     if (!query) {
         return;
@@ -1671,25 +1737,54 @@ searchInput.addEventListener('input', () => {
 
     const sections = document.querySelectorAll('main section');
 
-    let matches = [];
-
     sections.forEach(section => {
 
-        const text = section.innerText.toLowerCase();
+        const elements = section.querySelectorAll(
+            'h2, h3, h4, p, td, th, span, strong, a'
+        );
 
-        if (text.includes(query)) {
+        elements.forEach(element => {
 
-            let title = section.querySelector('h2');
+            const text = element.innerText.trim();
 
-            matches.push({
-                id: section.id,
-                title: title ? title.innerText : section.id
-            });
-        }
+            if (
+                text &&
+                text.toLowerCase().includes(query)
+            ) {
+
+                /*
+                 * Find the larger meaningful container
+                 * surrounding the matching text.
+                 */
+
+                let target =
+                    element.closest(
+                        '.research-project, .education-card, .experience-card, .card'
+                    );
+
+                if (!target) {
+                    target = element;
+                }
+
+                /*
+                 * Avoid displaying the same card multiple times.
+                 */
+
+                if (!currentMatches.some(match => match.target === target)) {
+
+                    currentMatches.push({
+                        section: section,
+                        target: target,
+                        title: getSearchTitle(target, section)
+                    });
+
+                }
+            }
+        });
     });
 
 
-    if (matches.length === 0) {
+    if (currentMatches.length === 0) {
 
         searchResults.innerHTML = `
             <div class="search-no-results">
@@ -1701,7 +1796,7 @@ searchInput.addEventListener('input', () => {
     }
 
 
-    matches.forEach(match => {
+    currentMatches.forEach((match, index) => {
 
         const result = document.createElement('div');
 
@@ -1709,25 +1804,7 @@ searchInput.addEventListener('input', () => {
         result.textContent = match.title;
 
         result.addEventListener('click', () => {
-
-            showSection(match.id);
-
-            desktopLinks.forEach(link => {
-                link.classList.remove('active');
-
-                if (link.getAttribute('data-section') === match.id) {
-                    link.classList.add('active');
-                }
-            });
-
-            searchBox.classList.remove('active');
-            searchInput.value = '';
-            searchResults.innerHTML = '';
-
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+            goToSearchResult(index);
         });
 
         searchResults.appendChild(result);
@@ -1736,29 +1813,211 @@ searchInput.addEventListener('input', () => {
 });
 
 
+/* Get a useful title for the result */
+
+function getSearchTitle(target, section) {
+
+    const heading =
+        target.querySelector('h3, h4, h2');
+
+    if (heading) {
+        return heading.innerText.trim();
+    }
+
+    const sectionHeading =
+        section.querySelector('h2');
+
+    if (sectionHeading) {
+        return sectionHeading.innerText.trim();
+    }
+
+    return section.id;
+}
+
+
+/* Go directly to the selected result */
+
+function goToSearchResult(index) {
+
+    const match = currentMatches[index];
+
+    if (!match) {
+        return;
+    }
+
+    /*
+     * First activate the correct section.
+     */
+
+    showSection(match.section.id);
+
+    /*
+     * Update navigation.
+     */
+
+    desktopLinks.forEach(link => {
+
+        link.classList.remove('active');
+
+        if (
+            link.getAttribute('data-section') ===
+            match.section.id
+        ) {
+            link.classList.add('active');
+        }
+    });
+
+
+    /*
+     * Wait for the section to become visible,
+     * then scroll directly to the matching card.
+     */
+
+    setTimeout(() => {
+
+        match.target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
+        });
+
+
+        /*
+         * Briefly highlight the matching card.
+         */
+
+        match.target.style.transition =
+            'box-shadow 0.25s ease';
+
+        match.target.style.boxShadow =
+            '0 0 0 3px rgba(87, 185, 255, 0.45)';
+
+
+        setTimeout(() => {
+            match.target.style.boxShadow = '';
+        }, 1800);
+
+    }, 100);
+
+
+    /*
+     * Close search.
+     */
+
+    searchBox.classList.remove('active');
+    searchInput.value = '';
+    searchResults.innerHTML = '';
+    currentMatches = [];
+}
+
+
+/* ---------- PRESS ENTER TO GO DIRECTLY ---------- */
+
+searchInput.addEventListener('keydown', (e) => {
+
+    if (e.key === 'Enter') {
+
+        e.preventDefault();
+
+        const query =
+            searchInput.value.trim().toLowerCase();
+
+        if (!query) {
+            return;
+        }
+
+        /*
+         * If results exist, open the first matching result.
+         */
+
+        if (currentMatches.length > 0) {
+
+            goToSearchResult(0);
+
+            return;
+        }
+
+        /*
+         * Fallback: directly search the page.
+         */
+
+        const location = findExactLocation(query);
+
+        if (location) {
+
+            showSection(location.section.id);
+
+            desktopLinks.forEach(link => {
+
+                link.classList.remove('active');
+
+                if (
+                    link.getAttribute('data-section') ===
+                    location.section.id
+                ) {
+                    link.classList.add('active');
+                }
+            });
+
+
+            setTimeout(() => {
+
+                location.element.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+
+
+                location.element.style.transition =
+                    'box-shadow 0.25s ease';
+
+                location.element.style.boxShadow =
+                    '0 0 0 3px rgba(87, 185, 255, 0.45)';
+
+                setTimeout(() => {
+                    location.element.style.boxShadow = '';
+                }, 1800);
+
+            }, 100);
+
+            searchBox.classList.remove('active');
+
+        }
+    }
+
+});
+
+
 /* Close search when clicking elsewhere */
 
 document.addEventListener('click', (e) => {
 
-    if (!searchBox.contains(e.target) &&
-        !searchButton.contains(e.target)) {
-
+    if (
+        !searchBox.contains(e.target) &&
+        !searchButton.contains(e.target)
+    ) {
         searchBox.classList.remove('active');
     }
+
 });
 
 
-/* Press Escape to close */
+/* Escape closes search */
 
 document.addEventListener('keydown', (e) => {
 
     if (e.key === 'Escape') {
+
         searchBox.classList.remove('active');
         searchInput.value = '';
         searchResults.innerHTML = '';
+        currentMatches = [];
+
     }
 
 });
+
+        document.querySelector('#desktop-nav a[data-section="home"]').classList.add('active');
+        
     </script>
 </body>
 </html>
