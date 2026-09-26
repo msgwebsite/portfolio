@@ -398,6 +398,20 @@
             line-height: 1.35;
         }
 
+        #contact h3 i {
+    margin-right: 0.45rem;
+    color: var(--accent);
+}
+
+#contact .card-details i {
+    margin-right: 0.3rem;
+    color: var(--accent);
+}
+
+#contact .contact-cta {
+    color: var(--text-soft);
+}
+
         .card-subtitle {
             font-size: 0.92rem;
             color: var(--text-muted);
@@ -749,7 +763,7 @@
     <!-- ---------- CURRENTLY WORKING ON ---------- -->
     <div style="margin-top: 0.01rem;">
         <h2 style="text-align: center; margin-bottom: 1.8rem;">
-            Currently working on :
+            <u>Currently working on</u> :
         </h2>
 
         <div class="grid-2">
@@ -1136,20 +1150,20 @@ Served as spokesperson and a member of the club's decision-making committee. Org
 
         /* IISER TVM — most projects, slightly smaller logo */
         .research-iisertvm .research-institute-logo img {
-            max-width: 140px;
-            max-height: 140px;
+            max-width: 240px;
+            max-height: 240px;
         }
 
         /* IIT Goa */
         .research-iitgoa .research-institute-logo img {
-            max-width: 180px;
-            max-height: 180px;
+            max-width: 240px;
+            max-height: 240px;
         }
 
         /* IISER Pune */
         .research-iiserpune .research-institute-logo img {
-            max-width: 175px;
-            max-height: 175px;
+            max-width: 240px;
+            max-height: 240px;
         }
 
         .research-institute-content {
@@ -1200,18 +1214,18 @@ Served as spokesperson and a member of the club's decision-making committee. Org
             }
 
             .research-iisertvm .research-institute-logo img {
-                max-width: 120px;
-                max-height: 120px;
+                max-width: 240px;
+                max-height: 240px;
             }
 
             .research-iitgoa .research-institute-logo img {
-                max-width: 145px;
-                max-height: 145px;
+                max-width: 240px;
+                max-height: 240px;
             }
 
             .research-iiserpune .research-institute-logo img {
-                max-width: 140px;
-                max-height: 140px;
+                max-width: 240px;
+                max-height: 240px;
             }
 
             .research-institute-content {
@@ -1522,86 +1536,317 @@ Served as spokesperson and a member of the club's decision-making committee. Org
     </div>
 
 </section>
-        <!-- ---------- TECHNICAL WRITE-UPS (untouched) ---------- -->
-        <section id="technical-writeups">
-            <h2>Technical Write-ups</h2>
-            <p>
-                Technical write-ups on topics that I believe I understand well enough to explain clearly
-                from first principles. Feel free to download them and do check them out. Make sure to reach out for any questions/suggestions/corrections! Feedbacks are always appreciated :)
+<!-- ---------- TECHNICAL WRITE-UPS ---------- -->
+<section id="technical-writeups">
+
+    <h2>Technical Write-ups</h2>
+
+    <p>
+        A collection of technical write-ups on topics that I have explored in depth and
+        enjoyed understanding from first principles. These notes are written with an
+        emphasis on clarity, intuition, and mathematical reasoning. I have tried to
+        explain each topic in a way that bridges formal concepts with an accessible
+        understanding.
+    </p>
+
+    <div class="grid-2">
+
+        <!-- ---------- 6'S PROPERTY ---------- -->
+        <div class="card">
+
+            <h3>An Interesting Property of 6</h3>
+
+            <p class="card-subtitle">
+                Mathematics · Number Theory
             </p>
-            <div class="grid-2">
 
-                <div class="card">
-                    <h3>An Interesting Property of 6</h3>
-                    <p class="card-subtitle">PDF</p>
-                    <p class="card-details">
-                        Me and my friend, Hrishikesh Patwardhan proved that 6 is the only number which follows the following property (Which we like to call 6's Property): Sum of factors of a number (excluding the number itself) is equal to the product of factors of the number (excluding the number itself).
-                    </p>
-                    <div class="card-actions">
-                        <a href="https://github.com/msgwebsite/portfolio/releases/download/Write-ups/6s-property.pdf" class="btn"><i class="fas fa-download"></i> Download PDF</a>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <h3>Operating Systems</h3>
-                    <p class="card-subtitle">PDF</p>
-                    <p class="card-details">
-                        Conceptual explanations of operating system fundamentals, focusing on internal
-                        mechanisms and system-level reasoning.
-                    </p>
-                    <div class="card-actions">
-                        <a href="https://github.com/msgwebsite/portfolio/releases/download/Write-ups/OS.pdf" class="btn"><i class="fas fa-download"></i> Download PDF</a>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <h3>Computer Architecture and Datapath</h3>
-                    <p class="card-subtitle">PDF</p>
-                    <p class="card-details">
-                        A structured explanation of computer architecture and datapath concepts, bridging the gap
-                        between hardware design and instruction-level execution.
-                    </p>
-                    <div class="card-actions">
-                        <a href="https://github.com/msgwebsite/portfolio/releases/download/Write-ups/datapath.pdf" class="btn"><i class="fas fa-download"></i> Download PDF</a>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <h3>P vs NP</h3>
-                    <p class="card-subtitle">PDF</p>
-                    <p class="card-details">
-                        Below is a detailed overview of the P vs NP problem, explained in simple terms, highlighting its deep connections to other areas of mathematics and its profound real-world implications if P = NP.
-                    </p>
-                    <div class="card-actions">
-                        <a href="https://github.com/msgwebsite/portfolio/releases/download/Write-ups/pvsnp.pdf" class="btn"><i class="fas fa-download"></i> Download PDF</a>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- ---------- CONTACT (untouched) ---------- -->
-        <section id="contact">
-            <h2>Let's Connect!</h2>
-            <p>I'd love to hear from you! Feel free to reach out through any of these channels:</p>
-            <div class="grid-2">
-                <div class="card">
-                    <h3>Email</h3>
-                    <p class="card-details"><a href="https://mail.google.com/mail/?view=cm&fs=1&to=maitreyaganu@gmail.com">maitreyaganu@gmail.com</a></p>
-                    <p class="card-details"><a href="https://mail.google.com/mail/?view=cm&fs=1&to=mganu2005@gmail.com">mganu2005@gmail.com</a></p>
-                </div>
-                <div class="card">
-                    <h3>Social Links</h3>
-                    <p class="card-details">
-                        <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/maitreya-ganu-673995286" target="_blank">Maitreya Ganu</a><br>
-                        <strong>GitHub:</strong> <a href="https://github.com/MaitreyaGanu" target="_blank">MaitreyaGanu</a>
-                    </p>
-                </div>
-            </div>
-            <p class="contact-cta">
-                <a href="https://github.com/msgwebsite/portfolio/releases/download/documents-v1/maitreyaCV.pdf" download class="btn btn-primary"><i class="fas fa-download"></i> Download CV</a>
+            <p class="card-details">
+                A mathematical investigation carried out with my friend, Hrishikesh
+                Patwardhan, into a remarkable property of the number 6. We prove that
+                6 is the unique number for which the sum of its proper factors is equal
+                to their product.
             </p>
-        </section>
+
+            <div class="tags">
+                <span class="tag">Number Theory</span>
+                <span class="tag">Proof</span>
+                <span class="tag">Mathematics</span>
+            </div>
+
+            <div class="card-actions">
+                <a href="https://github.com/msgwebsite/portfolio/releases/download/Write-ups/6s-property.pdf"
+                   target="_blank"
+                   class="btn">
+                    <i class="fas fa-file-pdf"></i>
+                    Read PDF
+                </a>
+
+                <a href="https://github.com/msgwebsite/portfolio/releases/download/Write-ups/6s-property.pdf"
+                   download
+                   class="btn">
+                    <i class="fas fa-download"></i>
+                    Download
+                </a>
+            </div>
+
+        </div>
+
+
+        <!-- ---------- OPERATING SYSTEMS ---------- -->
+        <div class="card">
+
+            <h3>Operating Systems</h3>
+
+            <p class="card-subtitle">
+                Computer Science · Systems
+            </p>
+
+            <p class="card-details">
+                A first-principles exploration of operating system fundamentals,
+                focusing on the internal mechanisms that enable processes, memory,
+                files, and other system-level components to work together.
+            </p>
+
+            <div class="tags">
+                <span class="tag">Operating Systems</span>
+                <span class="tag">Systems</span>
+                <span class="tag">Computer Science</span>
+            </div>
+
+            <div class="card-actions">
+                <a href="https://github.com/msgwebsite/portfolio/releases/download/Write-ups/OS.pdf"
+                   target="_blank"
+                   class="btn">
+                    <i class="fas fa-file-pdf"></i>
+                    Read PDF
+                </a>
+
+                <a href="https://github.com/msgwebsite/portfolio/releases/download/Write-ups/OS.pdf"
+                   download
+                   class="btn">
+                    <i class="fas fa-download"></i>
+                    Download
+                </a>
+            </div>
+
+        </div>
+
+
+        <!-- ---------- COMPUTER ARCHITECTURE ---------- -->
+        <div class="card">
+
+            <h3>Computer Architecture and Datapath</h3>
+
+            <p class="card-subtitle">
+                Computer Science · Computer Architecture
+            </p>
+
+            <p class="card-details">
+                A structured introduction to computer architecture and datapath
+                concepts, explaining how hardware components interact to execute
+                instructions and how high-level operations are translated into
+                low-level computation.
+            </p>
+
+            <div class="tags">
+                <span class="tag">Computer Architecture</span>
+                <span class="tag">Datapath</span>
+                <span class="tag">Computer Systems</span>
+            </div>
+
+            <div class="card-actions">
+                <a href="https://github.com/msgwebsite/portfolio/releases/download/Write-ups/datapath.pdf"
+                   target="_blank"
+                   class="btn">
+                    <i class="fas fa-file-pdf"></i>
+                    Read PDF
+                </a>
+
+                <a href="https://github.com/msgwebsite/portfolio/releases/download/Write-ups/datapath.pdf"
+                   download
+                   class="btn">
+                    <i class="fas fa-download"></i>
+                    Download
+                </a>
+            </div>
+
+        </div>
+
+
+        <!-- ---------- P VS NP ---------- -->
+        <div class="card">
+
+            <h3>P vs NP</h3>
+
+            <p class="card-subtitle">
+                Algorithms · Theory of Computation
+            </p>
+
+            <p class="card-details">
+                A detailed introduction to the P vs NP problem, explained from first
+                principles and emphasizing its connections with algorithms, computation,
+                complexity theory, and the broader mathematical implications of the
+                question of whether P = NP.
+            </p>
+
+            <div class="tags">
+                <span class="tag">Algorithms</span>
+                <span class="tag">Complexity Theory</span>
+                <span class="tag">P vs NP</span>
+            </div>
+
+            <div class="card-actions">
+                <a href="https://github.com/msgwebsite/portfolio/releases/download/Write-ups/pvsnp.pdf"
+                   target="_blank"
+                   class="btn">
+                    <i class="fas fa-file-pdf"></i>
+                    Read PDF
+                </a>
+
+                <a href="https://github.com/msgwebsite/portfolio/releases/download/Write-ups/pvsnp.pdf"
+                   download
+                   class="btn">
+                    <i class="fas fa-download"></i>
+                    Download
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+       <!-- ---------- CONTACT ---------- -->
+<section id="contact">
+
+    <h2>Let's Connect!</h2>
+
+    <p>
+        Whether you'd like to discuss research, data science, collaborations,
+        or just say hello, feel free to reach out.
+    </p>
+
+    <div class="grid-2">
+
+        <!-- ---------- EMAIL ---------- -->
+        <div class="card">
+            <h3>
+                <i class="fas fa-envelope"></i>
+                Email
+            </h3>
+
+            <p class="card-details">
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=maitreyaganu@gmail.com"
+                   target="_blank">
+                    maitreyaganu@gmail.com
+                </a>
+            </p>
+
+            <p class="card-details">
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=mganu2005@gmail.com"
+                   target="_blank">
+                    mganu2005@gmail.com
+                </a>
+            </p>
+
+            <div class="card-actions">
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=maitreyaganu@gmail.com"
+                   target="_blank"
+                   class="btn btn-primary">
+                    <i class="fas fa-paper-plane"></i>
+                    Send an Email
+                </a>
+            </div>
+        </div>
+
+
+        <!-- ---------- SOCIAL LINKS ---------- -->
+        <div class="card">
+            <h3>
+                <i class="fas fa-link"></i>
+                Find Me Online
+            </h3>
+
+            <p class="card-details">
+                <strong>
+                    <i class="fab fa-linkedin"></i>
+                    LinkedIn:
+                </strong>
+                <a href="https://www.linkedin.com/in/maitreya-ganu-673995286"
+                   target="_blank">
+                    Maitreya Ganu
+                </a>
+            </p>
+
+            <p class="card-details">
+                <strong>
+                    <i class="fab fa-github"></i>
+                    GitHub:
+                </strong>
+                <a href="https://github.com/MaitreyaGanu"
+                   target="_blank">
+                    MaitreyaGanu
+                </a>
+            </p>
+        </div>
+
+
+        <!-- ---------- CV ---------- -->
+        <div class="card">
+            <h3>
+                <i class="fas fa-file-lines"></i>
+                Curriculum Vitae
+            </h3>
+
+            <p class="card-details">
+                Interested in my academic background, research experience,
+                projects, skills, and positions of responsibility?
+                My latest CV is available here.
+            </p>
+
+            <div class="card-actions">
+                <a href="https://github.com/msgwebsite/portfolio/releases/download/documents-v1/maitreyaCV.pdf"
+                   download
+                   class="btn btn-primary">
+                    <i class="fas fa-download"></i>
+                    Download CV
+                </a>
+            </div>
+        </div>
+
+
+        <!-- ---------- WEBSITE ---------- -->
+        <div class="card">
+            <h3>
+                <i class="fas fa-globe"></i>
+                Portfolio
+            </h3>
+
+            <p class="card-details">
+                Explore my research, projects, technical write-ups,
+                education, and other work through my portfolio.
+            </p>
+
+            <div class="card-actions">
+                <a href="https://mganu.pages.dev"
+                   target="_blank"
+                   class="btn btn-primary">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                    Visit Portfolio
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <p class="contact-cta" style="text-align: center; margin-top: 2.5rem;">
+        <em>
+            Always happy to connect, collaborate, and learn something new.
+        </em>
+    </p>
+
+</section>
     </main>
 
     <footer>
