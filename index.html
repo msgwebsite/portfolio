@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> 
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The academic portfolio of Maitreya Sameer Ganu: research, education, achievements, poster presentations, projects, and technical write-ups.">
     <title>Maitreya Sameer Ganu</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -10,8 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
         :root {
-            --header-blue: #57B9FF;
-            --header-blue-shadow: rgba(80, 104, 148, 0.25);
+            --header-blue: #57b9ff;
             --bg: #edecea;
             --card-bg: #ffffff;
             --border: #e2e1db;
@@ -26,689 +26,396 @@
             --tag-text: #3a557e;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
+        *, *::before, *::after { box-sizing: border-box; }
+        * { margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
         body {
             font-family: 'Newsreader', Georgia, 'Times New Roman', serif;
-            background-color: var(--bg);
+            background: var(--bg);
             color: var(--text);
             line-height: 1.7;
             font-size: 18px;
             -webkit-font-smoothing: antialiased;
             text-rendering: optimizeLegibility;
         }
-
         a {
             color: var(--link);
             text-decoration: underline;
             text-underline-offset: 2px;
-            transition: opacity 0.2s ease, color 0.2s ease;
+            transition: opacity .2s ease, color .2s ease;
         }
+        a:hover { opacity: .75; }
+        button, input { font: inherit; }
+        button { cursor: pointer; }
+        img { max-width: 100%; }
 
-        a:hover {
-            opacity: 0.75;
-        }
-
-        /* ---------- Header ---------- */
+        /* ================= HEADER / NAVIGATION ================= */
         header {
-            background-color: var(--header-blue);
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
+            background: var(--header-blue);
+            box-shadow: 0 1px 0 rgba(0, 0, 0, .04);
         }
-
         .header-inner {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 1.9rem 2.2rem;
+            padding: 1.45rem 1.8rem;
             display: flex;
             align-items: center;
-            gap: 2.5rem;
+            gap: 1.45rem;
         }
-
         .logo {
-            font-size: 1.85rem;
-            font-weight: 600;
-            color: #ffffff;
-            text-decoration: underline;
-            text-decoration-thickness: from-font;
-            text-underline-offset: 5px;
-            letter-spacing: 0.2px;
-            white-space: nowrap;
             flex-shrink: 0;
+            white-space: nowrap;
+            font-size: 1.65rem;
+            font-weight: 600;
+            color: #fff;
+            text-decoration: underline;
+            text-underline-offset: 5px;
         }
-
-        .logo:hover {
-            opacity: 1;
-        }
-
+        .logo:hover { opacity: 1; }
         .desktop-nav {
             display: flex;
-            gap: 1.7rem;
-            align-items: center;
             flex-wrap: wrap;
-        }
-
-        .desktop-nav a {
-            font-weight: 400;
-            font-size: 1.3rem;
-            text-decoration: none;
-            color: #ffffff;
-            padding-bottom: 3px;
-            border-bottom: 2px solid transparent;
-            transition: border-color 0.25s ease, opacity 0.2s ease;
-            white-space: nowrap;
-        }
-
-        .desktop-nav a:hover {
-            opacity: 0.85;
-        }
-
-        .desktop-nav a.active {
-            border-bottom: 2px solid #ffffff;
-        }
-
-        .header-social {
-            margin-left: auto;
-            display: flex;
-            gap: 1.4rem;
+            gap: .62rem 1rem;
             align-items: center;
         }
-
-        .header-social a {
-            color: #ffffff;
-            font-size: 1.25rem;
+        .desktop-nav a {
+            color: #fff;
+            font-size: 1.08rem;
             text-decoration: none;
-            transition: opacity 0.2s ease;
+            white-space: nowrap;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 2px;
         }
-
-        .header-social a:hover {
-            opacity: 0.7;
+        .desktop-nav a.active { border-bottom-color: #fff; }
+        .header-social {
+            display: flex;
+            gap: 1.1rem;
+            align-items: center;
+            margin-left: auto;
         }
-
-        .favorite-quote {
-    margin: 3rem auto 0;
-    padding: 1.2rem 1.8rem;
-    max-width: 700px;
-    text-align: center;
-    color: var(--text-soft);
-    font-style: italic;
-    border: 1px solid var(--border-strong);
-    border-radius: 8px;
-    background-color: var(--card-bg);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
-}
-
-        /* ---------- Website Search ---------- */
-
-.header-search {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-.header-search-button {
-    background: none;
-    border: none;
-    color: #ffffff;
-    font-size: 1.25rem;
-    cursor: pointer;
-    padding: 0;
-    transition: opacity 0.2s ease;
-    font-family: inherit;
-}
-
-.header-search-button:hover {
-    opacity: 0.7;
-}
-
-.search-box {
-    position: absolute;
-    top: 2.2rem;
-    right: 0;
-    width: 280px;
-    background-color: #ffffff;
-    border: 1px solid var(--border);
-    border-radius: 7px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
-    padding: 0.65rem;
-    display: none;
-    z-index: 200;
-}
-
-.search-box.active {
-    display: block;
-}
-
-.search-input {
-    width: 100%;
-    padding: 0.55rem 0.7rem;
-    border: 1px solid var(--border-strong);
-    border-radius: 5px;
-    outline: none;
-    font-family: inherit;
-    font-size: 0.95rem;
-    color: var(--text);
-    background-color: #ffffff;
-}
-
-.search-input:focus {
-    border-color: var(--accent);
-}
-
-.search-results {
-    margin-top: 0.5rem;
-    max-height: 250px;
-    overflow-y: auto;
-}
-
-.search-result {
-    padding: 0.55rem 0.6rem;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 0.9rem;
-    color: var(--text-soft);
-}
-
-.search-result:hover {
-    background-color: #eef3fa;
-}
-
-.search-no-results {
-    padding: 0.55rem 0.6rem;
-    font-size: 0.9rem;
-    color: var(--text-muted);
-}
-
-@media (max-width: 1024px) {
-    .header-search {
-        display: none;
-    }
-}
-
+        .header-social a,
+        .header-search-button {
+            color: #fff;
+            font-size: 1.19rem;
+            text-decoration: none;
+        }
+        .header-search { position: relative; display: flex; align-items: center; }
+        .header-search-button { background: none; border: 0; padding: 0; }
+        .header-search-button:hover { opacity: .7; }
+        .search-box {
+            position: absolute;
+            top: 2.2rem;
+            right: 0;
+            width: 300px;
+            max-width: calc(100vw - 3rem);
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 7px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, .12);
+            padding: .65rem;
+            display: none;
+            z-index: 200;
+        }
+        .search-box.active { display: block; }
+        .search-input {
+            width: 100%;
+            padding: .55rem .7rem;
+            border: 1px solid var(--border-strong);
+            border-radius: 5px;
+            outline: none;
+            font-size: .95rem;
+            color: var(--text);
+        }
+        .search-input:focus { border-color: var(--accent); }
+        .search-results { margin-top: .5rem; max-height: 300px; overflow-y: auto; }
+        .search-result {
+            display: block;
+            width: 100%;
+            padding: .55rem .6rem;
+            border: 0;
+            text-align: left;
+            background: transparent;
+            border-radius: 5px;
+            color: var(--text-soft);
+            font-size: .91rem;
+        }
+        .search-result:hover, .search-result:focus-visible { background: #eef3fa; }
+        .search-no-results { padding: .55rem .6rem; color: var(--text-muted); font-size: .91rem; }
         .hamburger {
             display: none;
-            flex-direction: column;
-            cursor: pointer;
-            gap: 6px;
             margin-left: auto;
+            flex-direction: column;
+            gap: 6px;
+            padding: 8px;
+            background: none;
+            border: 0;
+            color: white;
         }
-
-        .hamburger span {
-            width: 26px;
-            height: 2px;
-            background-color: #ffffff;
-            transition: 0.3s;
-        }
-
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(-45deg) translate(-6px, 7px);
-        }
-
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(45deg) translate(-6px, -7px);
-        }
-
+        .hamburger span { display: block; height: 2px; width: 26px; background: #fff; transition: transform .25s, opacity .25s; }
+        .hamburger.active span:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
         .mobile-nav {
             display: none;
             flex-direction: column;
-            background-color: #ffffff;
+            background: #fff;
             border-bottom: 1px solid var(--border);
-            padding: 0.5rem 0;
+            padding: .5rem 0;
+            max-height: calc(100vh - 80px);
+            overflow-y: auto;
         }
-
-        .mobile-nav.active {
-            display: flex;
-        }
-
+        .mobile-nav.active { display: flex; }
         .mobile-nav a {
-            padding: 0.85rem 2.2rem;
-            text-decoration: none;
             color: var(--text);
             font-size: 1.05rem;
+            text-decoration: none;
+            padding: .75rem 2.2rem;
             border-bottom: 1px solid #f2f2f0;
         }
+        .mobile-nav a:last-child { border-bottom: 0; }
+        .mobile-nav a.active { font-weight: 600; background: #f4f8fc; }
 
-        .mobile-nav a:last-child {
-            border-bottom: none;
-        }
-
-        /* ---------- Main ---------- */
+        /* ================= COMMON CONTENT ================= */
         main {
             max-width: 1120px;
             margin: 0 auto;
             padding: 3.5rem 2.2rem 2rem;
             min-height: calc(100vh - 320px);
         }
-
-        section {
-            display: none;
-        }
-
-        section.active {
-            display: block;
-            animation: fadeIn 0.35s ease;
-        }
-
-        @keyframes fadeIn {
+        section { display: none; }
+        section.active { display: block; animation: fade-in .35s ease; }
+        @keyframes fade-in {
             from { opacity: 0; transform: translateY(8px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
         section h2 {
             font-size: 2.1rem;
             font-weight: 600;
-            color: var(--text);
             margin-bottom: 1.8rem;
-            letter-spacing: -0.01em;
+            letter-spacing: -.01em;
         }
-
-        section > p {
-            margin-bottom: 1.2rem;
-            color: var(--text-soft);
-            max-width: 760px;
-        }
-
-        /* ---------- About / Home ---------- */
-        .profile-section {
-            display: flex;
-            align-items: flex-start;
-            gap: 3.5rem;
-        }
-
-        .profile-photo {
-            flex-shrink: 0;
-            width: 360px;
-            max-width: 100%;
-        }
-
-        .profile-photo img {
-            width: 100%;
-            height: auto;
-            border-radius: 4px;
-            display: block;
-            border: 2px solid #000;
-            box-shadow: 0 6px 22px rgba(0, 0, 0, 0.08);
-        }
-
-        .profile-info {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .profile-info h2 {
-            margin-bottom: 0.4rem;
-        }
-
-        .tagline {
-            font-size: 1.02rem;
-            color: var(--text-muted);
-            margin-bottom: 1.6rem;
-            letter-spacing: 0.2px;
-        }
-
-        .bio-section p {
-            margin-bottom: 1.15rem;
-            color: var(--text-soft);
-            line-height: 1.75;
-        }
-
-        /* ---------- Cards ---------- */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.6rem;
-            margin-top: 0.5rem;
-        }
-
+        section > p { max-width: 820px; margin-bottom: 1.3rem; color: var(--text-soft); }
+        section [id] { scroll-margin-top: 110px; }
+        .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.6rem; margin-top: .5rem; }
         .card {
-            background-color: var(--card-bg);
-            padding: 1.6rem 1.7rem;
-            border-radius: 8px;
-            border: 1px solid var(--border);
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
-            transition: box-shadow 0.25s ease, transform 0.25s ease;
             display: flex;
             flex-direction: column;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.6rem 1.7rem;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, .03);
+            transition: box-shadow .25s, transform .25s;
         }
-
-        .card:hover {
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-            transform: translateY(-2px);
-        }
-
-        .card h3 {
-            font-size: 1.22rem;
-            font-weight: 600;
-            color: var(--text);
-            margin-bottom: 0.35rem;
-            line-height: 1.35;
-        }
-
-        #contact h3 i {
-    margin-right: 0.45rem;
-    color: var(--accent);
-}
-
-#contact .card-details i {
-    margin-right: 0.3rem;
-    color: var(--accent);
-}
-
-#contact .contact-cta {
-    color: var(--text-soft);
-}
-
-        .card-subtitle {
-            font-size: 0.92rem;
-            color: var(--text-muted);
-            margin-bottom: 0.9rem;
-            font-style: italic;
-        }
-
-        .card-details {
-            color: var(--text-soft);
-            line-height: 1.65;
-            font-size: 0.98rem;
-            margin-bottom: 0.2rem;
-        }
-
-        .tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.45rem;
-            margin: 1rem 0 0.4rem;
-        }
-
+        .card:hover { box-shadow: 0 8px 24px rgba(0, 0, 0, .08); transform: translateY(-2px); }
+        .card h3 { font-size: 1.22rem; font-weight: 600; line-height: 1.35; margin-bottom: .35rem; }
+        .card-subtitle { font-size: .92rem; color: var(--text-muted); margin-bottom: .9rem; font-style: italic; }
+        .card-details { font-size: .98rem; line-height: 1.65; color: var(--text-soft); margin-bottom: .35rem; }
+        .tags { display: flex; flex-wrap: wrap; gap: .45rem; margin: 1rem 0 .4rem; }
         .tag {
-            font-size: 0.76rem;
-            background-color: var(--tag-bg);
+            font-size: .76rem;
+            background: var(--tag-bg);
             color: var(--tag-text);
-            padding: 0.24rem 0.62rem;
+            padding: .24rem .62rem;
             border-radius: 100px;
-            letter-spacing: 0.2px;
+            letter-spacing: .2px;
             white-space: nowrap;
         }
-
-        .card-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.55rem;
-            margin-top: 1.1rem;
-        }
-
+        .card-actions { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: 1.1rem; }
         .btn {
             display: inline-flex;
             align-items: center;
-            gap: 0.45rem;
-            padding: 0.5rem 0.95rem;
-            font-family: inherit;
-            font-size: 0.85rem;
+            gap: .45rem;
+            padding: .5rem .95rem;
+            font-size: .85rem;
             font-weight: 500;
-            border-radius: 6px;
             border: 1px solid var(--border-strong);
-            background-color: #ffffff;
+            border-radius: 6px;
+            background: #fff;
             color: var(--accent);
             text-decoration: none;
-            cursor: pointer;
-            transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+        }
+        .btn i { font-size: .82rem; }
+        .btn:hover { opacity: 1; background: #eef3fa; border-color: #b9c6dc; }
+        .btn-primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+        .btn-primary:hover { background: var(--accent-dark); border-color: var(--accent-dark); color: #fff; }
+
+        /* ================= ABOUT ================= */
+        .profile-section { display: flex; align-items: flex-start; gap: 3.5rem; }
+        .profile-photo { flex-shrink: 0; width: 360px; max-width: 100%; }
+        .profile-photo img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            border: 2px solid #000;
+            box-shadow: 0 6px 22px rgba(0, 0, 0, .08);
+        }
+        .profile-info { flex: 1; min-width: 0; }
+        .profile-info h2 { margin-bottom: .4rem; }
+        .tagline { font-size: 1.02rem; color: var(--text-muted); margin-bottom: 1.6rem; letter-spacing: .2px; }
+        .bio-section p { margin-bottom: 1.15rem; line-height: 1.75; color: var(--text-soft); }
+        .favorite-quote {
+            max-width: 700px;
+            margin: 3rem auto 0;
+            padding: 1.2rem 1.8rem;
+            text-align: center;
+            font-style: italic;
+            color: var(--text-soft);
+            background: var(--card-bg);
+            border: 1px solid var(--border-strong);
+            border-radius: 8px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, .03);
         }
 
-        .btn i {
-            font-size: 0.82rem;
-        }
-
-        .btn:hover {
-            background-color: #eef3fa;
-            border-color: #b9c6dc;
-            opacity: 1;
-        }
-
-        .btn-primary {
-            background-color: var(--accent);
-            border-color: var(--accent);
-            color: #ffffff;
-        }
-
-        .btn-primary:hover {
-            background-color: var(--accent-dark);
-            border-color: var(--accent-dark);
-            color: #ffffff;
-        }
-
-        .status-pill {
-            display: inline-flex;
+        /* ================= EDUCATION / EXPERIENCE ================= */
+        .split-card { display: flex; flex-direction: row; align-items: stretch; padding: 0; overflow: hidden; }
+        .split-logo {
+            width: 35%;
+            min-height: 220px;
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
             align-items: center;
-            gap: 0.4rem;
-            margin-top: 1.1rem;
-            font-size: 0.82rem;
-            color: #2f7d4f;
-            background-color: #e8f4ec;
-            padding: 0.3rem 0.7rem;
-            border-radius: 100px;
-            width: fit-content;
+            background: #fafaf8;
+            border-right: 1px solid var(--border);
         }
+        .split-logo img { width: auto; height: auto; object-fit: contain; max-width: 230px; max-height: 230px; }
+        .split-content { width: 65%; padding: 1.6rem 1.7rem; }
+        .split-content h3 { margin-bottom: .4rem; font-size: 1.4rem; }
+        .split-content h4 { margin-bottom: .5rem; font-size: 1rem; font-weight: 500; color: var(--text-muted); }
+        .split-content h5 { margin: 0 0 1rem; font-size: .95rem; font-weight: 500; color: var(--text-muted); }
+        .split-content p { margin-bottom: .8rem; line-height: 1.7; }
+        .education-table { width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: .98rem; }
+        .education-table th, .education-table td { padding: .45rem .7rem; border-bottom: 1px solid var(--border); text-align: left; }
+        .education-table th { font-weight: 600; }
+        .education-table td { color: var(--text-soft); }
+        .education-cgpa { margin-top: 1rem; font-weight: 600; }
+        .stacked-cards { display: flex; flex-direction: column; gap: 1.6rem; }
 
-        /* ================= EXPERIENCE CARDS ================= */
-
-.experience-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1.6rem;
-}
-
-.experience-card {
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
-    gap: 0;
-    padding: 0;
-    overflow: hidden;
-}
-
-.experience-logo {
-    width: 35%;
-    min-height: 220px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
-    border-right: 1px solid var(--border);
-    background-color: #fafaf8;
-}
-
-.experience-logo img {
-    max-width: 300px;
-    max-height: 300px;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-}
-
-.experience-content {
-    width: 65%;
-    padding: 1.6rem 1.7rem;
-}
-
-.experience-content h3 {
-    margin: 0 0 0.4rem;
-    font-size: 1.4rem;
-    line-height: 1.35;
-}
-
-.experience-content h4 {
-    margin: 0 0 1rem;
-    font-size: 1rem;
-    font-weight: 500;
-    color: var(--text-muted);
-}
-
-.experience-content p {
-    margin: 0 0 0.8rem;
-    line-height: 1.7;
-}
-
-
-/* ---------- Experience Responsive ---------- */
-
-@media (max-width: 768px) {
-
-    .experience-card {
-        flex-direction: column;
-    }
-
-    .experience-logo {
-        width: 100%;
-        min-height: 180px;
-        border-right: none;
-        border-bottom: 1px solid var(--border);
-    }
-
-    .experience-logo img {
-        max-width: 130px;
-        max-height: 130px;
-    }
-
-    .experience-content {
-        width: 100%;
-        padding: 1.4rem 1.5rem;
-    }
-
-    .experience-content h3 {
-        font-size: 1.25rem;
-    }
-}
-
-
-
-        /* ---------- Contact ---------- */
-        .contact-cta {
-            margin-top: 2rem;
+        /* ================= RESEARCH / POSTERS ================= */
+        .institute-card { padding: 0; overflow: hidden; margin-bottom: 2rem; }
+        .institute-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 2rem 1.2rem;
+            background: #fafaf8;
+            border-bottom: 1px solid var(--border);
+            min-height: 215px;
         }
+        .institute-logo img { width: auto; height: auto; max-width: 240px; max-height: 240px; object-fit: contain; }
+        .institute-content { padding: 1.7rem 1.8rem; }
+        .institute-content > h3 { text-align: center; font-size: 1.6rem; margin-bottom: 1.5rem; }
+        .research-project { padding-bottom: 1.7rem; margin-bottom: 1.7rem; border-bottom: 1px solid var(--border); }
+        .research-project:last-child { border: 0; margin-bottom: 0; padding-bottom: 0; }
+        .research-project h4 { font-size: 1.22rem; font-weight: 600; line-height: 1.4; margin-bottom: .35rem; }
+        .research-project .card-subtitle { margin-bottom: .85rem; }
+        .research-project .card-details { margin-bottom: .35rem; }
 
-        /* ---------- Footer ---------- */
+        /* ================= NEW: ACHIEVEMENTS ================= */
+        .achievement-category { margin-top: 2.2rem; }
+        .achievement-category:first-of-type { margin-top: .5rem; }
+        .achievement-category h3 {
+            font-size: 1.45rem;
+            font-weight: 600;
+            border-bottom: 1px solid var(--border-strong);
+            padding-bottom: .45rem;
+            margin-bottom: 1.2rem;
+        }
+        .achievement-list { display: grid; gap: 1rem; }
+        .achievement-card { padding: 1.3rem 1.5rem; }
+        .achievement-card h4 { font-size: 1.17rem; font-weight: 600; line-height: 1.4; margin-bottom: .3rem; }
+        .achievement-card p { color: var(--text-soft); font-size: .98rem; line-height: 1.65; }
+        .achievement-card .achievement-meta { color: var(--text-muted); font-size: .9rem; font-style: italic; margin-bottom: .35rem; }
+        .achievement-featured { border-left: 4px solid var(--accent); }
+        .poster-selection { color: var(--accent); font-weight: 600; }
+        .poster-info { font-size: 1.03rem; }
+
+        /* ================= CONTACT / FOOTER ================= */
+        #contact h3 i { margin-right: .45rem; color: var(--accent); }
+        #contact .card-details i { margin-right: .3rem; color: var(--accent); }
+        .contact-cta { color: var(--text-soft); margin-top: 2.5rem; text-align: center; }
         footer {
             text-align: center;
             color: var(--text-muted);
             border-top: 1px solid var(--border);
             margin-top: 3.5rem;
             padding: 2rem;
-            font-size: 0.92rem;
+            font-size: .92rem;
         }
 
-        footer a {
-            color: var(--accent);
+        /* ================= RESPONSIVE ================= */
+        @media (max-width: 1250px) {
+            .desktop-nav, .header-social { display: none; }
+            .hamburger { display: flex; }
         }
-
-        /* ---------- Responsive ---------- */
-        @media (max-width: 1024px) {
-            .desktop-nav,
-            .header-social {
-                display: none;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-        }
-
         @media (max-width: 768px) {
             body { font-size: 17px; }
-
-            .header-inner {
-                padding: 1.4rem 1.5rem;
-            }
-
-            .logo { font-size: 1.6rem; }
-
-            main {
-                padding: 2.5rem 1.5rem 1.5rem;
-            }
-
+            .header-inner { padding: 1.2rem 1.4rem; }
+            .logo { font-size: 1.5rem; }
+            main { padding: 2.5rem 1.5rem 1.5rem; }
             section h2 { font-size: 1.8rem; }
-
-            .grid-2 {
-                grid-template-columns: 1fr;
-            }
-
-            .profile-section {
-                flex-direction: column;
-                align-items: center;
-                text-align: left;
-                gap: 2rem;
-            }
-
-            .profile-photo {
-                width: 260px;
-            }
-
+            .grid-2 { grid-template-columns: 1fr; }
+            .profile-section { flex-direction: column; align-items: center; gap: 2rem; }
+            .profile-photo { width: 260px; }
             .profile-info { width: 100%; }
+            .split-card { flex-direction: column; }
+            .split-logo { width: 100%; min-height: 180px; border-right: 0; border-bottom: 1px solid var(--border); }
+            .split-logo img { max-width: 160px; max-height: 160px; }
+            .split-content { width: 100%; padding: 1.4rem 1.5rem; }
+            .split-content h3 { font-size: 1.25rem; }
+            .institute-logo { padding: 1.5rem 1.5rem 1rem; }
+            .institute-content { padding: 1.4rem 1.5rem; }
+            .institute-content > h3 { font-size: 1.4rem; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            section.active { animation: none; }
+            .card { transition: none; }
         }
     </style>
 </head>
-
 <body>
+    <!-- ================= HEADER ================= -->
     <header>
         <div class="header-inner">
             <a href="#home" class="logo" data-section="home">Maitreya Sameer Ganu</a>
-            <nav class="desktop-nav" id="desktop-nav">
+            <nav class="desktop-nav" id="desktop-nav" aria-label="Main navigation">
                 <a href="#home" data-section="home">About</a>
                 <a href="#education" data-section="education">Education</a>
                 <a href="#experience" data-section="experience">Experience</a>
+                <a href="#achievements" data-section="achievements">Achievements</a>
+                <a href="#poster-presentations" data-section="poster-presentations">Poster Presentations</a>
                 <a href="#research" data-section="research">Research</a>
                 <a href="#technical-writeups" data-section="technical-writeups">Write-ups!</a>
                 <a href="#contact" data-section="contact">Contact</a>
             </nav>
             <div class="header-social">
-                <a href="https://www.linkedin.com/in/maitreya-ganu-673995286" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://github.com/MaitreyaGanu" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=maitreyaganu@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/maitreya-ganu-673995286" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/MaitreyaGanu" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="mailto:maitreyaganu@gmail.com" aria-label="Email" title="Email"><i class="fas fa-envelope"></i></a>
                 <div class="header-search">
-
-    <button class="header-search-button"
-            id="search-button"
-            title="Search website"
-            aria-label="Search website">
-        <i class="fas fa-magnifying-glass"></i>
-    </button>
-
-    <div class="search-box" id="search-box">
-        <input
-            type="text"
-            id="search-input"
-            class="search-input"
-            placeholder="Search my website..."
-            autocomplete="off"
-        >
-
-        <div class="search-results" id="search-results"></div>
-    </div>
-
-</div>
+                    <button class="header-search-button" id="search-button" type="button" aria-label="Search website" aria-expanded="false" aria-controls="search-box"><i class="fas fa-magnifying-glass"></i></button>
+                    <div class="search-box" id="search-box">
+                        <input type="search" id="search-input" class="search-input" placeholder="Search my website..." autocomplete="off" aria-label="Search content">
+                        <div class="search-results" id="search-results" aria-live="polite"></div>
+                    </div>
+                </div>
             </div>
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <button class="hamburger" id="hamburger" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobile-nav">
+                <span></span><span></span><span></span>
+            </button>
         </div>
-        <nav class="mobile-nav" id="mobile-nav">
+        <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
             <a href="#home" data-section="home">About</a>
             <a href="#education" data-section="education">Education</a>
             <a href="#experience" data-section="experience">Experience</a>
+            <a href="#achievements" data-section="achievements">Achievements</a>
+            <a href="#poster-presentations" data-section="poster-presentations">Poster Presentations</a>
             <a href="#research" data-section="research">Research</a>
             <a href="#technical-writeups" data-section="technical-writeups">Write-ups!</a>
             <a href="#contact" data-section="contact">Contact</a>
@@ -716,1577 +423,536 @@
     </header>
 
     <main>
-       <!-- ---------- ABOUT / HOME ---------- -->
-<section id="home" class="active">
-    <div class="profile-section">
-        <div class="profile-photo">
-            <img src="me.png" alt="Maitreya Sameer Ganu" onerror="this.src='https://placehold.co/360x440/d7dfec/33578a?text=M.+Ganu'">
-        </div>
-
-        <div class="profile-info">
-            <h2>About Me</h2>
-
-            <p class="tagline">
-                Department of Science & Technology (DST), Government of India &mdash; INSPIRE Scholar
-                <br>
-                Data Science | Bayesian Statistics | Network Science | Bioinformatics | Biostatistics
-            </p>
-
-            <div class="bio-section">
-                <p>
-                    Hi, I'm Maitreya! I'm a BS-MS Data Science student at
-                    <a href="https://www.iisertvm.ac.in/" target="_blank">IISER Thiruvananthapuram</a>,
-                    where I spend most of my time on Bayesian statistics, probabilistic modeling, and network science.
-                    I like building principled models for messy, high-dimensional data — especially single-cell genomics
-                    like scRNA-seq and scATAC-seq. I am also grateful to be an INSPIRE SHE Scholar! Lately I've been
-                    most excited about Bayesian inference, unsupervised feature selection, and applying probabilistic
-                    models to real-world data for better interpretability.
-
-                    I've been lucky to do research internships and poster presentations at premier institutes like
-                    <a href="https://iitb.ac.in/" target="_blank">IIT Bombay</a>,
-                    <a href="https://iitgoa.ac.in/" target="_blank">IIT Goa</a>,
-                    <a href="https://www.iiserpune.ac.in/" target="_blank">IISER Pune</a>, and
-                    <a href="https://www.iisertvm.ac.in/" target="_blank">IISER Thiruvananthapuram</a>,
-                    working on everything from Poisson mixture models, Bayesian statistics, Estimation of selected parameters and Bioinformatics to
-                    Network sciecne and real-life Optimization problems using Data Warehousing techniques.
-
-                    Outside of research, I'm a Tabla artist, a footballer, Math enthusiast and a lifelong fan of
-                    Hindustani classical music. On campus I'm the Student Placement Coordinator and the spokesperson
-                    for the Music Club. Feel free to look around, and reach out any time — you can find me on
-                    <a href="https://www.linkedin.com/in/maitreya-ganu-673995286" target="_blank">LinkedIn</a>,
-                    <a href="https://github.com/MaitreyaGanu" target="_blank">GitHub</a>, or over
-                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=maitreyaganu@gmail.com" target="_blank">Email</a>.
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <!-- ---------- CURRENTLY WORKING ON ---------- -->
-    <div style="margin-top: 0.01rem;">
-        <h2 style="text-align: center; margin-bottom: 1.8rem;">
-            <u>Currently working on</u> :
-        </h2>
-
-        <div class="grid-2">
-
-            <div class="card">
-                <h3>Unsupervised Feature Selection for Genes</h3>
-
-                <p class="card-subtitle">
-                    <a href="https://iitgoa.ac.in/" target="_blank">IIT Goa</a>
-                    · Under
-                    <a href="https://clintpgeorge.github.io/" target="_blank">Dr. Clint P. George</a>
-                </p>
-
-                <p class="card-details">
-                    Developing unsupervised feature selection methods for gene-level data, with a focus on
-                    identifying informative biological features without relying on predefined labels.
-                </p>
-
-                <p class="card-details">
-                    <strong>Research paper preprint currently under writing.</strong>
-                </p>
-            </div>
-
-            <div class="card">
-                <h3>Estimation of Selected Parameters for Inverse Gaussian</h3>
-
-                <p class="card-subtitle">
-                    <a href="https://www.iisertvm.ac.in/faculty/masih" target="_blank">IISER Thiruvananthapuram</a>
-                    · Under
-                    <a href="https://sites.google.com/view/masihuddin" target="_blank">Dr. Md. Masihuddin</a>
-                </p>
-
-                <p class="card-details">
-                    Ongoing major project focused on the inference and estimation of selected parameters of the
-                    Inverse Gaussian distribution under various diverse populations.
-                </p>
-
-                <p class="card-details">
-                    <strong>Ongoing Major Project</strong>
-                </p>
-            </div>
-
-        </div>
-
-        <!-- ---------- FAVOURITE QUOTE ---------- -->
-       <div class="favorite-quote">
-    "Obsession beats talent, EVERYTIME."
-    </div>
-    </div>
-</section>
-
-     <!-- ---------- EDUCATION ---------- -->
-<section id="education">
-
-    <style>
-        .education-card {
-            display: flex;
-            flex-direction: row;
-            align-items: stretch;
-            padding: 0;
-            overflow: hidden;
-        }
-
-        .education-logo {
-            width: 35%;
-            min-height: 220px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-            border-right: 1px solid var(--border);
-            background-color: #fafaf8;
-        }
-
-        .education-logo img {
-            max-width: 160px;
-            max-height: 160px;
-            width: auto;
-            height: auto;
-            object-fit: contain;
-        }
-
-        .education-large-logo .education-logo img {
-    max-width: 210px;
-    max-height: 210px;
-}
-
-        .education-content {
-            width: 65%;
-            padding: 1.6rem 1.7rem;
-        }
-
-        .education-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 1rem;
-            font-size: 0.98rem;
-        }
-
-        .education-table th,
-        .education-table td {
-            padding: 0.45rem 0.7rem;
-            border-bottom: 1px solid var(--border);
-            text-align: left;
-        }
-
-        .education-table th {
-            font-weight: 600;
-            color: var(--text);
-        }
-
-        .education-table td {
-            color: var(--text-soft);
-        }
-
-        .education-cgpa {
-            margin-top: 1rem;
-            font-weight: 600;
-            color: var(--text);
-        }
-
-        @media (max-width: 768px) {
-            .education-card {
-                flex-direction: column;
-            }
-
-            .education-logo {
-                width: 100%;
-                min-height: 180px;
-                border-right: none;
-                border-bottom: 1px solid var(--border);
-            }
-
-            .education-logo img {
-                max-width: 130px;
-                max-height: 130px;
-            }
-
-            .education-content {
-                width: 100%;
-                padding: 1.4rem 1.5rem;
-            }
-        }
-    </style>
-
-    <h2><u>Education</u></h2>
-    
-    <!-- ---------- IISER TVM ---------- -->
-    <div class="card education-card education-large-logo">
-        <div class="education-logo">
-            <img src="IISER_Thiruvananthapuram_Logo.svg" alt="IISER Thiruvananthapuram logo">
-        </div>
-
-        <div class="education-content">
-            <h3>BS-MS (Dual Degree), Data Science Major</h3>
-
-            <p class="card-subtitle">
-                IISER Thiruvananthapuram
-                <br>
-                Aug 2023 – Present
-            </p>
-
-            <p class="card-details">
-                Currently pursuing an BSMS program in Data Science, building a strong
-                foundation in statistical modeling, machine learning algorithms, mathematics,
-                and computational techniques.
-            </p>
-
-            <table class="education-table">
-                <thead>
-                    <tr>
-                        <th>Semester</th>
-                        <th>SGPA</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Semester 1</td>
-                        <td>8.81</td>
-                    </tr>
-                    <tr>
-                        <td>Semester 2</td>
-                        <td>9.00</td>
-                    </tr>
-                    <tr>
-                        <td>Semester 3</td>
-                        <td>8.87</td>
-                    </tr>
-                    <tr>
-                        <td>Semester 4</td>
-                        <td>9.57</td>
-                    </tr>
-                    <tr>
-                        <td>Semester 5</td>
-                        <td>9.32</td>
-                    </tr>
-                    <tr>
-                        <td>Semester 6</td>
-                        <td>9.71</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <p class="education-cgpa">
-                CGPA till date: 9.21
-            </p>
-        </div>
-    </div>
-
-    <!-- ---------- CLASS 12 ---------- -->
-    <div class="card education-card education-large-logo" style="margin-top: 3rem;"margin-bottom: 1.6rem;">
-        <div class="education-logo">
-            <img src="sp.png" alt="Sir Parshurambhau College logo">
-        </div>
-
-        <div class="education-content">
-            <h3>Higher Secondary Education (Science Stream)</h3>
-
-            <p class="card-subtitle">
-                Sir Parshurambhau College, Pune
-                <br>
-                Aug 2021 – May 2023
-            </p>
-
-            <p class="card-details">
-                Secured 92.5% in MSBSHSE Board Science-Stream Exams and completed higher secondary education with a focus on Physics, Chemistry, Mathematics,
-                and Biology, PE, German, Environmental Sciences and English literature. Secured 5th overall rank in college, 2nd rank in science stream.
-                Got awarded with SP College Merit Scholarship; along with INSPIRE-SHE Scholarship from Government of India.
-            </p>
-        </div>
-    </div>
-    <!-- ---------- CLASS 10 ---------- -->
-    <div class="card education-card" style="margin-top: 3rem; margin-bottom: 1.6rem;">
-        <div class="education-logo">
-            <img src="sems.png" alt="Sevasadan English Medium School logo">
-        </div>
-
-        <div class="education-content">
-            <h3>Matriculation (SSC)</h3>
-
-            <p class="card-subtitle">
-                Sevasadan English Medium School, Pune
-                <br>
-                 June 2008 – March 2021
-            </p>
-
-            <p class="card-details">
-                Secured 95% in Class X CBSE Board Exams.
-            </p>
-        </div>
-    </div>
-</section>
-
-<!-- ================= EXPERIENCE ================= -->
-<section id="experience">
-    <h2><u>Experience</u></h2>
-
-    <div class="experience-container">
-
-
-         <!-- ---------- PCPC / PLACEMENT CELL ---------- -->
-        <div class="card experience-card">
-            <div class="experience-logo">
-                <img src="pcpc.png" alt="Placement Cell logo">
-            </div>
-
-            <div class="experience-content">
-                <h3>Placement and Career Promotion Cell </h3>
-                <h4>IISER Thiruvananthapuram</h4>
-                <h5>Duration : 2024-2026 </h5>
-
-                <p>
-                    As Student Coordinator, I reached out to and brought many startups and established companies to campus for placement opportunities, bridging the gap between industry and academia.
-                    I also conducted sessions for juniors — including CV building, interview preparation, and career guidance — to help them navigate placements and secure internships.
-                    Furthermore, I completely restructured the Placement Cell's organizational
-                    hierarchy and expanded its scale by approximately fivefold.
-                    Established connections with organizations including TCS,
-                    Deloitte, Macleods Pharmaceuticals, SciAstra, Tallento.ai, Skillairo, and others.
-                    On an averge, atleast 3 internship or PhD
-                    opportunities and being facilitated each month. Contributed to
-                    the planning and execution of placement drives and
-                    pre-placement talks. Initiated collaborations and discussions
-                    with Placement Cells at other IISERs and NISER to explore
-                    strategies for strengthening placement opportunities,
-                    particularly within research-oriented institutions.
-                </p>
-            </div>
-        </div>
-
-
-         <!-- ---------- KERNEL ---------- -->
-        <div class="card experience-card">
-            <div class="experience-logo">
-                <img src="kernel.png" alt="KerNeL logo">
-            </div>
-
-            <div class="experience-content">
-                <h3>KerNeL — Offical Data Science Departmental Club</h3>
-                <h4>IISER Thiruvananthapuram</h4>
-                <h5>Duration : 2026-Present </h5>
-
-                <p>
-                    Was selected as the primary coordinator and Head for KerNeL, the official
-                    Data Science departmental club at IISER Thiruvananthapuram,
-                    which emphasizes the research-oriented aspects of Data Science
-                    alongside its applications. Currently serving as Core
-                    Coordinator and Head of Events Team, with responsibilities spanning
-                    the planning and execution of academic events and hands-on
-                    sessions, as well as coordination of merchandise and financial
-                    activities.
-                </p>
-
-                <p>
-                    Learn more about KerNeL:
-                    <a href="https://dsciisertvm.netlify.app/" target="_blank">
-                        dsciisertvm.netlify.app
-                    </a>
-                </p>
-            </div>
-        </div>
-
-
-
-        <!-- ---------- MUSIC ---------- -->
-        <div class="card experience-card">
-            <div class="experience-logo">
-                <img src="music.png" alt="Music Club logo">
-            </div>
-
-            <div class="experience-content">
-                <h3>Music Club</h3>
-                <h4>IISER Thiruvananthapuram</h4>
-                <h5>Duration : 2025-2026 </h5>
-
-                <p>
-                    Served as spokesperson and a member of the club's decision-making committee. 
-                    Organized jamming sessions, coordinated performances like ISHYA, and managed logistics for major cultural events including IICM 2025, while actively performing Tabla at campus events.
-                </p>
-            </div>
-        </div>
-
-        <!-- ---------- CMIT ---------- -->
-        <div class="card experience-card">
-            <div class="experience-logo">
-                <img src="cmit.png" alt="CMIT logo">
-            </div>
-
-            <div class="experience-content">
-                <h3>Club of Mathematics, IISER Thiruvananthapuram (CMIT)</h3>
-                <h4>IISER Thiruvananthapuram</h4>
-                <h5>Duration : 2023-2024 </h5>
-
-                <p>
-                    Managed merchandise financing and provided key administrative support during the prestigious Frontier Symposium in Mathematics, 2023, ensuring smooth financial operations and successful event execution.
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
-
-       <!-- ---------- RESEARCH & PROJECTS ---------- -->
-<section id="research">
-
-    <style>
-        .research-institute-card {
-            display: flex;
-            flex-direction: column;
-            align-items: stretch;
-            padding: 0;
-            overflow: hidden;
-            margin-bottom: 2rem;
-        }
-
-        .research-institute-logo {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem 2rem 1.2rem;
-            background-color: #fafaf8;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .research-institute-logo img {
-            width: auto;
-            height: auto;
-            object-fit: contain;
-        }
-
-        /* IISER TVM — most projects, slightly smaller logo */
-        .research-iisertvm .research-institute-logo img {
-            max-width: 240px;
-            max-height: 240px;
-        }
-
-        /* IIT Goa */
-        .research-iitgoa .research-institute-logo img {
-            max-width: 240px;
-            max-height: 240px;
-        }
-
-        /* IISER Pune */
-        .research-iiserpune .research-institute-logo img {
-            max-width: 240px;
-            max-height: 240px;
-        }
-
-        .research-institute-content {
-            width: 100%;
-            padding: 1.7rem 1.8rem;
-        }
-
-        .research-institute-content > h3 {
-            text-align: center;
-            font-size: 1.6rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            color: var(--text);
-        }
-
-        .research-project {
-            padding-bottom: 1.7rem;
-            margin-bottom: 1.7rem;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .research-project:last-child {
-            padding-bottom: 0;
-            margin-bottom: 0;
-            border-bottom: none;
-        }
-
-        .research-project h4 {
-            font-size: 1.22rem;
-            font-weight: 600;
-            color: var(--text);
-            margin-bottom: 0.35rem;
-            line-height: 1.4;
-        }
-
-        .research-project .card-subtitle {
-            margin-bottom: 0.85rem;
-        }
-
-        .research-project .card-details {
-            margin-bottom: 0.35rem;
-        }
-
-        @media (max-width: 768px) {
-
-            .research-institute-logo {
-                padding: 1.5rem 1.5rem 1rem;
-            }
-
-            .research-iisertvm .research-institute-logo img {
-                max-width: 240px;
-                max-height: 240px;
-            }
-
-            .research-iitgoa .research-institute-logo img {
-                max-width: 240px;
-                max-height: 240px;
-            }
-
-            .research-iiserpune .research-institute-logo img {
-                max-width: 240px;
-                max-height: 240px;
-            }
-
-            .research-institute-content {
-                padding: 1.4rem 1.5rem;
-            }
-
-            .research-institute-content > h3 {
-                font-size: 1.4rem;
-            }
-        }
-    </style>
-
-
-    <h2><u>Research &amp; Projects</u></h2>
-
-    <p>
-        I enjoy building statistically rigorous methods for challenging real-world problems.
-        My research spans Bayesian inference, probabilistic modeling, computational biology,
-        network science, and machine learning ! Explore the projects below to learn more about my work :)
-    </p>
-
-
-    <!-- ========================================================= -->
-    <!-- IISER THIRUVANANTHAPURAM -->
-    <!-- ========================================================= -->
-    <div class="card research-institute-card research-iisertvm">
-
-        <div class="research-institute-logo">
-            <img src="IISER_Thiruvananthapuram_Logo.svg" alt="IISER Thiruvananthapuram logo">
-        </div>
-
-        <div class="research-institute-content">
-
-            <h3>Indian Institute of Science Education and Research, Thiruvananthapuram</h3>
-             <!-- ----- Dr. Masihuddin ----- -->
-            <div class="research-project">
-
-                <h4>Estimation of Selected Parameters for Inverse Gaussian</h4>
-
-                <p class="card-subtitle">
-                    Under Dr. Md. Masihuddin
-                    
-                    · Ongoing Major Project
-                </p>
-
-                <p class="card-details">
-                    Ongoing major project focused on the estimation of selected parameters
-                    of the Inverse Gaussian distribution, for different types of populations.
-                </p>
-
-            </div>
-
-
-            <!-- ----- Dr. Zakaria Laskar ----- -->
-<div class="research-project">
-
-    <h4>Optimizing Institutional Food Systems via Transactional Data: A Residential University Case Study</h4>
-
-    <p class="card-subtitle">
-        Under Dr. Zakaria Laskar · Course Project · Apr 2026
-    </p>
-
-    <p class="card-details">
-        Developed a Data Warehousing and Business Intelligence framework to analyze
-        institutional mess expenditure data. Built an end-to-end pipeline involving
-        data cleaning, ETL, dimensional data warehousing, OLAP-style analysis,
-        temporal trend analysis, Benford's Law, network analysis, and frequent
-        pattern mining to identify procurement inefficiencies, vendor dependencies,
-        and high-risk food wastage periods.
-    </p>
-
-    <div class="tags">
-        <span class="tag">Data Warehousing</span>
-        <span class="tag">ETL</span>
-        <span class="tag">Business Intelligence</span>
-        <span class="tag">Benford's Law</span>
-        <span class="tag">Network Analysis</span>
-        <span class="tag">Association Rule Mining</span>
-    </div>
-
-    <div class="card-actions">
-
-        <a href="https://github.com/msgwebsite/portfolio/releases/download/projects/DWBI.pdf"
-           target="_blank"
-           class="btn">
-            <i class="fas fa-file-lines"></i> Report
-        </a>
-
-        <a href="https://maitreyaganu.github.io/shodh/"
-       target="_blank"
-       class="btn btn-primary">
-        <i class="fas fa-arrow-up-right-from-square"></i> Try Interactive UI
-    </a>
-
-
-        <a href="https://github.com/MaitreyaGanu/shodh/tree/main"
-           target="_blank"
-           class="btn">
-            <i class="fab fa-github"></i> GitHub
-        </a>
-
-    </div>
-
-</div>
-
-
-            <!-- ----- Dr. Saptarshi Bej ----- -->
-            <div class="research-project">
-
-                <h4>Community Detection &amp; Network Analysis</h4>
-
-                <p class="card-subtitle">
-                    Under Dr. Saptarshi Bej · Dec 2024
-                </p>
-
-                <p class="card-details">
-                    Applied modularity-based clustering across diverse complex networks —
-                    neural pathways, protein-protein interactions, and infrastructure (road)
-                    systems — using NetworkX and graph theory. Optimized community partitioning
-                    to reveal underlying topological structure and visualized the resulting
-                    network properties.
-                </p>
-
-                <div class="tags">
-                    <span class="tag">Graph Theory</span>
-                    <span class="tag">Modularity Optimization</span>
-                    <span class="tag">NetworkX</span>
-                    <span class="tag">Community Detection</span>
+        <!-- ================= ABOUT / HOME ================= -->
+        <section id="home" class="active">
+            <div class="profile-section">
+                <div class="profile-photo">
+                    <img src="me.png" alt="Maitreya Sameer Ganu">
                 </div>
-
-                <div class="card-actions">
-                    <a href="https://github.com/msgwebsite/portfolio/releases/download/internship-certificates/iisertvmwinter2024.pdf"
-                       target="_blank" class="btn">
-                        <i class="fas fa-certificate"></i> Certificate
-                    </a>
-
-                    <a href="https://github.com/msgwebsite/portfolio/releases/download/projects/communitydetection.pdf"
-                       download class="btn">
-                        <i class="fas fa-file-lines"></i> Report
-                    </a>
-
-                    <a href="https://github.com/msgwebsite/portfolio/releases/download/projects/modularity.pdf"
-                       download class="btn">
-                        <i class="fas fa-file-lines"></i> Modularity Study
-                    </a>
+                <div class="profile-info">
+                    <h2>About Me</h2>
+                    <p class="tagline">
+                        Department of Science &amp; Technology (DST), Government of India &mdash; INSPIRE Scholar<br>
+                        Data Science | Bayesian Statistics | Network Science | Bioinformatics | Biostatistics
+                    </p>
+                    <div class="bio-section">
+                        <p>Hi, I'm Maitreya! I'm a BS-MS Data Science student at
+                            <a href="https://www.iisertvm.ac.in/" target="_blank" rel="noopener noreferrer">IISER Thiruvananthapuram</a>,
+                            where I spend most of my time on Bayesian statistics, probabilistic modeling, and network science.
+                            I like building principled models for messy, high-dimensional data &mdash; especially single-cell genomics
+                            like scRNA-seq and scATAC-seq. I am also grateful to be an INSPIRE SHE Scholar! Lately I've been
+                            most excited about Bayesian inference, unsupervised feature selection, and applying probabilistic
+                            models to real-world data for better interpretability.</p>
+                        <p>I've been lucky to do research internships and poster presentations at premier institutes like
+                            <a href="https://iitb.ac.in/" target="_blank" rel="noopener noreferrer">IIT Bombay</a>,
+                            <a href="https://iitgoa.ac.in/" target="_blank" rel="noopener noreferrer">IIT Goa</a>,
+                            <a href="https://www.iiserpune.ac.in/" target="_blank" rel="noopener noreferrer">IISER Pune</a>, and
+                            <a href="https://www.iisertvm.ac.in/" target="_blank" rel="noopener noreferrer">IISER Thiruvananthapuram</a>,
+                            working on everything from Poisson mixture models, Bayesian statistics, estimation of selected
+                            parameters and bioinformatics to network science and real-life optimization problems using
+                            data warehousing techniques.</p>
+                        <p>Outside of research, I'm a Tabla artist, a footballer, math enthusiast, and a lifelong fan of
+                            Hindustani classical music. On campus I've served as a Student Placement Coordinator and
+                            spokesperson for the Music Club. Feel free to look around and reach out any time &mdash; you can find me on
+                            <a href="https://www.linkedin.com/in/maitreya-ganu-673995286" target="_blank" rel="noopener noreferrer">LinkedIn</a>,
+                            <a href="https://github.com/MaitreyaGanu" target="_blank" rel="noopener noreferrer">GitHub</a>, or over
+                            <a href="mailto:maitreyaganu@gmail.com">Email</a>.</p>
+                    </div>
                 </div>
-
             </div>
 
-
-            <!-- ----- Prof. Priyanka Majumder ----- -->
-            <div class="research-project">
-
-                <h4>Design and Analysis of Experiments</h4>
-
-                <p class="card-subtitle">
-                    Under Prof. Priyanka Majumder · Dec 2025
-                </p>
-
-                <p class="card-details">
-                    Mastered core experimental design methodologies — RCBD, Latin Square,
-                    and factorial designs — to structure robust randomized clinical trials.
-                    Applied mathematical statistics to model trial outcomes while minimizing
-                    the impact of confounding variables, ensuring statistically rigorous and
-                    reproducible results.
-                </p>
-
-                <div class="tags">
-                    <span class="tag">RCBD</span>
-                    <span class="tag">Latin Square Designs</span>
-                    <span class="tag">Factorial Designs</span>
-                    <span class="tag">Clinical Trials</span>
+            <div style="margin-top: 2.2rem;">
+                <h2 style="text-align: center; margin-bottom: 1.8rem;"><u>Currently working on</u> :</h2>
+                <div class="grid-2">
+                    <div class="card">
+                        <h3>Unsupervised Feature Selection for Genes</h3>
+                        <p class="card-subtitle"><a href="https://iitgoa.ac.in/" target="_blank" rel="noopener noreferrer">IIT Goa</a> &middot; Under
+                            <a href="https://clintpgeorge.github.io/" target="_blank" rel="noopener noreferrer">Dr. Clint P. George</a></p>
+                        <p class="card-details">Developing unsupervised feature selection methods for gene-level data, with a focus on identifying informative biological features without relying on predefined labels.</p>
+                        <p class="card-details"><strong>Research paper preprint currently under writing.</strong></p>
+                    </div>
+                    <div class="card">
+                        <h3>Estimation of Selected Parameters for Inverse Gaussian</h3>
+                        <p class="card-subtitle"><a href="https://www.iisertvm.ac.in/faculty/masih" target="_blank" rel="noopener noreferrer">IISER Thiruvananthapuram</a> &middot; Under
+                            <a href="https://sites.google.com/view/masihuddin" target="_blank" rel="noopener noreferrer">Dr. Md. Masihuddin</a></p>
+                        <p class="card-details">Ongoing major project focused on the inference and estimation of selected parameters of the Inverse Gaussian distribution under various diverse populations.</p>
+                        <p class="card-details"><strong>Ongoing Major Project</strong></p>
+                    </div>
                 </div>
+                <div class="favorite-quote">&ldquo;Obsession beats talent, EVERYTIME.&rdquo;</div>
+            </div>
+        </section>
 
-                <div class="card-actions">
-                    <a href="https://github.com/msgwebsite/portfolio/releases/download/projects/doe.pdf"
-                       download class="btn">
-                        <i class="fas fa-file-lines"></i> Report
-                    </a>
+        <!-- ================= EDUCATION ================= -->
+        <section id="education">
+            <h2><u>Education</u></h2>
+            <div class="stacked-cards">
+                <div class="card split-card education-card">
+                    <div class="split-logo"><img src="IISER_Thiruvananthapuram_Logo.svg" alt="IISER Thiruvananthapuram logo"></div>
+                    <div class="split-content">
+                        <h3>BS-MS (Dual Degree), Data Science Major</h3>
+                        <p class="card-subtitle">IISER Thiruvananthapuram<br>Aug 2023 &ndash; Present</p>
+                        <p class="card-details">Currently pursuing a BS-MS program in Data Science, building a strong foundation in statistical modeling, machine learning algorithms, mathematics, and computational techniques.</p>
+                        <table class="education-table">
+                            <thead><tr><th>Semester</th><th>SGPA</th></tr></thead>
+                            <tbody>
+                                <tr><td>Semester 1</td><td>8.81</td></tr>
+                                <tr><td>Semester 2</td><td>9.00</td></tr>
+                                <tr><td>Semester 3</td><td>8.87</td></tr>
+                                <tr><td>Semester 4</td><td>9.57</td></tr>
+                                <tr><td>Semester 5</td><td>9.32</td></tr>
+                                <tr><td>Semester 6</td><td>9.71</td></tr>
+                            </tbody>
+                        </table>
+                        <p class="education-cgpa">CGPA till date: 9.21</p>
+                    </div>
                 </div>
-
-            </div>
-
-        </div>
-    </div>
-
-
-    <!-- ========================================================= -->
-    <!-- IIT GOA -->
-    <!-- ========================================================= -->
-    <div class="card research-institute-card research-iitgoa">
-
-        <div class="research-institute-logo">
-            <img src="iitgoa.png" alt="IIT Goa logo">
-        </div>
-
-        <div class="research-institute-content">
-
-            <h3>Indian Institute of Technology (IIT), Goa</h3>
-
-            <div class="research-project">
-
-                <h4>Unsupervised Feature Selection for scRNA-seq Data</h4>
-
-                <p class="card-subtitle">
-                    Under Dr. Clint P. George · May 2026 – Jul 2026
-                </p>
-
-                <p class="card-details">
-                    Proposed two novel unsupervised feature selection methods — PLit
-                    (Poisson Length Information Test) and ReThiN (Reproducibility via Thinning) —
-                    for single-cell RNA-seq data, grounded in information-theoretic and
-                    stability-driven principles and benchmarked against state-of-the-art
-                    methods across seven public scRNA-seq datasets.
-                </p>
-
-                <div class="tags">
-                    <span class="tag">Bayesian Inference</span>
-                    <span class="tag">Poisson Factor Analysis</span>
-                    <span class="tag">Information Theory</span>
-                    <span class="tag">Feature Selection</span>
+                <div class="card split-card education-card">
+                    <div class="split-logo"><img src="sp.png" alt="Sir Parshurambhau College logo"></div>
+                    <div class="split-content">
+                        <h3>Higher Secondary Education (Science Stream)</h3>
+                        <p class="card-subtitle">Sir Parshurambhau College, Pune<br>Aug 2021 &ndash; May 2023</p>
+                        <p class="card-details">Secured 92.5% in MSBSHSE Board Science-Stream Exams and completed higher secondary education with a focus on Physics, Chemistry, Mathematics, Biology, PE, German, Environmental Sciences, and English literature. Secured 5th overall rank in college and 2nd rank in the science stream. Awarded the SP College Merit Scholarship, along with the INSPIRE-SHE Scholarship from the Government of India.</p>
+                    </div>
                 </div>
-
-                <div class="card-actions">
-
-                    <a href="https://github.com/msgwebsite/portfolio/releases/download/internship-certificates/iitgoasummer2026.pdf"
-                       target="_blank" class="btn">
-                        <i class="fas fa-certificate"></i> Certificate
-                    </a>
-
-                    <a href="https://github.com/msgwebsite/portfolio/releases/download/projects/PLit_ReThiN.pdf"
-                       download class="btn">
-                        <i class="fas fa-file-lines"></i> Report
-                    </a>
-
+                <div class="card split-card education-card">
+                    <div class="split-logo"><img src="sems.png" alt="Sevasadan English Medium School logo"></div>
+                    <div class="split-content">
+                        <h3>Matriculation (SSC)</h3>
+                        <p class="card-subtitle">Sevasadan English Medium School, Pune<br>June 2008 &ndash; March 2021</p>
+                        <p class="card-details">Secured 95% in Class X CBSE Board Exams.</p>
+                    </div>
                 </div>
-
             </div>
+        </section>
 
-        </div>
-    </div>
-
-
-    <!-- ========================================================= -->
-    <!-- IISER PUNE -->
-    <!-- ========================================================= -->
-    <div class="card research-institute-card research-iiserpune">
-
-        <div class="research-institute-logo">
-            <img src="iiserpune.png" alt="IISER Pune logo">
-        </div>
-
-        <div class="research-institute-content">
-
-            <h3>Indian Institute of Science Education and Research, Pune</h3>
-
-
-            <!-- ----- Dr. Leelavati Narlikar ----- -->
-            <div class="research-project">
-
-                <h4>Hierarchical Bayesian Poisson Mixture Models</h4>
-
-                <p class="card-subtitle">
-                    Under Dr. Leelavati Narlikar · May 2025 – Jul 2025
-                </p>
-
-                <p class="card-details">
-                    Engineered a novel Bayesian clustering framework using Poisson Mixture
-                    Models for single-cell (scRNA-seq / scATAC-seq) data. Benchmarked clustering
-                    accuracy and computational efficiency, demonstrating competitive or superior
-                    performance against standard machine-learning pipelines and industry-standard
-                    tools like Seurat.
-                </p>
-
-                <div class="tags">
-                    <span class="tag">Hierarchical Bayesian</span>
-                    <span class="tag">Poisson Mixture Models</span>
-                    <span class="tag">Clustering</span>
-                    <span class="tag">Single-cell</span>
+        <!-- ================= EXPERIENCE ================= -->
+        <section id="experience">
+            <h2><u>Experience</u></h2>
+            <div class="stacked-cards">
+                <div class="card split-card experience-card">
+                    <div class="split-logo"><img src="pcpc.png" alt="Placement Cell logo"></div>
+                    <div class="split-content">
+                        <h3>Placement and Career Promotion Cell</h3>
+                        <h4>IISER Thiruvananthapuram</h4>
+                        <h5>Student Coordinator &middot; 2024&ndash;2026</h5>
+                        <p>As Student Coordinator, I reached out to and brought many startups and established companies to campus for placement opportunities, bridging the gap between industry and academia. I also conducted sessions for juniors &mdash; including CV building, interview preparation, and career guidance &mdash; to help them navigate placements and secure internships.</p>
+                        <p>Furthermore, I restructured the Placement Cell's organizational hierarchy and expanded its scale by approximately fivefold. Established connections with organizations including TCS, Deloitte, Macleods Pharmaceuticals, SciAstra, Tallento.ai, Skillairo, and others. On average, at least three internship or PhD opportunities were facilitated each month. Contributed to the planning and execution of placement drives and pre-placement talks. Initiated collaborations and discussions with Placement Cells at other IISERs and NISER to strengthen placement opportunities, particularly within research-oriented institutions.</p>
+                    </div>
                 </div>
-
-                <div class="card-actions">
-
-                    <a href="https://github.com/msgwebsite/portfolio/releases/download/internship-certificates/iiserpunesummer2025.pdf"
-                       target="_blank" class="btn">
-                        <i class="fas fa-certificate"></i> Certificate
-                    </a>
-
-                    <a href="https://github.com/msgwebsite/portfolio/releases/download/projects/PMM.pdf"
-                       download class="btn">
-                        <i class="fas fa-file-lines"></i> Report
-                    </a>
-
-                    <a href="https://github.com/MaitreyaGanu/Poisson-Mixture-Models"
-                       target="_blank" class="btn">
-                        <i class="fab fa-github"></i> Code
-                    </a>
-
+                <div class="card split-card experience-card">
+                    <div class="split-logo"><img src="kernel.png" alt="KerNeL logo"></div>
+                    <div class="split-content">
+                        <h3>KerNeL &mdash; Official Data Science Departmental Club</h3>
+                        <h4>IISER Thiruvananthapuram</h4>
+                        <h5>Core Coordinator &amp; Head of Events &middot; 2026&ndash;Present</h5>
+                        <p>Was selected as the primary coordinator and Head for KerNeL, the official Data Science departmental club at IISER Thiruvananthapuram, which emphasizes research-oriented aspects of Data Science alongside its applications. Currently serving as Core Coordinator and Head of Events Team, with responsibilities spanning the planning and execution of academic events and hands-on sessions, as well as coordination of merchandise and financial activities.</p>
+                        <p>Learn more about KerNeL: <a href="https://dsciisertvm.netlify.app/" target="_blank" rel="noopener noreferrer">dsciisertvm.netlify.app</a></p>
+                    </div>
                 </div>
-
-            </div>
-
-
-            <!-- ----- Prof. Soumen Maity ----- -->
-            <div class="research-project">
-
-                <h4>Cryptography Internship</h4>
-
-                <p class="card-subtitle">
-                    Under Prof. Soumen Maity (HoD, Mathematics) · May 2024 – Jul 2024
-                </p>
-
-                <p class="card-details">
-                    Conducted an in-depth study of the algebraic foundations governing modern
-                    cryptosystems, covering symmetric algorithms (e.g., DES) and public-key
-                    infrastructure. Completed a comprehensive structured reading project
-                    analyzing various security models, theoretical vulnerabilities, and
-                    protocol robustness.
-                </p>
-
-                <div class="tags">
-                    <span class="tag">Public-Key Cryptography</span>
-                    <span class="tag">Symmetric-Key</span>
-                    <span class="tag">DES</span>
-                    <span class="tag">Algebraic Foundations</span>
+                <div class="card split-card experience-card">
+                    <div class="split-logo"><img src="music.png" alt="Music Club logo"></div>
+                    <div class="split-content">
+                        <h3>Music Club</h3>
+                        <h4>IISER Thiruvananthapuram</h4>
+                        <h5>Spokesperson &middot; 2025&ndash;2026</h5>
+                        <p>Served as spokesperson and a member of the club's decision-making committee. Organized jamming sessions, coordinated performances like ISHYA, and managed logistics for major cultural events including IICM 2025, while actively performing Tabla at campus events.</p>
+                    </div>
                 </div>
-
-                <div class="card-actions">
-
-                    <a href="https://github.com/msgwebsite/portfolio/releases/download/internship-certificates/iiserpunesummer2024.pdf"
-                       target="_blank" class="btn">
-                        <i class="fas fa-certificate"></i> Certificate
-                    </a>
-
+                <div class="card split-card experience-card">
+                    <div class="split-logo"><img src="cmit.png" alt="Club of Mathematics logo"></div>
+                    <div class="split-content">
+                        <h3>Club of Mathematics, IISER Thiruvananthapuram (CMIT)</h3>
+                        <h4>IISER Thiruvananthapuram</h4>
+                        <h5>Finance Head &middot; 2023&ndash;2024</h5>
+                        <p>Managed merchandise financing and provided key administrative support during the Frontier Symposium in Mathematics, 2023, ensuring smooth financial operations and successful event execution.</p>
+                    </div>
                 </div>
+            </div>
+        </section>
 
+        <!-- ================= NEW: ACHIEVEMENTS ================= -->
+        <section id="achievements">
+            <h2><u>Achievements</u></h2>
+            <p>A selection of academic distinctions, scholarships, awards, and research recognitions.</p>
+
+            <div class="achievement-category">
+                <h3>Academic Distinctions &amp; Awards</h3>
+                <div class="achievement-list">
+                    <div class="card achievement-card achievement-featured">
+                        <h4>Selected for ResCon'26 &mdash; IIT Bombay</h4>
+                        <p class="achievement-meta">2026 &middot; Research Poster Presentation Competition</p>
+                        <p>Selected for the ResCon'26 poster presentation competition at the Indian Institute of Technology Bombay (IIT Bombay).</p>
+                    </div>
+                    <div class="card achievement-card">
+                        <h4>INSPIRE Scholar &mdash; Department of Science &amp; Technology, Government of India</h4>
+                        <p>Awarded the INSPIRE-SHE Scholarship for ranking among the top 1% of eligible students.</p>
+                    </div>
+                    <div class="card achievement-card">
+                        <h4>SP College Merit Scholarship</h4>
+                        <p>Secured 2nd rank in the Science Stream in the MSBSHSE Class 12 examinations at Sir Parshurambhau College.</p>
+                    </div>
+                    <div class="card achievement-card">
+                        <h4>Rangotsav Golden Art Merit Award</h4>
+                        <p>Received national-level recognition for artistic excellence.</p>
+                    </div>
+                    <div class="card achievement-card">
+                        <h4>English Marathon Awards</h4>
+                        <p>Received multiple state-level and district-level awards for English proficiency.</p>
+                    </div>
+                    <div class="card achievement-card">
+                        <h4>NPTEL German-I Course Topper</h4>
+                        <p>Ranked among the top 5% of learners in the NPTEL German-I course, qualifying for eligibility for the NPTEL Post-Baccalaureate Fellowship.</p>
+                    </div>
+                </div>
             </div>
 
-        </div>
-    </div>
+        </section>
 
-</section>
-<!-- ---------- TECHNICAL WRITE-UPS ---------- -->
-<section id="technical-writeups">
+        <!-- ================= NEW: POSTER PRESENTATIONS ================= -->
+        <section id="poster-presentations">
+            <h2><u>Poster Presentations</u></h2>
+            <p>Research presentations and selections at academic conferences and competitions.</p>
 
-    <h2><u>Technical Write-ups</u></h2>
+            <div class="card institute-card poster-institute-card">
+                <div class="institute-logo">
+                    <!-- Add iitb.png to the same GitHub folder as index.html. -->
+                    <img src="iitb.png" alt="Indian Institute of Technology Bombay logo">
+                </div>
+                <div class="institute-content">
+                    <h3>Indian Institute of Technology (IIT), Bombay</h3>
+                    <div class="research-project">
+                        <h4>ResCon'26 &mdash; Poster Presentation Competition</h4>
+                        <p class="card-subtitle">IIT Bombay &middot; 2026</p>
+                        <p class="poster-info"><span class="poster-selection">Selected for poster presentation competition.</span></p>
+                        <p class="card-details">Research on unsupervised feature selection for single-cell RNA sequencing (scRNA-seq), featuring the proposed PLit and ReThiN methods.</p>
+                        <div class="tags">
+                            <span class="tag">ResCon'26</span>
+                            <span class="tag">Poster Presentation</span>
+                            <span class="tag">Unsupervised Feature Selection</span>
+                            <span class="tag">scRNA-seq</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <p>
-        A collection of technical write-ups on topics that I have explored in depth and
-        enjoyed understanding from first principles. These notes are written with an
-        emphasis on clarity, intuition, and mathematical reasoning. I have tried to
-        explain each topic in a way that bridges formal concepts with an accessible
-        understanding.
-    </p>
+        <!-- ================= RESEARCH & PROJECTS ================= -->
+        <section id="research">
+            <h2><u>Research &amp; Projects</u></h2>
+            <p>I enjoy building statistically rigorous methods for challenging real-world problems. My research spans Bayesian inference, probabilistic modeling, computational biology, network science, and machine learning! Explore the projects below to learn more about my work :)</p>
 
-    <div class="grid-2">
-
-        <!-- ---------- 6'S PROPERTY ---------- -->
-        <div class="card">
-
-            <h3>An Interesting Property of 6</h3>
-
-            <p class="card-subtitle">
-                Mathematics · Number Theory
-            </p>
-
-            <p class="card-details">
-                A mathematical investigation carried out with my friend, Hrishikesh
-                Patwardhan, into a remarkable property of the number 6. We prove that
-                6 is the unique number for which the sum of its proper factors is equal
-                to their product.
-            </p>
-
-            <div class="tags">
-                <span class="tag">Number Theory</span>
-                <span class="tag">Proof</span>
-                <span class="tag">Mathematics</span>
+            <!-- IISER THIRUVANANTHAPURAM -->
+            <div class="card institute-card research-iisertvm">
+                <div class="institute-logo"><img src="IISER_Thiruvananthapuram_Logo.svg" alt="IISER Thiruvananthapuram logo"></div>
+                <div class="institute-content">
+                    <h3>Indian Institute of Science Education and Research, Thiruvananthapuram</h3>
+                    <div class="research-project">
+                        <h4>Estimation of Selected Parameters for Inverse Gaussian</h4>
+                        <p class="card-subtitle">Under Dr. Md. Masihuddin &middot; Ongoing Major Project</p>
+                        <p class="card-details">Ongoing major project focused on the estimation of selected parameters of the Inverse Gaussian distribution, for different types of populations.</p>
+                    </div>
+                    <div class="research-project">
+                        <h4>Optimizing Institutional Food Systems via Transactional Data: A Residential University Case Study</h4>
+                        <p class="card-subtitle">Under Dr. Zakaria Laskar &middot; Course Project &middot; Apr 2026</p>
+                        <p class="card-details">Developed a Data Warehousing and Business Intelligence framework to analyze institutional mess expenditure data. Built an end-to-end pipeline involving data cleaning, ETL, dimensional data warehousing, OLAP-style analysis, temporal trend analysis, Benford's Law, network analysis, and frequent pattern mining to identify procurement inefficiencies, vendor dependencies, and high-risk food wastage periods.</p>
+                        <div class="tags"><span class="tag">Data Warehousing</span><span class="tag">ETL</span><span class="tag">Business Intelligence</span><span class="tag">Benford's Law</span><span class="tag">Network Analysis</span><span class="tag">Association Rule Mining</span></div>
+                        <div class="card-actions">
+                            <a href="https://github.com/msgwebsite/portfolio/releases/download/projects/DWBI.pdf" target="_blank" rel="noopener noreferrer" class="btn"><i class="fas fa-file-lines"></i> Report</a>
+                            <a href="https://maitreyaganu.github.io/shodh/" target="_blank" rel="noopener noreferrer" class="btn btn-primary"><i class="fas fa-arrow-up-right-from-square"></i> Try Interactive UI</a>
+                            <a href="https://github.com/MaitreyaGanu/shodh/tree/main" target="_blank" rel="noopener noreferrer" class="btn"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                    <div class="research-project">
+                        <h4>Community Detection &amp; Network Analysis</h4>
+                        <p class="card-subtitle">Under Dr. Saptarshi Bej &middot; Dec 2024</p>
+                        <p class="card-details">Applied modularity-based clustering across diverse complex networks &mdash; neural pathways, protein-protein interactions, and infrastructure (road) systems &mdash; using NetworkX and graph theory. Optimized community partitioning to reveal underlying topological structure and visualized the resulting network properties.</p>
+                        <div class="tags"><span class="tag">Graph Theory</span><span class="tag">Modularity Optimization</span><span class="tag">NetworkX</span><span class="tag">Community Detection</span></div>
+                        <div class="card-actions">
+                            <a href="https://github.com/msgwebsite/portfolio/releases/download/internship-certificates/iisertvmwinter2024.pdf" target="_blank" rel="noopener noreferrer" class="btn"><i class="fas fa-certificate"></i> Certificate</a>
+                            <a href="https://github.com/msgwebsite/portfolio/releases/download/projects/communitydetection.pdf" target="_blank" rel="noopener noreferrer" class="btn"><i class="fas fa-file-lines"></i> Report</a>
+                            <a href="https://github.com/msgwebsite/portfolio/releases/download/projects/modularity.pdf" target="_blank" rel="noopener noreferrer" class="btn"><i class="fas fa-file-lines"></i> Modularity Study</a>
+                        </div>
+                    </div>
+                    <div class="research-project">
+                        <h4>Design and Analysis of Experiments</h4>
+                        <p class="card-subtitle">Under Prof. Priyanka Majumder &middot; Dec 2025</p>
+                        <p class="card-details">Mastered core experimental design methodologies &mdash; RCBD, Latin Square, and factorial designs &mdash; to structure robust randomized clinical trials. Applied mathematical statistics to model trial outcomes while minimizing the impact of confounding variables, ensuring statistically rigorous and reproducible results.</p>
+                        <div class="tags"><span class="tag">RCBD</span><span class="tag">Latin Square Designs</span><span class="tag">Factorial Designs</span><span class="tag">Clinical Trials</span></div>
+                        <div class="card-actions"><a href="https://github.com/msgwebsite/portfolio/releases/download/projects/doe.pdf" target="_blank" rel="noopener noreferrer" class="btn"><i class="fas fa-file-lines"></i> Report</a></div>
+                    </div>
+                </div>
             </div>
 
-            <div class="card-actions">
-                <a href="https://github.com/msgwebsite/portfolio/releases/download/Write-ups/6s-property.pdf"
-                   download
-                   class="btn">
-                    <i class="fas fa-download"></i>
-                    Download
-                </a>
+            <!-- IIT GOA -->
+            <div class="card institute-card research-iitgoa">
+                <div class="institute-logo"><img src="iitgoa.png" alt="IIT Goa logo"></div>
+                <div class="institute-content">
+                    <h3>Indian Institute of Technology (IIT), Goa</h3>
+                    <div class="research-project">
+                        <h4>Unsupervised Feature Selection for scRNA-seq Data</h4>
+                        <p class="card-subtitle">Under Dr. Clint P. George &middot; May 2026 &ndash; Jul 2026</p>
+                        <p class="card-details">Proposed two novel unsupervised feature selection methods &mdash; PLit (Poisson Length Information Test) and ReThiN (Reproducibility via Thinning) &mdash; for single-cell RNA-seq data, grounded in information-theoretic and stability-driven principles and benchmarked against state-of-the-art methods across seven public scRNA-seq datasets.</p>
+                        <div class="tags"><span class="tag">Bayesian Inference</span><span class="tag">Poisson Factor Analysis</span><span class="tag">Information Theory</span><span class="tag">Feature Selection</span></div>
+                        <div class="card-actions">
+                            <a href="https://github.com/msgwebsite/portfolio/releases/download/internship-certificates/iitgoasummer2026.pdf" target="_blank" rel="noopener noreferrer" class="btn"><i class="fas fa-certificate"></i> Certificate</a>
+                            <a href="https://github.com/msgwebsite/portfolio/releases/download/projects/PLit_ReThiN.pdf" target="_blank" rel="noopener noreferrer" class="btn"><i class="fas fa-file-lines"></i> Report</a>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-        </div>
-
-
-        <!-- ---------- OPERATING SYSTEMS ---------- -->
-        <div class="card">
-
-            <h3>Operating Systems</h3>
-
-            <p class="card-subtitle">
-                Computer Science · Systems
-            </p>
-
-            <p class="card-details">
-                A first-principles exploration of operating system fundamentals,
-                focusing on the internal mechanisms that enable processes, memory,
-                files, and other system-level components to work together.
-            </p>
-
-            <div class="tags">
-                <span class="tag">Operating Systems</span>
-                <span class="tag">Systems</span>
-                <span class="tag">Computer Science</span>
+            <!-- IISER PUNE -->
+            <div class="card institute-card research-iiserpune">
+                <div class="institute-logo"><img src="iiserpune.png" alt="IISER Pune logo"></div>
+                <div class="institute-content">
+                    <h3>Indian Institute of Science Education and Research, Pune</h3>
+                    <div class="research-project">
+                        <h4>Hierarchical Bayesian Poisson Mixture Models</h4>
+                        <p class="card-subtitle">Under Dr. Leelavati Narlikar &middot; May 2025 &ndash; Jul 2025</p>
+                        <p class="card-details">Engineered a novel Bayesian clustering framework using Poisson Mixture Models for single-cell (scRNA-seq / scATAC-seq) data. Benchmarked clustering accuracy and computational efficiency, demonstrating competitive or superior performance against standard machine-learning pipelines and industry-standard tools like Seurat.</p>
+                        <div class="tags"><span class="tag">Hierarchical Bayesian</span><span class="tag">Poisson Mixture Models</span><span class="tag">Clustering</span><span class="tag">Single-cell</span></div>
+                        <div class="card-actions">
+                            <a href="https://github.com/msgwebsite/portfolio/releases/download/internship-certificates/iiserpunesummer2025.pdf" target="_blank" rel="noopener noreferrer" class="btn"><i class="fas fa-certificate"></i> Certificate</a>
+                            <a href="https://github.com/msgwebsite/portfolio/releases/download/projects/PMM.pdf" target="_blank" rel="noopener noreferrer" class="btn"><i class="fas fa-file-lines"></i> Report</a>
+                            <a href="https://github.com/MaitreyaGanu/Poisson-Mixture-Models" target="_blank" rel="noopener noreferrer" class="btn"><i class="fab fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                    <div class="research-project">
+                        <h4>Cryptography Internship</h4>
+                        <p class="card-subtitle">Under Prof. Soumen Maity (HoD, Mathematics) &middot; May 2024 &ndash; Jul 2024</p>
+                        <p class="card-details">Conducted an in-depth study of the algebraic foundations governing modern cryptosystems, covering symmetric algorithms (e.g., DES) and public-key infrastructure. Completed a comprehensive structured reading project analyzing various security models, theoretical vulnerabilities, and protocol robustness.</p>
+                        <div class="tags"><span class="tag">Public-Key Cryptography</span><span class="tag">Symmetric-Key</span><span class="tag">DES</span><span class="tag">Algebraic Foundations</span></div>
+                        <div class="card-actions"><a href="https://github.com/msgwebsite/portfolio/releases/download/internship-certificates/iiserpunesummer2024.pdf" target="_blank" rel="noopener noreferrer" class="btn"><i class="fas fa-certificate"></i> Certificate</a></div>
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <div class="card-actions">
-                <a href="https://github.com/msgwebsite/portfolio/releases/download/Write-ups/OS.pdf"
-                   download
-                   class="btn">
-                    <i class="fas fa-download"></i>
-                    Download
-                </a>
+        <!-- ================= TECHNICAL WRITE-UPS ================= -->
+        <section id="technical-writeups">
+            <h2><u>Technical Write-ups</u></h2>
+            <p>A collection of technical write-ups on topics that I have explored in depth and enjoyed understanding from first principles. These notes are written with an emphasis on clarity, intuition, and mathematical reasoning. I have tried to explain each topic in a way that bridges formal concepts with an accessible understanding.</p>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>An Interesting Property of 6</h3>
+                    <p class="card-subtitle">Mathematics &middot; Number Theory</p>
+                    <p class="card-details">A mathematical investigation carried out with my friend, Hrishikesh Patwardhan, into a remarkable property of the number 6. We prove that 6 is the unique number for which the sum of its proper factors is equal to their product.</p>
+                    <div class="tags"><span class="tag">Number Theory</span><span class="tag">Proof</span><span class="tag">Mathematics</span></div>
+                    <div class="card-actions"><a href="https://github.com/msgwebsite/portfolio/releases/download/Write-ups/6s-property.pdf" target="_blank" rel="noopener noreferrer" class="btn"><i class="fas fa-download"></i> Download</a></div>
+                </div>
+                <div class="card">
+                    <h3>Operating Systems</h3>
+                    <p class="card-subtitle">Computer Science &middot; Systems</p>
+                    <p class="card-details">A first-principles exploration of operating system fundamentals, focusing on the internal mechanisms that enable processes, memory, files, and other system-level components to work together.</p>
+                    <div class="tags"><span class="tag">Operating Systems</span><span class="tag">Systems</span><span class="tag">Computer Science</span></div>
+                    <div class="card-actions"><a href="https://github.com/msgwebsite/portfolio/releases/download/Write-ups/OS.pdf" target="_blank" rel="noopener noreferrer" class="btn"><i class="fas fa-download"></i> Download</a></div>
+                </div>
+                <div class="card">
+                    <h3>Computer Architecture and Datapath</h3>
+                    <p class="card-subtitle">Computer Science &middot; Computer Architecture</p>
+                    <p class="card-details">A structured introduction to computer architecture and datapath concepts, explaining how hardware components interact to execute instructions and how high-level operations are translated into low-level computation.</p>
+                    <div class="tags"><span class="tag">Computer Architecture</span><span class="tag">Datapath</span><span class="tag">Computer Systems</span></div>
+                    <div class="card-actions"><a href="https://github.com/msgwebsite/portfolio/releases/download/Write-ups/datapath.pdf" target="_blank" rel="noopener noreferrer" class="btn"><i class="fas fa-download"></i> Download</a></div>
+                </div>
+                <div class="card">
+                    <h3>P vs NP</h3>
+                    <p class="card-subtitle">Algorithms &middot; Theory of Computation</p>
+                    <p class="card-details">A detailed introduction to the P vs NP problem, explained from first principles and emphasizing its connections with algorithms, computation, complexity theory, and the broader mathematical implications of the question of whether P = NP.</p>
+                    <div class="tags"><span class="tag">Algorithms</span><span class="tag">Complexity Theory</span><span class="tag">P vs NP</span></div>
+                    <div class="card-actions"><a href="https://github.com/msgwebsite/portfolio/releases/download/Write-ups/pvsnp.pdf" target="_blank" rel="noopener noreferrer" class="btn"><i class="fas fa-download"></i> Download</a></div>
+                </div>
             </div>
+        </section>
 
-        </div>
-
-
-        <!-- ---------- COMPUTER ARCHITECTURE ---------- -->
-        <div class="card">
-
-            <h3>Computer Architecture and Datapath</h3>
-
-            <p class="card-subtitle">
-                Computer Science · Computer Architecture
-            </p>
-
-            <p class="card-details">
-                A structured introduction to computer architecture and datapath
-                concepts, explaining how hardware components interact to execute
-                instructions and how high-level operations are translated into
-                low-level computation.
-            </p>
-
-            <div class="tags">
-                <span class="tag">Computer Architecture</span>
-                <span class="tag">Datapath</span>
-                <span class="tag">Computer Systems</span>
+        <!-- ================= CONTACT ================= -->
+        <section id="contact">
+            <h2>Let's Connect!</h2>
+            <p>Whether you'd like to discuss research, data science, collaborations, or just say hello, feel free to reach out.</p>
+            <div class="grid-2">
+                <div class="card">
+                    <h3><i class="fas fa-envelope"></i> Email</h3>
+                    <p class="card-details"><a href="mailto:maitreyaganu@gmail.com">maitreyaganu@gmail.com</a></p>
+                    <p class="card-details"><a href="mailto:mganu2005@gmail.com">mganu2005@gmail.com</a></p>
+                    <div class="card-actions"><a href="mailto:maitreyaganu@gmail.com" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send an Email</a></div>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-link"></i> Find Me Online</h3>
+                    <p class="card-details"><strong><i class="fab fa-linkedin"></i> LinkedIn:</strong> <a href="https://www.linkedin.com/in/maitreya-ganu-673995286" target="_blank" rel="noopener noreferrer">Maitreya Ganu</a></p>
+                    <p class="card-details"><strong><i class="fab fa-github"></i> GitHub:</strong> <a href="https://github.com/MaitreyaGanu" target="_blank" rel="noopener noreferrer">MaitreyaGanu</a></p>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-file-lines"></i> Curriculum Vitae</h3>
+                    <p class="card-details">Interested in my academic background, research experience, projects, skills, and positions of responsibility? My latest CV is available here.</p>
+                    <div class="card-actions"><a href="https://github.com/msgwebsite/portfolio/releases/download/documents-v1/maitreyaCV.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-primary"><i class="fas fa-download"></i> Download CV</a></div>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-globe"></i> Portfolio</h3>
+                    <p class="card-details">Explore my research, projects, technical write-ups, education, and other work through my portfolio.</p>
+                    <div class="card-actions"><a href="https://mganu.pages.dev" target="_blank" rel="noopener noreferrer" class="btn btn-primary"><i class="fas fa-arrow-up-right-from-square"></i> Visit Portfolio</a></div>
+                </div>
             </div>
-
-            <div class="card-actions">
-                <a href="https://github.com/msgwebsite/portfolio/releases/download/Write-ups/datapath.pdf"
-                   download
-                   class="btn">
-                    <i class="fas fa-download"></i>
-                    Download
-                </a>
-            </div>
-
-        </div>
-
-
-        <!-- ---------- P VS NP ---------- -->
-        <div class="card">
-
-            <h3>P vs NP</h3>
-
-            <p class="card-subtitle">
-                Algorithms · Theory of Computation
-            </p>
-
-            <p class="card-details">
-                A detailed introduction to the P vs NP problem, explained from first
-                principles and emphasizing its connections with algorithms, computation,
-                complexity theory, and the broader mathematical implications of the
-                question of whether P = NP.
-            </p>
-
-            <div class="tags">
-                <span class="tag">Algorithms</span>
-                <span class="tag">Complexity Theory</span>
-                <span class="tag">P vs NP</span>
-            </div>
-
-            <div class="card-actions">
-                <a href="https://github.com/msgwebsite/portfolio/releases/download/Write-ups/pvsnp.pdf"
-                   download
-                   class="btn">
-                    <i class="fas fa-download"></i>
-                    Download
-                </a>
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-       <!-- ---------- CONTACT ---------- -->
-<section id="contact">
-
-    <h2>Let's Connect!</h2>
-
-    <p>
-        Whether you'd like to discuss research, data science, collaborations,
-        or just say hello, feel free to reach out.
-    </p>
-
-    <div class="grid-2">
-
-        <!-- ---------- EMAIL ---------- -->
-        <div class="card">
-            <h3>
-                <i class="fas fa-envelope"></i>
-                Email
-            </h3>
-
-            <p class="card-details">
-                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=maitreyaganu@gmail.com"
-                   target="_blank">
-                    maitreyaganu@gmail.com
-                </a>
-            </p>
-
-            <p class="card-details">
-                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=mganu2005@gmail.com"
-                   target="_blank">
-                    mganu2005@gmail.com
-                </a>
-            </p>
-
-            <div class="card-actions">
-                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=maitreyaganu@gmail.com"
-                   target="_blank"
-                   class="btn btn-primary">
-                    <i class="fas fa-paper-plane"></i>
-                    Send an Email
-                </a>
-            </div>
-        </div>
-
-
-        <!-- ---------- SOCIAL LINKS ---------- -->
-        <div class="card">
-            <h3>
-                <i class="fas fa-link"></i>
-                Find Me Online
-            </h3>
-
-            <p class="card-details">
-                <strong>
-                    <i class="fab fa-linkedin"></i>
-                    LinkedIn:
-                </strong>
-                <a href="https://www.linkedin.com/in/maitreya-ganu-673995286"
-                   target="_blank">
-                    Maitreya Ganu
-                </a>
-            </p>
-
-            <p class="card-details">
-                <strong>
-                    <i class="fab fa-github"></i>
-                    GitHub:
-                </strong>
-                <a href="https://github.com/MaitreyaGanu"
-                   target="_blank">
-                    MaitreyaGanu
-                </a>
-            </p>
-        </div>
-
-
-        <!-- ---------- CV ---------- -->
-        <div class="card">
-            <h3>
-                <i class="fas fa-file-lines"></i>
-                Curriculum Vitae
-            </h3>
-
-            <p class="card-details">
-                Interested in my academic background, research experience,
-                projects, skills, and positions of responsibility?
-                My latest CV is available here.
-            </p>
-
-            <div class="card-actions">
-                <a href="https://github.com/msgwebsite/portfolio/releases/download/documents-v1/maitreyaCV.pdf"
-                   download
-                   class="btn btn-primary">
-                    <i class="fas fa-download"></i>
-                    Download CV
-                </a>
-            </div>
-        </div>
-
-
-        <!-- ---------- WEBSITE ---------- -->
-        <div class="card">
-            <h3>
-                <i class="fas fa-globe"></i>
-                Portfolio
-            </h3>
-
-            <p class="card-details">
-                Explore my research, projects, technical write-ups,
-                education, and other work through my portfolio.
-            </p>
-
-            <div class="card-actions">
-                <a href="https://mganu.pages.dev"
-                   target="_blank"
-                   class="btn btn-primary">
-                    <i class="fas fa-arrow-up-right-from-square"></i>
-                    Visit Portfolio
-                </a>
-            </div>
-        </div>
-
-    </div>
-
-    <p class="contact-cta" style="text-align: center; margin-top: 2.5rem;">
-        <em>
-            Always happy to connect, collaborate, and learn something new.
-        </em>
-    </p>
-
-</section>
+            <p class="contact-cta"><em>Always happy to connect, collaborate, and learn something new.</em></p>
+        </section>
     </main>
 
-    <footer>
-        <p>&copy; <span id="year"></span> Maitreya Sameer Ganu. All rights reserved.</p>
-    </footer>
+    <footer><p>&copy; <span id="year"></span> Maitreya Sameer Ganu. All rights reserved.</p></footer>
 
     <script>
+        'use strict';
+
         document.getElementById('year').textContent = new Date().getFullYear();
 
         const hamburger = document.getElementById('hamburger');
         const mobileNav = document.getElementById('mobile-nav');
         const allNavLinks = document.querySelectorAll('[data-section]');
         const desktopLinks = document.querySelectorAll('#desktop-nav a[data-section]');
+        const mobileLinks = document.querySelectorAll('#mobile-nav a[data-section]');
+        const sections = [...document.querySelectorAll('main > section')];
+
+        function closeMobileNav() {
+            hamburger.classList.remove('active');
+            hamburger.setAttribute('aria-expanded', 'false');
+            mobileNav.classList.remove('active');
+        }
+
+        function showSection(sectionId, options = {}) {
+            const target = document.getElementById(sectionId);
+            if (!target || !sections.includes(target)) return;
+
+            sections.forEach(section => section.classList.toggle('active', section === target));
+            [...desktopLinks, ...mobileLinks].forEach(link => {
+                const active = link.dataset.section === sectionId;
+                link.classList.toggle('active', active);
+                if (active) link.setAttribute('aria-current', 'page');
+                else link.removeAttribute('aria-current');
+            });
+            closeMobileNav();
+
+            if (options.updateHash !== false) {
+                history.replaceState(null, '', '#' + encodeURIComponent(sectionId));
+            }
+            if (options.scroll !== false) window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
 
         hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            mobileNav.classList.toggle('active');
+            const open = !mobileNav.classList.contains('active');
+            mobileNav.classList.toggle('active', open);
+            hamburger.classList.toggle('active', open);
+            hamburger.setAttribute('aria-expanded', String(open));
         });
 
-        allNavLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const sectionId = link.getAttribute('data-section');
-                showSection(sectionId);
+        allNavLinks.forEach(link => link.addEventListener('click', event => {
+            event.preventDefault();
+            showSection(link.dataset.section);
+        }));
 
-                hamburger.classList.remove('active');
-                mobileNav.classList.remove('active');
-
-                desktopLinks.forEach(l => l.classList.remove('active'));
-                desktopLinks.forEach(l => {
-                    if (l.getAttribute('data-section') === sectionId) {
-                        l.classList.add('active');
-                    }
-                });
-
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
+        window.addEventListener('hashchange', () => {
+            const sectionId = decodeURIComponent(location.hash.slice(1)) || 'home';
+            showSection(sectionId, { updateHash: false });
         });
 
-        function showSection(sectionId) {
-            document.querySelectorAll('section').forEach(section => {
-                section.classList.remove('active');
-            });
-            const activeSection = document.getElementById(sectionId);
-            if (activeSection) {
-                activeSection.classList.add('active');
-            }
-        }
-
-        /* ---------- WEBSITE SEARCH ---------- */
-
-const searchButton = document.getElementById('search-button');
-const searchBox = document.getElementById('search-box');
-const searchInput = document.getElementById('search-input');
-const searchResults = document.getElementById('search-results');
-
-let currentMatches = [];
-let selectedMatchIndex = 0;
-
-
-/* Open / close search */
-
-searchButton.addEventListener('click', (e) => {
-    e.stopPropagation();
-
-    searchBox.classList.toggle('active');
-
-    if (searchBox.classList.contains('active')) {
-        searchInput.focus();
-    } else {
-        searchInput.value = '';
-        searchResults.innerHTML = '';
-        currentMatches = [];
-    }
-});
-
-
-/* Find the best element containing the searched text */
-
-function findExactLocation(query) {
-
-    const sections = document.querySelectorAll('main section');
-
-    for (const section of sections) {
-
-        const walker = document.createTreeWalker(
-            section,
-            NodeFilter.SHOW_TEXT,
-            {
-                acceptNode: function(node) {
-
-                    const text = node.textContent.toLowerCase();
-
-                    if (text.includes(query)) {
-                        return NodeFilter.FILTER_ACCEPT;
-                    }
-
-                    return NodeFilter.FILTER_REJECT;
-                }
-            }
-        );
-
-        const textNode = walker.nextNode();
-
-        if (textNode) {
-
-            /*
-             * Prefer the actual research/education/experience card
-             * rather than scrolling only to the section.
-             */
-
-            let element = textNode.parentElement;
-
-            const preferredParent =
-                element.closest(
-                    '.research-project, .education-card, .experience-card, .card'
-                );
-
-            if (preferredParent) {
-                element = preferredParent;
-            }
-
-            return {
-                section: section,
-                element: element
-            };
-        }
-    }
-
-    return null;
-}
-
-
-/* Show search results */
-
-searchInput.addEventListener('input', () => {
-
-    const query = searchInput.value.trim().toLowerCase();
-
-    searchResults.innerHTML = '';
-    currentMatches = [];
-    selectedMatchIndex = 0;
-
-    if (!query) {
-        return;
-    }
-
-    const sections = document.querySelectorAll('main section');
-
-    sections.forEach(section => {
-
-        const elements = section.querySelectorAll(
-            'h2, h3, h4, p, td, th, span, strong, a'
-        );
-
-        elements.forEach(element => {
-
-            const text = element.innerText.trim();
-
-            if (
-                text &&
-                text.toLowerCase().includes(query)
-            ) {
-
-                /*
-                 * Find the larger meaningful container
-                 * surrounding the matching text.
-                 */
-
-                let target =
-                    element.closest(
-                        '.research-project, .education-card, .experience-card, .card'
-                    );
-
-                if (!target) {
-                    target = element;
-                }
-
-                /*
-                 * Avoid displaying the same card multiple times.
-                 */
-
-                if (!currentMatches.some(match => match.target === target)) {
-
-                    currentMatches.push({
-                        section: section,
-                        target: target,
-                        title: getSearchTitle(target, section)
-                    });
-
-                }
-            }
-        });
-    });
-
-
-    if (currentMatches.length === 0) {
-
-        searchResults.innerHTML = `
-            <div class="search-no-results">
-                No results found.
-            </div>
-        `;
-
-        return;
-    }
-
-
-    currentMatches.forEach((match, index) => {
-
-        const result = document.createElement('div');
-
-        result.className = 'search-result';
-        result.textContent = match.title;
-
-        result.addEventListener('click', () => {
-            goToSearchResult(index);
-        });
-
-        searchResults.appendChild(result);
-    });
-
-});
-
-
-/* Get a useful title for the result */
-
-function getSearchTitle(target, section) {
-
-    const heading =
-        target.querySelector('h3, h4, h2');
-
-    if (heading) {
-        return heading.innerText.trim();
-    }
-
-    const sectionHeading =
-        section.querySelector('h2');
-
-    if (sectionHeading) {
-        return sectionHeading.innerText.trim();
-    }
-
-    return section.id;
-}
-
-
-/* Go directly to the selected result */
-
-function goToSearchResult(index) {
-
-    const match = currentMatches[index];
-
-    if (!match) {
-        return;
-    }
-
-    /*
-     * First activate the correct section.
-     */
-
-    showSection(match.section.id);
-
-    /*
-     * Update navigation.
-     */
-
-    desktopLinks.forEach(link => {
-
-        link.classList.remove('active');
-
-        if (
-            link.getAttribute('data-section') ===
-            match.section.id
-        ) {
-            link.classList.add('active');
-        }
-    });
-
-
-    /*
-     * Wait for the section to become visible,
-     * then scroll directly to the matching card.
-     */
-
-    setTimeout(() => {
-
-        match.target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'center'
-        });
-
-
-        /*
-         * Briefly highlight the matching card.
-         */
-
-        match.target.style.transition =
-            'box-shadow 0.25s ease';
-
-        match.target.style.boxShadow =
-            '0 0 0 3px rgba(87, 185, 255, 0.45)';
-
-
-        setTimeout(() => {
-            match.target.style.boxShadow = '';
-        }, 1800);
-
-    }, 100);
-
-
-    /*
-     * Close search.
-     */
-
-    searchBox.classList.remove('active');
-    searchInput.value = '';
-    searchResults.innerHTML = '';
-    currentMatches = [];
-}
-
-
-/* ---------- PRESS ENTER TO GO DIRECTLY ---------- */
-
-searchInput.addEventListener('keydown', (e) => {
-
-    if (e.key === 'Enter') {
-
-        e.preventDefault();
-
-        const query =
-            searchInput.value.trim().toLowerCase();
-
-        if (!query) {
-            return;
-        }
-
-        /*
-         * If results exist, open the first matching result.
-         */
-
-        if (currentMatches.length > 0) {
-
-            goToSearchResult(0);
-
-            return;
-        }
-
-        /*
-         * Fallback: directly search the page.
-         */
-
-        const location = findExactLocation(query);
-
-        if (location) {
-
-            showSection(location.section.id);
-
-            desktopLinks.forEach(link => {
-
-                link.classList.remove('active');
-
-                if (
-                    link.getAttribute('data-section') ===
-                    location.section.id
-                ) {
-                    link.classList.add('active');
-                }
-            });
-
-
-            setTimeout(() => {
-
-                location.element.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'center'
-                });
-
-
-                location.element.style.transition =
-                    'box-shadow 0.25s ease';
-
-                location.element.style.boxShadow =
-                    '0 0 0 3px rgba(87, 185, 255, 0.45)';
-
-                setTimeout(() => {
-                    location.element.style.boxShadow = '';
-                }, 1800);
-
-            }, 100);
-
+        const initialSection = decodeURIComponent(location.hash.slice(1)) || 'home';
+        showSection(initialSection, { updateHash: false, scroll: false });
+
+        /* ================= WEBSITE SEARCH ================= */
+        const searchButton = document.getElementById('search-button');
+        const searchBox = document.getElementById('search-box');
+        const searchInput = document.getElementById('search-input');
+        const searchResults = document.getElementById('search-results');
+        let currentMatches = [];
+
+        function closeSearch() {
             searchBox.classList.remove('active');
-
+            searchButton.setAttribute('aria-expanded', 'false');
+            searchInput.value = '';
+            searchResults.replaceChildren();
+            currentMatches = [];
         }
-    }
 
-});
+        searchButton.addEventListener('click', event => {
+            event.stopPropagation();
+            const open = !searchBox.classList.contains('active');
+            if (open) {
+                searchBox.classList.add('active');
+                searchButton.setAttribute('aria-expanded', 'true');
+                searchInput.focus();
+            } else closeSearch();
+        });
 
+        function getSearchTitle(target, section) {
+            if (target === section) return section.querySelector('h2')?.textContent.trim() || section.id;
+            return target.querySelector('h4, h3, h2')?.textContent.trim()
+                || target.closest('section')?.querySelector('h2')?.textContent.trim()
+                || section.id;
+        }
 
-/* Close search when clicking elsewhere */
+        function collectMatches(query) {
+            const results = [];
+            sections.forEach(section => {
+                const nodes = section.querySelectorAll('h2, h3, h4, h5, p, td, th, span, strong, a');
+                const seen = new Set();
+                nodes.forEach(node => {
+                    if (!node.textContent.toLowerCase().includes(query)) return;
+                    const target = node.closest('.research-project, .achievement-card, .education-card, .experience-card, .institute-card, .card') || node;
+                    if (seen.has(target)) return;
+                    seen.add(target);
+                    results.push({ section, target, title: getSearchTitle(target, section) });
+                });
+            });
+            return results;
+        }
 
-document.addEventListener('click', (e) => {
+        searchInput.addEventListener('input', () => {
+            const query = searchInput.value.trim().toLowerCase();
+            searchResults.replaceChildren();
+            currentMatches = query ? collectMatches(query) : [];
+            if (!query) return;
+            if (currentMatches.length === 0) {
+                const empty = document.createElement('div');
+                empty.className = 'search-no-results';
+                empty.textContent = 'No results found.';
+                searchResults.appendChild(empty);
+                return;
+            }
+            currentMatches.forEach((match, index) => {
+                const button = document.createElement('button');
+                button.className = 'search-result';
+                button.type = 'button';
+                button.textContent = match.title;
+                button.addEventListener('click', () => goToSearchResult(index));
+                searchResults.appendChild(button);
+            });
+        });
 
-    if (
-        !searchBox.contains(e.target) &&
-        !searchButton.contains(e.target)
-    ) {
-        searchBox.classList.remove('active');
-    }
+        function goToSearchResult(index) {
+            const match = currentMatches[index];
+            if (!match) return;
+            showSection(match.section.id, { scroll: false });
+            closeSearch();
+            requestAnimationFrame(() => {
+                match.target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                match.target.style.boxShadow = '0 0 0 3px rgba(87, 185, 255, .45)';
+                setTimeout(() => { match.target.style.boxShadow = ''; }, 1800);
+            });
+        }
 
-});
+        searchInput.addEventListener('keydown', event => {
+            if (event.key === 'Enter' && currentMatches.length) {
+                event.preventDefault();
+                goToSearchResult(0);
+            }
+        });
 
-
-/* Escape closes search */
-
-document.addEventListener('keydown', (e) => {
-
-    if (e.key === 'Escape') {
-
-        searchBox.classList.remove('active');
-        searchInput.value = '';
-        searchResults.innerHTML = '';
-        currentMatches = [];
-
-    }
-
-});
-
-        document.querySelector('#desktop-nav a[data-section="home"]').classList.add('active');
-        
+        document.addEventListener('click', event => {
+            if (!searchBox.contains(event.target) && !searchButton.contains(event.target)) closeSearch();
+        });
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape') {
+                closeSearch();
+                closeMobileNav();
+            }
+        });
     </script>
 </body>
 </html>
