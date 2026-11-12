@@ -1,3 +1,8 @@
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -75,21 +80,6 @@
             text-underline-offset: 5px;
         }
         .logo:hover { opacity: 1; }
-        .desktop-nav {
-            display: flex;
-            flex-wrap: wrap;
-            gap: .62rem 1rem;
-            align-items: center;
-        }
-        .desktop-nav a {
-            color: #fff;
-            font-size: 1.08rem;
-            text-decoration: none;
-            white-space: nowrap;
-            border-bottom: 2px solid transparent;
-            padding-bottom: 2px;
-        }
-        .desktop-nav a.active { border-bottom-color: #fff; }
         .header-social {
             display: flex;
             gap: 1.1rem;
@@ -145,14 +135,21 @@
         .search-result:hover, .search-result:focus-visible { background: #eef3fa; }
         .search-no-results { padding: .55rem .6rem; color: var(--text-muted); font-size: .91rem; }
         .hamburger {
-            display: none;
-            margin-left: auto;
+            display: flex;
             flex-direction: column;
+            justify-content: center;
             gap: 6px;
             padding: 8px;
+            flex-shrink: 0;
             background: none;
             border: 0;
-            color: white;
+            color: #fff;
+        }
+        .hamburger:hover { opacity: .78; }
+        .hamburger:focus-visible, .header-search-button:focus-visible {
+            outline: 2px solid #fff;
+            outline-offset: 4px;
+            border-radius: 3px;
         }
         .hamburger span { display: block; height: 2px; width: 26px; background: #fff; transition: transform .25s, opacity .25s; }
         .hamburger.active span:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
@@ -160,12 +157,19 @@
         .hamburger.active span:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
         .mobile-nav {
             display: none;
+            position: absolute;
+            top: 100%;
+            right: max(1.25rem, calc((100vw - 1400px) / 2 + 1.8rem));
+            width: min(340px, calc(100vw - 2.5rem));
             flex-direction: column;
             background: #fff;
-            border-bottom: 1px solid var(--border);
+            border: 1px solid var(--border);
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 10px 28px rgba(0, 0, 0, .13);
             padding: .5rem 0;
-            max-height: calc(100vh - 80px);
+            max-height: calc(100vh - 90px);
             overflow-y: auto;
+            z-index: 220;
         }
         .mobile-nav.active { display: flex; }
         .mobile-nav a {
@@ -349,14 +353,15 @@
         }
 
         /* ================= RESPONSIVE ================= */
-        @media (max-width: 1250px) {
-            .desktop-nav, .header-social { display: none; }
-            .hamburger { display: flex; }
+        @media (max-width: 900px) {
+            .header-social > a { display: none; }
         }
         @media (max-width: 768px) {
             body { font-size: 17px; }
-            .header-inner { padding: 1.2rem 1.4rem; }
-            .logo { font-size: 1.5rem; }
+            .header-inner { padding: 1.2rem 1.4rem; gap: .6rem; }
+            .header-social { gap: .7rem; }
+            .logo { font-size: 1.5rem; min-width: 0; }
+            .mobile-nav { right: 1.2rem; }
             main { padding: 2.5rem 1.5rem 1.5rem; }
             section h2 { font-size: 1.8rem; }
             .grid-2 { grid-template-columns: 1fr; }
@@ -372,6 +377,11 @@
             .institute-content { padding: 1.4rem 1.5rem; }
             .institute-content > h3 { font-size: 1.4rem; }
         }
+        @media (max-width: 420px) {
+            .header-inner { padding: 1rem; }
+            .logo { font-size: 1.2rem; white-space: normal; line-height: 1.2; }
+            .mobile-nav { right: .75rem; }
+        }
         @media (prefers-reduced-motion: reduce) {
             html { scroll-behavior: auto; }
             section.active { animation: none; }
@@ -384,16 +394,6 @@
     <header>
         <div class="header-inner">
             <a href="#home" class="logo" data-section="home">Maitreya Sameer Ganu</a>
-            <nav class="desktop-nav" id="desktop-nav" aria-label="Main navigation">
-                <a href="#home" data-section="home">About</a>
-                <a href="#education" data-section="education">Education</a>
-                <a href="#experience" data-section="experience">Experience</a>
-                <a href="#achievements" data-section="achievements">Achievements</a>
-                <a href="#poster-presentations" data-section="poster-presentations">Poster Presentations</a>
-                <a href="#research" data-section="research">Research</a>
-                <a href="#technical-writeups" data-section="technical-writeups">Write-ups!</a>
-                <a href="#contact" data-section="contact">Contact</a>
-            </nav>
             <div class="header-social">
                 <a href="https://www.linkedin.com/in/maitreya-ganu-673995286" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                 <a href="https://github.com/MaitreyaGanu" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub"><i class="fab fa-github"></i></a>
@@ -616,8 +616,8 @@
 
             <div class="card institute-card poster-institute-card">
                 <div class="institute-logo">
-                    <!-- Add iitb.png to the same GitHub folder as index.html. -->
-                    <img src="iitb.png" alt="Indian Institute of Technology Bombay logo">
+                    <!-- Add iitb.svg to the same GitHub folder as index.html. -->
+                    <img src="iitb.svg" alt="Indian Institute of Technology Bombay logo">
                 </div>
                 <div class="institute-content">
                     <h3>Indian Institute of Technology (IIT), Bombay</h3>
@@ -806,7 +806,6 @@
         const hamburger = document.getElementById('hamburger');
         const mobileNav = document.getElementById('mobile-nav');
         const allNavLinks = document.querySelectorAll('[data-section]');
-        const desktopLinks = document.querySelectorAll('#desktop-nav a[data-section]');
         const mobileLinks = document.querySelectorAll('#mobile-nav a[data-section]');
         const sections = [...document.querySelectorAll('main > section')];
 
@@ -821,7 +820,7 @@
             if (!target || !sections.includes(target)) return;
 
             sections.forEach(section => section.classList.toggle('active', section === target));
-            [...desktopLinks, ...mobileLinks].forEach(link => {
+            mobileLinks.forEach(link => {
                 const active = link.dataset.section === sectionId;
                 link.classList.toggle('active', active);
                 if (active) link.setAttribute('aria-current', 'page');
@@ -836,6 +835,7 @@
         }
 
         hamburger.addEventListener('click', () => {
+            closeSearch();
             const open = !mobileNav.classList.contains('active');
             mobileNav.classList.toggle('active', open);
             hamburger.classList.toggle('active', open);
@@ -874,6 +874,7 @@
             event.stopPropagation();
             const open = !searchBox.classList.contains('active');
             if (open) {
+                closeMobileNav();
                 searchBox.classList.add('active');
                 searchButton.setAttribute('aria-expanded', 'true');
                 searchInput.focus();
@@ -946,6 +947,7 @@
 
         document.addEventListener('click', event => {
             if (!searchBox.contains(event.target) && !searchButton.contains(event.target)) closeSearch();
+            if (!mobileNav.contains(event.target) && !hamburger.contains(event.target)) closeMobileNav();
         });
         document.addEventListener('keydown', event => {
             if (event.key === 'Escape') {
@@ -956,3 +958,7 @@
     </script>
 </body>
 </html>
+
+
+
+
